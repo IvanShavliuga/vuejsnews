@@ -2,7 +2,7 @@
   <main>
      <app-alert></app-alert>
      <app-cards></app-cards>
-     <app-post></app-post>
+     <app-news></app-news>
   </main>  
 </template>
 <style lang="scss">
@@ -12,7 +12,7 @@
   }
 </style>
 <script>
-  import Post from './Post.vue';
+  import News from './News.vue';
   import Cards  from './Cards.vue';
   import Alert from './Alert.vue';
   import {eventBus} from '../main';
@@ -25,7 +25,7 @@
          } 
      },
      components:{
-         appPost: Post,
+         appNews: News,
          appCards: Cards,
          appAlert: Alert     
      }   

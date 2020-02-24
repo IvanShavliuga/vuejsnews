@@ -15,6 +15,11 @@
 import Card from './Card.vue';
 
 export default {
+    data() {
+       return {
+          
+       };    
+    },
     components:{
         appCard: Card    
     }

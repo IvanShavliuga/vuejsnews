@@ -1,13 +1,10 @@
 <template>
   <div class="container">
-     <div v-if="userlogin"> 
-        <app-header></app-header>
-        <app-content></app-content>
-        <app-footer></app-footer>
-     </div> 
-     <div v-else>
-        <app-signin></app-signin>
-     </div>
+     <app-header></app-header>
+     <keep-alive>
+        <router-view></router-view>
+     </keep-alive> 
+     <app-footer></app-footer>
   </div>
 </template>
 <style lang="scss">
@@ -30,8 +27,9 @@
   import Content  from './components/Content.vue';
   import Signin from './components/Signin.vue';
   import Footer from './components/Footer.vue';
+  import Profile from './components/Profile.vue';
   import {eventBus} from './main';
-   
+ 
 
   export default {
      data() {
@@ -44,7 +42,8 @@
          appHeader: Header,
          appContent: Content,
          appSignin: Signin,
-         appFooter: Footer     
+         appFooter: Footer,
+         appProfile:  Profile     
      }   
   }
 
