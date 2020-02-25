@@ -4,7 +4,7 @@
   <div class="card-body">
   <h6 class="card-title">{{post.type}}: 
   <span class='text-primary'>
-  {{post.user}}<br> 
+  {{user.login}}<br> 
   {{post.date}} 
   {{post.time}}</span></h6>
   <p class="card-text">{{post.desc}}</p>
@@ -36,6 +36,10 @@ export default {
        post: {
            type: Object,
            required: true     
+       },
+       user: {
+           type: Object,
+           required: true        
        }
     }    
 

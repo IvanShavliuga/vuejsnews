@@ -6,6 +6,7 @@ import Profile from './components/Profile.vue';
 import News from './components/News.vue';
 import Cards  from './components/Cards.vue';
 import Index  from './components/Index.vue';
+import Groups from './components/Groups.vue';
 import App from './App.vue'
 
 export const  routes = [
@@ -26,6 +27,6 @@ export const  routes = [
                 }
             ]
         },
-        {path: '/news', component: News},
+        {path: '/groups', component: Groups},
         {path: '/cards', component: Cards}
     ]

@@ -10,6 +10,7 @@ export default new Vuex.Store({
             id:0,
             link:"https://test.ru/id",
             login: "iv2",
+            password: "12345",
             name:"Ivan Shavliuga (Ivanov)",
             spec:"Junior Frotend Developer",
             skills:["HTML", "CSS", "JavaScript (ES6)", "JQuery","Vue.js (vue companetes)", "Design","Animation"],
@@ -20,6 +21,25 @@ export default new Vuex.Store({
             },{
                messenger :"email",
                contact:"iva.drakon.nov@gmail.com"
+            },{
+               messenger:"telegram",
+               contact:"https://t.me/vuejscodesru"   
+            }] //contacts
+        },{
+            id:1,
+            link:"https://test.ru/id",
+            login: "max",
+            password: "12345",
+            name:"Max Smirnov",
+            spec:"Junior Frotend Developer",
+            skills:["HTML", "CSS", "JavaScript (ES6)", "JQuery","Angular.js", "TypeScript","Animation"],
+            city:"Minsk, Belarus",
+            contacts:[{
+               messenger:"phone",
+               contact:"+375 (222) 222-22-2"
+            },{
+               messenger :"email",
+               contact:"smirnov.nov@gmail.com"
             },{
                messenger:"telegram",
                contact:"https://t.me/vuejscodesru"   
@@ -59,7 +79,6 @@ export default new Vuex.Store({
         posts: [{ 
              id: 0,
              userId:0,
-             user:"iv2",
              date:"12.08.2019",
              time:"9:00", 
              title: 'I am learn vue.js', 
@@ -72,8 +91,7 @@ export default new Vuex.Store({
              likeclick:false 
         },{ 
              id: 1,
-             userId:0,
-             user:"iv2",
+             userId:1,
              date:"13.08.2019",
              time:"10:00", 
              title: 'I am learn angular', 
@@ -87,7 +105,6 @@ export default new Vuex.Store({
         },{
              id: 2,
              userId:0,
-             user:"iv2",
              date:"13.08.2019",
              time:"11:00", 
              title: 'I learn JavaScript', 
@@ -103,13 +120,42 @@ export default new Vuex.Store({
              header: "Test",
              body:"This alert window created for tests",
              status:"Test OK"              
-        }      
+        },
+        groups:[{
+             name: "Vue.js",
+             desc: "Courses, code, simples, webiranrs",
+             category: "study",
+             id:0,
+             idAdmin:0,
+             idNews:[0],
+             followers:[0]        
+        },{
+             name: "Angular.js",
+             desc: "Courses, code, simples, webiranrs",
+             category: "study",
+             id:1,
+             idAdmin:1,
+             idNews:[1],
+             followers:[0]        
+        },{
+             name: "JavaScript",
+             desc: "Courses, code, simples, webiranrs",
+             category: "study",
+             id:0,
+             idAdmin:0,
+             idNews:[2],
+             followers:[0]        
+        }],
+        userloginid:0      
     },
     getters: {
         users: state => {return state.users},
-        messages: state => {return state.messages},
+        messages: state => {return state.messages.filter((m)=>{return m.userId==state.userloginid})},
         cards: state => {return state.cards},
-        posts: state => {return state.posts},
-        alert: state => {return state.alert}    
+        postsUser: state => {return state.posts.filter((p)=>{return p.userId==state.userloginid})},
+        postsAll: state => {return state.posts},
+        alert: state => {return state.alert},
+        groups: state => {return state.groups},
+        user: state => {return state.users[state.userloginid]}    
     }
 })

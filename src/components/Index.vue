@@ -2,8 +2,9 @@
 <main>
      <div v-if="userlogin"> 
         <app-content 
-           :news="news"
+           :posts="posts"
            :cards="cards"
+           :users="users"
            :alert="alert"></app-content>
      </div> 
      <div v-else>
@@ -25,6 +26,7 @@
               cards:[],
               messages:[],
               alert:{},
+              users:[],
               userlogin:true     
          } 
      },
@@ -34,9 +36,9 @@
      },
      created() {
         
-         this.posts = this.$store.getters.posts;
+         this.posts = this.$store.getters.postsAll;
          this.cards = this.$store.getters.cards;
-         
+         this.users = this.$store.getters.users;
          this.alert = this.$store.getters.alert;
      }   
   }
