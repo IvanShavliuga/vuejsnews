@@ -1,11 +1,23 @@
 <template>
 <div class="alert alert-success" role="alert">
-  <h4 class="alert-heading">Well done!</h4>
-  <p>Aww yeah, you successfully read this important alert message. This example text is going to run a bit longer so that you can see how spacing within an alert works with this kind of content.</p>
+  <h4 class="alert-heading">{{alert.header}}</h4>
+  <p>{{alert.body}}</p>
   <hr>
-  <p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p>
+  <p class="mb-0">{{alert.status}}</p>
 </div>
 </template>
 <style lang="scss">
 
 </style>
+<script>
+export default {
+   props: {
+       alert: {
+           type: Object,
+           required: true     
+       }   
+   }
+
+}
+
+</script>

@@ -1,36 +1,43 @@
 <template>
-<div>
+<main>
      <div v-if="userlogin"> 
-        <app-content></app-content>
+        <app-content 
+           :news="news"
+           :cards="cards"
+           :alert="alert"></app-content>
      </div> 
      <div v-else>
         <app-signin></app-signin>
      </div>
-</div>
-</div>
+</main>
 </template>
 <script>
-  import Header from './Header.vue';
   import Content  from './Content.vue';
   import Signin from './Signin.vue';
-  import Footer from './Footer.vue';
-  import Profile from './Profile.vue';
   import {eventBus} from '../main';
  
 
   export default {
      data() {
          return {
-              title: "iv2news",
-              userlogin: true         
+              user:{},
+              posts:[],
+              cards:[],
+              messages:[],
+              alert:{},
+              userlogin:true     
          } 
      },
      components:{
-         appHeader: Header,
          appContent: Content,
-         appSignin: Signin,
-         appFooter: Footer,
-         appProfile:  Profile     
+         appSignin: Signin   
+     },
+     created() {
+        
+         this.posts = this.$store.getters.posts;
+         this.cards = this.$store.getters.cards;
+         
+         this.alert = this.$store.getters.alert;
      }   
   }
 

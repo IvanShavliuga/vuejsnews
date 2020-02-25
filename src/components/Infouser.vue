@@ -44,14 +44,15 @@ export default {
             skills:["HTML", "CSS", "JavaScript (ES6)", "JQuery","Vue.js (vue companetes)", "Design","Animation"],
             city:"Novopolotsk, Belarus",
             contacts:[{
-            messenger:"phone",
-            contact:"+375 (111) 111-11-11"
-          },{
-            messenger :"email",
-            contact:"iva.drakon.nov@gmail.com"
-          },{messenger:"telegram",
-             contact:"https://t.me/vuejscodesru"   
-          }] //contacts
+               messenger:"phone",
+               contact:"+375 (111) 111-11-11"
+            },{
+               messenger :"email",
+               contact:"iva.drakon.nov@gmail.com"
+            },{
+               messenger:"telegram",
+               contact:"https://t.me/vuejscodesru"   
+            }] //contacts
         }, //user
         editname:"",
         editspec:"",
