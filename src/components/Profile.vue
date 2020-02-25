@@ -1,14 +1,16 @@
 <template>
  <div class="profile">
  <nav class="nav">
-  <a class="nav-link active" href="#"> Profile</a>
-  <a class="nav-link" href="#">Messages <span class="badge badge-success">12</span></a>
-  <a class="nav-link" href="#">Posts <span class="badge badge-success">140</span></a>
-  <a class="nav-link" href="#">Group <span class="badge badge-success">3</span></a>
-  <a class="nav-link" href="#">Friends <span class="badge badge-success">6</span></a>
+  <a :class="['nav-link',(activelink==0)?'active':'']" href="#" @click="activelink=0"> Profile</a>
+  <a :class="['nav-link',(activelink==1)?'active':'']" href="#" @click="activelink=1">Messages <span class="badge badge-success">{{messages.length}}</span></a>
+  <a :class="['nav-link',(activelink==2)?'active':'']" href="#" @click="activelink=2">Posts <span class="badge badge-success">{{posts.length}}</span></a>
+  <a :class="['nav-link',(activelink==3)?'active':'']" href="#" @click="activelink=3">Groups <span class="badge badge-success">{{groups.length}}</span></a>
+  <a :class="['nav-link',(activelink==4)?'active':'']" href="#" @click="activelink=4">Friends <span class="badge badge-success">{{friends.length}}</span></a>
  </nav>
- <app-infouser></app-infouser>
- <app-messages></app-messages> 
+ <app-infouser v-if="activelink==0"></app-infouser>
+ <app-messages v-if="activelink==1"></app-messages> 
+ <app-news :posts="posts" v-if="activelink==2" :users="[user]"></app-news>
+ <app-groups :groups="groups" v-if="activelink==3"></app-groups>
 </div> 
 </template>
 <style lang="scss">
@@ -52,11 +54,31 @@
 
 import Infouser from './Infouser.vue';
 import Messages from './Messages.vue';
+import News from './News.vue';
+import Groups from './Groups.vue';
 
 export default{
+   data() {
+        return {
+            user:{},
+            messages:[],
+            posts:[],
+            friends:[],
+            groups:[],
+            activelink:0
+        };
+   },
    components: {
         appInfouser: Infouser,
-        appMessages: Messages   
+        appMessages: Messages,
+        appNews: News,
+        appGroups: Groups   
+   },
+   created(){
+        this.user=this.$store.getters.user;
+        this.messages=this.$store.getters.messages; 
+        this.posts=this.$store.getters.postsUser;  
+        this.groups=this.$store.getters.groups;
    }
 }
 

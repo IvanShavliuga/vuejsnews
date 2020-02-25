@@ -1,7 +1,7 @@
 <template>
 <div class="content"> 
 <div class="row">
-   <app-post v-for="(n,k) in posts" :post="n" :key="k"></app-post>
+   <app-post v-for="(n,k) in posts" :post="n" :key="k" :user="users[n.userId]"></app-post>
 </div>
 </div>
 </template>
@@ -16,10 +16,15 @@
 import Post from './Post.vue';
 export default {
    props: {
-       type: Array,
-       required: true
-          
-   },
+      posts:{
+         type: Array,
+         required: true
+      },
+      users:{
+         type: Array,
+         required: true    
+      }    
+   },/*,
    data() {
        return {  
                 posts: [ 
@@ -92,7 +97,7 @@ export default {
                        this.posts[id].like--;
                     this.posts[id].likeclick=!this.posts[id].likeclick;
                 }
-    },
+    },*/
     components: {
         appPost: Post    
     } 

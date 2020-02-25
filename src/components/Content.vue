@@ -1,8 +1,8 @@
 <template>
   <div class="content"> 
      <app-alert :alert="alert"></app-alert>
-     <app-cards :cards="cards"></app-cards>
-     <app-news :posts="posts"></app-news>
+     <app-cards :cards="cards" ></app-cards>
+     <app-news :posts="posts" :users="users"></app-news>
   </div>  
 </template>
 <style lang="scss">
@@ -31,16 +31,20 @@
        cards:{
            type: Array,
            required: true       
+       },
+       users:{
+           type:Array,
+           required: true       
        }     
     },
     data() {
          return {
               title: "iv2news",
-              alert: {
+              /*alert: {
                   header: "Test",
                   body:"This alert window created for tests",
                   status:"Test OK"              
-              }         
+              }*/         
          } 
      },
      components:{
