@@ -1,12 +1,12 @@
 <template>
-  <main>
-     <app-alert></app-alert>
-     <app-cards></app-cards>
-     <app-news></app-news>
-  </main>  
+  <div class="content"> 
+     <app-alert :alert="alert"></app-alert>
+     <app-cards :cards="cards"></app-cards>
+     <app-news :posts="posts"></app-news>
+  </div>  
 </template>
 <style lang="scss">
-  main {
+  .content {
       padding: 10px;
       background: #eee;
   }
@@ -19,9 +19,28 @@
    
 
   export default {
-     data() {
+     props: {
+       alert: {
+           type: Object,
+           required: true     
+       },
+       posts:{
+           type: Array,
+           required: true       
+       },
+       cards:{
+           type: Array,
+           required: true       
+       }     
+    },
+    data() {
          return {
-              title: "iv2news"         
+              title: "iv2news",
+              alert: {
+                  header: "Test",
+                  body:"This alert window created for tests",
+                  status:"Test OK"              
+              }         
          } 
      },
      components:{

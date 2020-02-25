@@ -1,17 +1,25 @@
 <template>
+<div class="content"> 
 <div class="row">
    <app-post v-for="(n,k) in posts" :post="n" :key="k"></app-post>
 </div>
+</div>
 </template>
 <style>]
-.news {
-   display: flex;
-   flex-direction: rows;
-}
+
+ .content {
+      padding: 10px!important;
+      background: #eee;
+  }
 </style>
 <script>
 import Post from './Post.vue';
 export default {
+   props: {
+       type: Array,
+       required: true
+          
+   },
    data() {
        return {  
                 posts: [ 

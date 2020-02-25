@@ -39,11 +39,11 @@ export default {
    }, 
    methods: {
       readmess(id){
-                this.messages[id].read=!this.messages[id].read;
-            } ,
-            showmess(id)    {
-                this.messages[id].show=!this.messages[id].show;
-            }
+          this.messages[id].read=!this.messages[id].read;
+      } ,
+      showmess(id)    {
+          this.messages[id].show=!this.messages[id].show;
+      }
    }
 
 }
