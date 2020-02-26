@@ -7,6 +7,8 @@ import News from './components/News.vue';
 import Cards  from './components/Cards.vue';
 import Index  from './components/Index.vue';
 import Groups from './components/Groups.vue';
+import GroupsAll from './components/GroupsAll.vue';
+import Users from './components/Users.vue';
 import App from './App.vue'
 
 export const  routes = [
@@ -23,10 +25,26 @@ export const  routes = [
                 {
                     path: 'Messages',
                     component: Messages,
-                    name: 'messages'
-                }
+                    name: 'Messages'
+                },
+                {
+                    path: 'Groups',
+                    component: Groups,
+                    name: 'Groups'
+                },
+                {
+                    path: 'Posts',
+                    component: News,
+                    name: 'Posts'
+                }/*,
+                {
+                    path: 'Friends',
+                    component: Messages,
+                    name: 'Friends'
+                }*/
             ]
         },
-        {path: '/groups', component: Groups},
-        {path: '/cards', component: Cards}
+        {path: '/groupsall', component: GroupsAll},
+        {path: '/cards', component: Cards},
+        {path: '/users', component: Users}
     ]
