@@ -7,8 +7,8 @@
   <a :class="['nav-link',(activelink==3)?'active':'']" href="#" @click="activelink=3">Groups <span class="badge badge-success">{{groups.length}}</span></a>
   <a :class="['nav-link',(activelink==4)?'active':'']" href="#" @click="activelink=4">Friends <span class="badge badge-success">{{friends.length}}</span></a>
  </nav>
- <app-infouser v-if="activelink==0"></app-infouser>
- <app-messages v-if="activelink==1"></app-messages> 
+ <app-infouser v-if="activelink==0" :user="user"></app-infouser>
+ <app-messages v-if="activelink==1" :messages="messages"></app-messages> 
  <app-news :posts="posts" v-if="activelink==2" :users="[user]"></app-news>
  <app-groups :groups="groups" v-if="activelink==3"></app-groups>
 </div> 
@@ -78,7 +78,7 @@ export default{
         this.user=this.$store.getters.user;
         this.messages=this.$store.getters.messages; 
         this.posts=this.$store.getters.postsUser;  
-        this.groups=this.$store.getters.groups;
+        this.groups=this.$store.getters.groupsUser;
    }
 }
 

@@ -5,6 +5,8 @@
    <table class="table">
     <tr><th colspan ="2">Information of user</th></tr>
      <tr><td>Login</td><td>{{user.login}}</td></tr>
+     <tr><td>Rang</td><td>{{user.rang}}</td></tr>
+     <tr><td>Gender</td><td>{{user.gender}}</td></tr>
      <tr v-if="!showeditname" @click="showflagname()"><td>Name</td><td>{{user.name}}</td></tr>
      <tr v-else><td>Name</td><td><input type="text" placeholder="name" v-model="editname"><button class ="btn btn-primary" @click="checkname()">✔️</button></td></tr>
      <tr v-if="!showeditspec" @click="showflagspec()"><td>Specialization</td><td>{{user.spec}}</td></tr>
@@ -33,9 +35,15 @@
 </template>
 <script>
 export default {
-  data() {
+   props: {
+     user:{
+       type: Object,
+       required: true
+     }   
+   },
+   data() {
       return{
-        user:{
+        /*user:{
             id:0,
             link:"https://test.ru/id",
             login: "iv2",
@@ -53,7 +61,7 @@ export default {
                messenger:"telegram",
                contact:"https://t.me/vuejscodesru"   
             }] //contacts
-        }, //user
+        },*/ //user
         editname:"",
         editspec:"",
         editcity:"",
@@ -108,4 +116,4 @@ export default {
             }
     }
 }
-</script>
+</script>  

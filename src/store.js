@@ -8,8 +8,10 @@ export default new Vuex.Store({
     state:{
         users:[{
             id:0,
+            rang:"Admin",
             link:"https://test.ru/id",
             login: "iv2",
+            gender:"men",
             password: "12345",
             name:"Ivan Shavliuga (Ivanov)",
             spec:"Junior Frotend Developer",
@@ -29,6 +31,8 @@ export default new Vuex.Store({
             id:1,
             link:"https://test.ru/id",
             login: "max",
+            rang:"Moderator",
+            gender: "men",
             password: "12345",
             name:"Max Smirnov",
             spec:"Junior Frotend Developer",
@@ -40,6 +44,111 @@ export default new Vuex.Store({
             },{
                messenger :"email",
                contact:"smirnov.nov@gmail.com"
+            },{
+               messenger:"telegram",
+               contact:"https://t.me/vuejscodesru"   
+            }] //contacts
+        },{
+            id:2,
+            link:"https://test.ru/id",
+            login: "alex",
+            password: "12345",
+            rang:"User",
+            gender: "men",
+            name:"Alex Frolov",
+            spec:"Junior Backend Developer",
+            skills:["node.js", "php", "mongoDB", "MySQL","Python", "Ruby","Ruby on rails"],
+            city:"Rostov, Russia",
+            contacts:[{
+               messenger:"phone",
+               contact:"+7 (222) 222-22-2"
+            },{
+               messenger :"email",
+               contact:"alex@gmail.com"
+            },{
+               messenger:"telegram",
+               contact:"https://t.me/vuejscodesru"   
+            }] //contacts
+        },{
+            id:3,
+            link:"https://test.ru/id",
+            login: "vlad",
+            gender: "men",
+            rang:"User",
+            password: "12345",
+            name:"Vald Frolov",
+            spec:"Junior Data science Developer",
+            skills:["python", "Data ", "mongoDB", "MySQL","Python", "Ruby","Ruby on rails"],
+            city:"Rostov, Russia",
+            contacts:[{
+               messenger:"phone",
+               contact:"+7 (222) 222-22-2"
+            },{
+               messenger :"email",
+               contact:"alex@gmail.com"
+            },{
+               messenger:"telegram",
+               contact:"https://t.me/vuejscodesru"   
+            }] //contacts
+        },{
+            id:4,
+            link:"https://test.ru/id",
+            login: "oleg",
+            gender: "men",
+            password: "12345",
+            rang:"User",
+            name:"Oleg Frolov",
+            spec:"Junior Data science Developer",
+            skills:["python", "Data science", "Machine learning", "MySQL","Python", "Ruby","Ruby on rails"],
+            city:"Rostov, Russia",
+            contacts:[{
+               messenger:"phone",
+               contact:"+7 (222) 222-22-2"
+            },{
+               messenger :"email",
+               contact:"alex@gmail.com"
+            },{
+               messenger:"telegram",
+               contact:"https://t.me/vuejscodesru"   
+            }] //contacts
+        },{
+            id:5,
+            link:"https://test.ru/id",
+            login: "ann",
+            rang:"User",
+            gender: "women",
+            password: "12345",
+            name:"Ann Lenina",
+            spec:"Junior Systems Developer",
+            skills:["C", "C++", "C#", "Linux"],
+            city:"Rostov, Russia",
+            contacts:[{
+               messenger:"phone",
+               contact:"+7 (222) 222-22-2"
+            },{
+               messenger :"email",
+               contact:"ann@gmail.com"
+            },{
+               messenger:"telegram",
+               contact:"https://t.me/vuejscodesru"   
+            }] //contacts
+        },{
+            id:6,
+            link:"https://test.ru/id",
+            login: "angel",
+            rang:"User",
+            gender: "women",
+            password: "12345",
+            name:"Angel Lenina",
+            spec:"Junior Systems Developer",
+            skills:["C", "C++", "C#", "Linux"],
+            city:"Rostov, Russia",
+            contacts:[{
+               messenger:"phone",
+               contact:"+7 (222) 222-22-2"
+            },{
+               messenger :"email",
+               contact:"angel.s@gmail.com"
             },{
                messenger:"telegram",
                contact:"https://t.me/vuejscodesru"   
@@ -123,15 +232,15 @@ export default new Vuex.Store({
         },
         groups:[{
              name: "Vue.js",
-             desc: "Courses, code, simples, webiranrs",
+             desc: "Courses, code, simples, webinars",
              category: "study",
              id:0,
              idAdmin:0,
              idNews:[0],
-             followers:[0]        
+             followers:[0,1]        
         },{
              name: "Angular.js",
-             desc: "Courses, code, simples, webiranrs",
+             desc: "Courses, code, simples, webinars",
              category: "study",
              id:1,
              idAdmin:1,
@@ -139,12 +248,60 @@ export default new Vuex.Store({
              followers:[0]        
         },{
              name: "JavaScript",
-             desc: "Courses, code, simples, webiranrs",
+             desc: "Courses, code, simples, webinars",
              category: "study",
-             id:0,
+             id:2,
              idAdmin:0,
              idNews:[2],
-             followers:[0]        
+             followers:[0,1,2,3]        
+        },{
+             name: "TypeScript",
+             desc: "Courses, code, simples, webinars",
+             category: "study",
+             id:3,
+             idAdmin:1,
+             idNews:[],
+             followers:[1,3]        
+        },{
+             name: "Node.js",
+             desc: "Courses, code, simples, webinars",
+             category: "study",
+             id:4,
+             idAdmin:2,
+             idNews:[],
+             followers:[0,1,2]        
+        },{
+             name: "Ruby on rails",
+             desc: "Courses, code, simples, webinars",
+             category: "study",
+             id:5,
+             idAdmin:2,
+             idNews:[],
+             followers:[0,2,3]        
+        },{
+             name: "Python",
+             desc: "Courses, code, simples, webinars",
+             category: "study",
+             id:6,
+             idAdmin:3,
+             idNews:[],
+             followers:[0,2,3]        
+        },{
+             name: "C/C++/C#",
+             desc: "Courses, code, simples, webinars",
+             category: "study",
+             id:7,
+             idAdmin:4,
+             idNews:[],
+             followers:[0,4]        
+        },{
+             name: "Linux",
+             desc: "Courses, code, simples, webinars",
+             category: "study",
+             id:8,
+             idAdmin:4,
+             idNews:[],
+             followers:[0,4]        
         }],
         userloginid:0      
     },
@@ -156,6 +313,7 @@ export default new Vuex.Store({
         postsAll: state => {return state.posts},
         alert: state => {return state.alert},
         groups: state => {return state.groups},
+        groupsUser: state => {return state.groups.filter((g)=>{return g.idAdmin==state.userloginid})},
         user: state => {return state.users[state.userloginid]}    
     }
 })

@@ -1,7 +1,7 @@
 {
-  "name": "vuejsmailapp",
-  "description": "A Vue.js mail app project",
-  "version": "2.0.0",
+  "name": "vuejsnews",
+  "description": "A Vue.js news portal project",
+  "version": "1.0.0",
   "author": "Ivan Ivanov (Shavliuga)",
   "email": "iva.drakon.nov@gmail.com",
   "private": true,
@@ -16,6 +16,7 @@
     "moment": "^2.17.1",
     "vue": "^2.1.0",
     "vuex":"^2.0.0",
+    "vue-router":"^2.0.0",
     "scss":"^0.2.4",
     "sass-loader": "^7.0.3",
     "node-sass": "^4.9.2"
