@@ -11,6 +11,12 @@
  <app-messages v-if="activelink==1" :messages="messages"></app-messages> 
  <app-news :posts="posts" v-if="activelink==2" :users="[user]"></app-news>
  <app-groups :groups="groups" v-if="activelink==3"></app-groups>
+ <table class="table">
+   <tr v-for="(f,k) in friends" :key="k">
+     <td>{{f.name}}</td>
+     <td>{{f.login}}</td>
+   </tr>
+ </table>
 </div> 
 </template>
 <style lang="scss">
@@ -57,6 +63,7 @@ import Messages from './Messages.vue';
 import News from './News.vue';
 import Groups from './Groups.vue';
 
+
 export default{
    data() {
         return {
@@ -79,6 +86,7 @@ export default{
         this.messages=this.$store.getters.messages; 
         this.posts=this.$store.getters.postsUser;  
         this.groups=this.$store.getters.groupsUser;
+        this.friends=this.$store.getters.friends;
    }
 }
 

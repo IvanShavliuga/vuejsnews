@@ -13,6 +13,7 @@ export default new Vuex.Store({
             login: "iv2",
             gender:"men",
             password: "12345",
+            friends: [0,1,2],
             name:"Ivan Shavliuga (Ivanov)",
             spec:"Junior Frotend Developer",
             skills:["HTML", "CSS", "JavaScript (ES6)", "JQuery","Vue.js (vue companetes)", "Design","Animation"],
@@ -34,6 +35,7 @@ export default new Vuex.Store({
             rang:"Moderator",
             gender: "men",
             password: "12345",
+            friends: [0,1,2],
             name:"Max Smirnov",
             spec:"Junior Frotend Developer",
             skills:["HTML", "CSS", "JavaScript (ES6)", "JQuery","Angular.js", "TypeScript","Animation"],
@@ -54,6 +56,7 @@ export default new Vuex.Store({
             login: "alex",
             password: "12345",
             rang:"User",
+             friends: [0,1,2],
             gender: "men",
             name:"Alex Frolov",
             spec:"Junior Backend Developer",
@@ -75,6 +78,7 @@ export default new Vuex.Store({
             login: "vlad",
             gender: "men",
             rang:"User",
+            friends: [3,4,5,6],
             password: "12345",
             name:"Vald Frolov",
             spec:"Junior Data science Developer",
@@ -96,6 +100,7 @@ export default new Vuex.Store({
             login: "oleg",
             gender: "men",
             password: "12345",
+            friends: [3,4,5,6],
             rang:"User",
             name:"Oleg Frolov",
             spec:"Junior Data science Developer",
@@ -117,6 +122,7 @@ export default new Vuex.Store({
             login: "ann",
             rang:"User",
             gender: "women",
+            friends: [3,4,5,6],
             password: "12345",
             name:"Ann Lenina",
             spec:"Junior Systems Developer",
@@ -137,6 +143,7 @@ export default new Vuex.Store({
             link:"https://test.ru/id",
             login: "angel",
             rang:"User",
+            friends: [3,4,5,6],
             gender: "women",
             password: "12345",
             name:"Angel Lenina",
@@ -314,6 +321,13 @@ export default new Vuex.Store({
         alert: state => {return state.alert},
         groups: state => {return state.groups},
         groupsUser: state => {return state.groups.filter((g)=>{return g.idAdmin==state.userloginid})},
-        user: state => {return state.users[state.userloginid]}    
+        user: state => {return state.users[state.userloginid]},
+        friends: state => {
+           let fr = state.users[state.userloginid].friends;
+           let usr = [];
+           for(let i=0; i<fr.length; i++)
+              usr.push(state.users[fr[i]]);
+           return usr;                               
+        }    
     }
 })
