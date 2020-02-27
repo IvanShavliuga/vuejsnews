@@ -199,10 +199,10 @@ export default new Vuex.Store({
              time:"9:00", 
              title: 'I am learn vue.js', 
              desc: 'Vue.js is modern framework. This modern framework comes from China and is already gaining popularity. It is easy to learn and suitable for beginners.',
-             like:67,
-             repost:3,
-             views:500,
-             cat:"study",
+             like:[1,2,3],
+             repost:[1,2,3],
+             views:[1,2,3],
+             cat:["Study", "Vue.js", "Frontend"],
              type:"post",
              likeclick:false 
         },{ 
@@ -212,10 +212,10 @@ export default new Vuex.Store({
              time:"10:00", 
              title: 'I am learn angular', 
              desc: 'Angular is popular framework. This framework is used by large banks and online stores. At one time it was actively promoted by google. Angular-developers receive consistently high salaries',
-             like:35,
-             repost:5,
-             views:350,
-             cat:"study",
+             like:[1,2,3],
+             repost:[1,2,3],
+             views:[1,2,3],
+             cat:["Study", "Angular", "Frontend", "TypeScript"],
              type:"post",
              likeclick:false
         },{
@@ -225,10 +225,23 @@ export default new Vuex.Store({
              time:"11:00", 
              title: 'I learn JavaScript', 
              desc: 'Modern JavaScript framework of the operation of the Internet. JavaScript works on both the server and the client. Modern JavaScript development requires knowledge of frameworks (JavaScript libraries).',
-             like:24,
-             repost:4,
-             views:278,
-             cat:"study",
+             like:[1,2,3],
+             repost:[1,2,3],
+             views:[1,2,3],
+             cat:["Study", "JavaScript", "Frontend"],
+             type:"post",
+             likeclick:false 
+        },{
+             id: 3,
+             userId:0,
+             date:"13.02.2020",
+             time:"11:00", 
+             title: 'I installed LINUX ROSA', 
+             desc: 'My dream has finally come true. When I was at University, I wanted to install Linux Mandriva. But then it was not possible, the iron was weak and unsuitable. But now I have a Russian Mandriva (for Linux Rosa)',
+             like:[1,6],
+             repost:[1,6],
+             views:[1,2,3,6],
+             cat:["Work", "Linux"],
              type:"post",
              likeclick:false 
         }],
@@ -284,7 +297,7 @@ export default new Vuex.Store({
              id:5,
              idAdmin:2,
              idNews:[],
-             followers:[0,2,3]        
+             followers:[2,3]        
         },{
              name: "Python",
              desc: "Courses, code, simples, webinars",
@@ -292,7 +305,7 @@ export default new Vuex.Store({
              id:6,
              idAdmin:3,
              idNews:[],
-             followers:[0,2,3]        
+             followers:[2,3]        
         },{
              name: "C/C++/C#",
              desc: "Courses, code, simples, webinars",
@@ -300,7 +313,7 @@ export default new Vuex.Store({
              id:7,
              idAdmin:4,
              idNews:[],
-             followers:[0,4]        
+             followers:[3,4]        
         },{
              name: "Linux",
              desc: "Courses, code, simples, webinars",
@@ -320,7 +333,7 @@ export default new Vuex.Store({
         postsAll: state => {return state.posts},
         alert: state => {return state.alert},
         groups: state => {return state.groups},
-        groupsUser: state => {return state.groups.filter((g)=>{return g.idAdmin==state.userloginid})},
+        groupsAdmin: state => {return state.groups.filter((g)=>{return g.idAdmin==state.userloginid})},
         user: state => {return state.users[state.userloginid]},
         friends: state => {
            let fr = state.users[state.userloginid].friends;
@@ -328,6 +341,18 @@ export default new Vuex.Store({
            for(let i=0; i<fr.length; i++)
               usr.push(state.users[fr[i]]);
            return usr;                               
-        }    
+        },
+        groupsUser: state => {
+           
+           let grp = [];
+           for(let i=0; i<state.groups.length; i++) {
+           	  let fl = state.groups[i].followers.filter((v)=>{return v===state.userloginid});
+           	  
+           	  if(fl[0]!==undefined) { 
+                   grp.push(state.groups[i]);
+              }
+           }   
+           return grp;                               
+        }      
     }
 })
