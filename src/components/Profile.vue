@@ -10,10 +10,10 @@
 </nav>
  <app-infouser v-if="activelink==0" :user="user"></app-infouser>
  <app-messages v-if="activelink==1" :messages="messages"></app-messages> 
- <app-news :posts="posts" v-if="activelink==2" :users="[user]"></app-news>
+ <app-news :posts="posts" v-if="activelink==2" :users="[user]" :loginid="loginid"></app-news>
  <app-groups :groups="groups" :loginid="loginid" v-if="activelink==3"></app-groups>
  <app-friends :friends="friends" v-if="activelink==4"></app-friends>
- <app-feeduser :posts="reposts" v-if="activelink==5" :user="user"></app-feeduser>
+ <app-feeduser :posts="reposts" v-if="activelink==5" :user="user" :loginid="loginid"></app-feeduser>
  
 </div> 
 </template>
@@ -86,6 +86,7 @@ export default{
    },
    created(){
         this.loginid=this.$store.getters.loginid;
+       
         this.user=this.$store.getters.user;
         this.messages=this.$store.getters.messages; 
         this.posts=this.$store.getters.postsUser;

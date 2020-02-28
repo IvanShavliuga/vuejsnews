@@ -14,6 +14,12 @@
   <hr>
   <i class="fa fa-tags"></i>
   <span v-for="(c,kc) in post.cat" :key="kc">{{c+" "}}</span>
+  <pre>
+     DEBUG MODE:
+     loginid: {{loginid}} 
+     likes (id): {{post.like}}
+     reposts (id): {{post.repost}}
+  </pre>
   </div>
    </div>
 </template>
@@ -57,22 +63,26 @@ export default {
        user: {
            type: Object,
            required: true        
+       },
+       loginid: {
+           type: Number,
+           required: true        
        }
     },
     methods:{            
         like(id){
-           let  lu  = this.post.like.filter((idl)=>{return idl===this.user.id});
+           let  lu  = this.post.like.filter((idl)=>{return idl===this.loginid});
            if(lu[0]!==undefined)
-              this.post.like = this.post.like.filter((idl) => {return idl !==this.user.id});
+              this.post.like = this.post.like.filter((idl) => {return idl !==this.loginid});
            else 
-              this.post.like.push(this.user.id) 
+              this.post.like.push(this.loginid) 
         },
         repost(id){
-           let  lu  = this.post.repost.filter((idl)=>{return idl===this.user.id});
+           let  lu  = this.post.repost.filter((idl)=>{return idl===this.loginid});
            if(lu[0]!==undefined)
-              this.post.repost = this.post.repost.filter((idl) => {return idl !==this.user.id});
+              this.post.repost = this.post.repost.filter((idl) => {return idl !==this.loginid});
            else 
-              this.post.repost.push(this.user.id) 
+              this.post.repost.push(this.loginid) 
         }
     },    
 }

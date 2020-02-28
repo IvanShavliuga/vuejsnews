@@ -1,7 +1,7 @@
 <template>
 <div class="content"> 
 <div class="row">
-   <app-post v-for="(n,k) in posts" :post="n" :key="k" :user="users[n.userId]"></app-post>
+   <app-post v-for="(n,k) in posts" :post="n" :key="k" :user="users[n.userId]" :loginid="loginid"></app-post>
 </div>
 </div>
 </template>
@@ -23,6 +23,10 @@ export default {
       users:{
          type: Array,
          required: true    
+      },
+      loginid:{
+         type:Number,
+         required:true
       }    
    },/*,
    data() {
