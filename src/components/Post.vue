@@ -15,10 +15,10 @@
   <i class="fa fa-tags"></i>
   <span v-for="(c,kc) in post.cat" :key="kc">{{c+" "}}</span>
   <pre>
-     DEBUG MODE:
-     loginid: {{loginid}} 
-     likes (id): {{post.like}}
-     reposts (id): {{post.repost}}
+  <span style="color:red">DEBUG MODE:</span>
+  loginid: <b>{{loginid}}</b> 
+  likes (id): <b>{{post.like}}</b>
+  reposts (id): <b>{{post.repost}}</b>
   </pre>
   </div>
    </div>
@@ -37,6 +37,15 @@
       }  
       span:hover {
           color:red;      
+      }
+      pre {
+          background:#ccc; 
+          line-height:14px; 
+          font-size:10px;  
+          b{
+             font-size:10px;
+             line-height:14px;          
+          }   
       }
     }
     .card-body {

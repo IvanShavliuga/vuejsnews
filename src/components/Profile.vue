@@ -8,6 +8,7 @@
   <a :class="['nav-link',(activelink==4)?'active':'']" href="#" @click="activelink=4">Friends <span class="badge badge-success">{{friends.length}}</span></a>
   <a :class="['nav-link',(activelink==5)?'active':'']" href="#" @click="activelink=5">Reposts <span class="badge badge-success">{{reposts.length}}</span></a>
 </nav>
+
  <app-infouser v-if="activelink==0" :user="user"></app-infouser>
  <app-messages v-if="activelink==1" :messages="messages"></app-messages> 
  <app-news :posts="posts" v-if="activelink==2" :users="[user]" :loginid="loginid"></app-news>

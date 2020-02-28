@@ -265,8 +265,8 @@ export default new Vuex.Store({
         }],
         alert: {
              header: "Test",
-             body:"This alert window created for tests",
-             status:"Test OK"              
+             body:"On debug mode. Testing repost and like",
+             status:"Test processing"              
         },
         groups:[{
              name: "Vue.js",
