@@ -1,7 +1,7 @@
 <template>
 <div class="content"> 
 <div class="row">
-   <app-post v-for="(n,k) in posts" :post="n" :key="k" :user="user"></app-post>
+   <app-post v-for="(n,k) in posts" :post="n" :key="k" :user="user" ></app-post>
 </div>
 </div>
 </template>

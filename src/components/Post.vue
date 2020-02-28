@@ -8,8 +8,8 @@
   {{post.time}}</span></h6>
   <p class="card-text">{{post.desc}}</p></div>
   <div class="card-footer text-primary">
-  <span><i class="fa fa-thumbs-up"></i>{{post.like.length}}</span> 
-  <span><i class="fa fa-retweet"></i>{{post.repost.length}}</span> 
+  <span><i class="fa fa-thumbs-up" @click="like(post.id)"></i>{{post.like.length}}</span> 
+  <span><i class="fa fa-retweet" @click="repost(post.id)"></i>{{post.repost.length}}</span> 
   <span><i class="fa fa-eye"></i>{{post.views.length}}</span> 
   <hr>
   <i class="fa fa-tags"></i>
@@ -58,6 +58,22 @@ export default {
            type: Object,
            required: true        
        }
-    }    
+    },
+    methods:{            
+        like(id){
+           let  lu  = this.post.like.filter((idl)=>{return idl===this.user.id});
+           if(lu[0]!==undefined)
+              this.post.like = this.post.like.filter((idl) => {return idl !==this.user.id});
+           else 
+              this.post.like.push(this.user.id) 
+        },
+        repost(id){
+           let  lu  = this.post.repost.filter((idl)=>{return idl===this.user.id});
+           if(lu[0]!==undefined)
+              this.post.repost = this.post.repost.filter((idl) => {return idl !==this.user.id});
+           else 
+              this.post.repost.push(this.user.id) 
+        }
+    },    
 }
 </script>
