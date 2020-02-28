@@ -372,6 +372,17 @@ export default new Vuex.Store({
               }
            }   
            return grp;                               
-        }      
+        },
+        repostsUser:state=> {
+            let rps=[];
+            let id = state.userloginid;
+            for(let i=0; i<state.posts.length; i++) {
+                 let r = state.posts[i].repost.filter((rid)=>{return rid===id});
+                 console.log("REPOSTS: "+r+" "+id);
+                 if(r[0] !==undefined)
+                     rps.push(state.posts[i]);                     
+            }  
+            return rps;      
+        }     
     }
 })
