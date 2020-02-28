@@ -8,12 +8,18 @@
   {{post.time}}</span></h6>
   <p class="card-text">{{post.desc}}</p></div>
   <div class="card-footer text-primary">
-  <span><i class="fa fa-thumbs-up"></i>{{post.like.length}}</span> 
-  <span><i class="fa fa-retweet"></i>{{post.repost.length}}</span> 
+  <span><i class="fa fa-thumbs-up" @click="like(post.id)"></i>{{post.like.length}}</span> 
+  <span><i class="fa fa-retweet" @click="repost(post.id)"></i>{{post.repost.length}}</span> 
   <span><i class="fa fa-eye"></i>{{post.views.length}}</span> 
   <hr>
   <i class="fa fa-tags"></i>
   <span v-for="(c,kc) in post.cat" :key="kc">{{c+" "}}</span>
+  <pre>
+  <span style="color:red">DEBUG MODE:</span>
+  loginid: <b>{{loginid}}</b> 
+  likes (id): <b>{{post.like}}</b>
+  reposts (id): <b>{{post.repost}}</b>
+  </pre>
   </div>
    </div>
 </template>
@@ -31,6 +37,15 @@
       }  
       span:hover {
           color:red;      
+      }
+      pre {
+          background:#ccc; 
+          line-height:14px; 
+          font-size:10px;  
+          b{
+             font-size:10px;
+             line-height:14px;          
+          }   
       }
     }
     .card-body {
@@ -57,7 +72,27 @@ export default {
        user: {
            type: Object,
            required: true        
+       },
+       loginid: {
+           type: Number,
+           required: true        
        }
-    }    
+    },
+    methods:{            
+        like(id){
+           let  lu  = this.post.like.filter((idl)=>{return idl===this.loginid});
+           if(lu[0]!==undefined)
+              this.post.like = this.post.like.filter((idl) => {return idl !==this.loginid});
+           else 
+              this.post.like.push(this.loginid) 
+        },
+        repost(id){
+           let  lu  = this.post.repost.filter((idl)=>{return idl===this.loginid});
+           if(lu[0]!==undefined)
+              this.post.repost = this.post.repost.filter((idl) => {return idl !==this.loginid});
+           else 
+              this.post.repost.push(this.loginid) 
+        }
+    },    
 }
 </script>

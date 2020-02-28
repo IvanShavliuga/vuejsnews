@@ -1,7 +1,7 @@
 <template>
 <div class="content"> 
 <div class="row">
-   <app-post v-for="(n,k) in posts" :post="n" :key="k" :user="users[n.userId]"></app-post>
+   <app-post v-for="(n,k) in posts" :post="n" :key="k" :user="users[n.userId]" :loginid="loginid"></app-post>
 </div>
 </div>
 </template>
@@ -23,6 +23,10 @@ export default {
       users:{
          type: Array,
          required: true    
+      },
+      loginid:{
+         type:Number,
+         required:true
       }    
    },/*,
    data() {
@@ -70,34 +74,7 @@ export default {
                     } 
                 ] 
        };   
-   },
-   methods:{
-                repost(id){
-                    let rp={};
-                    rp.id=this.posts.length;
-                    rp.type="repost "+this.posts[id].user;
-                    rp.title=this.posts[id].title;
-                    rp.desc=this.posts[id].desc;
-                    rp.cat=this.posts[id].cat;
-                    rp.like=0;
-                    rp.views=0;
-                    rp.repost=0;
-                    let d= new Date();
-                    rp.date=d.getDate()+"."+(d.getMonth()+1)+"."+d.getFullYear();
-                    rp.time=d.getHours()+":"+d.getMinutes();
-                    rp.user="anonimus";
-                    rp.likeclick=false;
-                    this.posts[id].repost++;
-                    this.posts.push(rp);
-                },
-                like(id){
-                    if(!this.posts[id].likeclick)
-                       this.posts[id].like++;
-                    else
-                       this.posts[id].like--;
-                    this.posts[id].likeclick=!this.posts[id].likeclick;
-                }
-    },*/
+   },*/
     components: {
         appPost: Post    
     } 

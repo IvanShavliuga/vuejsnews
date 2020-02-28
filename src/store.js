@@ -265,8 +265,8 @@ export default new Vuex.Store({
         }],
         alert: {
              header: "Test",
-             body:"This alert window created for tests",
-             status:"Test OK"              
+             body:"On debug mode. Testing repost and like",
+             status:"Test processing"              
         },
         groups:[{
              name: "Vue.js",
@@ -372,6 +372,18 @@ export default new Vuex.Store({
               }
            }   
            return grp;                               
-        }      
+        },
+        repostsUser:state=> {
+            let rps=[];
+            let id = state.userloginid;
+            for(let i=0; i<state.posts.length; i++) {
+                 let r = state.posts[i].repost.filter((rid)=>{return rid===id});
+                 if(r[0] !==undefined)
+                     rps.push(state.posts[i]);                     
+            }  
+            return rps;      
+        }
+        
+             
     }
 })
