@@ -4,19 +4,16 @@
   <div class="card-body">
   <h6 class="card-title">{{post.type}}: 
   <span class='text-primary'>
-  {{user.login}}<br> 
-  {{post.date}} 
+  <i class="fa fa-user"></i>{{user.login}} {{post.date}} 
   {{post.time}}</span></h6>
-  <p class="card-text">{{post.desc}}</p>
-  
-  </div>
- 
-  <div class="card-footer"><span class='text-primary'>
-  <span @click="liked(post.id)" :style='post.likeclick?"color:red":"color:blue"'>
-  {{post.like}}</span> 
-  <span @click="repostclick(post.id)">{{post.repost}}</span> 
-  {{post.views}} 
-  {{post.cat}}</span>
+  <p class="card-text">{{post.desc}}</p></div>
+  <div class="card-footer text-primary">
+  <span><i class="fa fa-thumbs-up"></i>{{post.like.length}}</span> 
+  <span><i class="fa fa-retweet"></i>{{post.repost.length}}</span> 
+  <span><i class="fa fa-eye"></i>{{post.views.length}}</span> 
+  <hr>
+  <i class="fa fa-tags"></i>
+  <span v-for="(c,kc) in post.cat" :key="kc">{{c+" "}}</span>
   </div>
    </div>
 </template>
@@ -28,7 +25,27 @@
   .card {
     max-width: 18rem!important; 
     margin:5px!important;
+    .card-footer {
+      span {
+          padding-right: 15px;      
+      }  
+      span:hover {
+          color:red;      
+      }
+    }
+    .card-body {
+       span {
+          padding-left: 7px;
+          i { 
+             padding-right: 7px;
+          }   
+       }   
+       span:hover {
+          color:red;      
+      } 
+    }
   }
+  
 </style>
 <script>
 export default {
@@ -42,6 +59,5 @@ export default {
            required: true        
        }
     }    
-
 }
 </script>

@@ -10,7 +10,10 @@
  <app-infouser v-if="activelink==0" :user="user"></app-infouser>
  <app-messages v-if="activelink==1" :messages="messages"></app-messages> 
  <app-news :posts="posts" v-if="activelink==2" :users="[user]"></app-news>
- <app-groups :groups="groups" v-if="activelink==3"></app-groups>
+ <app-groups :groups="groups" :loginid="loginid" v-if="activelink==3"></app-groups>
+ 
+ <app-friends :friends="friends" v-if="activelink==4"></app-friends>
+
 </div> 
 </template>
 <style lang="scss">
@@ -56,6 +59,7 @@ import Infouser from './Infouser.vue';
 import Messages from './Messages.vue';
 import News from './News.vue';
 import Groups from './Groups.vue';
+import Friends from './Friends.vue';
 
 export default{
    data() {
@@ -65,20 +69,24 @@ export default{
             posts:[],
             friends:[],
             groups:[],
-            activelink:0
+            activelink:2,
+            loginid:0
         };
    },
    components: {
         appInfouser: Infouser,
         appMessages: Messages,
         appNews: News,
-        appGroups: Groups   
+        appGroups: Groups,
+        appFriends: Friends   
    },
    created(){
         this.user=this.$store.getters.user;
         this.messages=this.$store.getters.messages; 
         this.posts=this.$store.getters.postsUser;  
         this.groups=this.$store.getters.groupsUser;
+        this.friends=this.$store.getters.friends;
+        this.loginid=this.$store.getters.loginid;
    }
 }
 
