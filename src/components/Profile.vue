@@ -10,7 +10,8 @@
  <app-infouser v-if="activelink==0" :user="user"></app-infouser>
  <app-messages v-if="activelink==1" :messages="messages"></app-messages> 
  <app-news :posts="posts" v-if="activelink==2" :users="[user]"></app-news>
- <app-groups :groups="groups" v-if="activelink==3"></app-groups>
+ <app-groups :groups="groups" :loginid="loginid" v-if="activelink==3"></app-groups>
+ 
  <app-friends :friends="friends" v-if="activelink==4"></app-friends>
 
 </div> 
@@ -68,7 +69,8 @@ export default{
             posts:[],
             friends:[],
             groups:[],
-            activelink:0
+            activelink:2,
+            loginid:0
         };
    },
    components: {
@@ -84,6 +86,7 @@ export default{
         this.posts=this.$store.getters.postsUser;  
         this.groups=this.$store.getters.groupsUser;
         this.friends=this.$store.getters.friends;
+        this.loginid=this.$store.getters.loginid;
    }
 }
 

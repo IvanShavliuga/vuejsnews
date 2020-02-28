@@ -56,7 +56,7 @@ export default new Vuex.Store({
             login: "alex",
             password: "12345",
             rang:"User",
-             friends: [0,1,2],
+            friends: [0,1,2],
             gender: "men",
             name:"Alex Frolov",
             spec:"Junior Backend Developer",
@@ -195,6 +195,7 @@ export default new Vuex.Store({
         posts: [{ 
              id: 0,
              userId:0,
+             groupId:0,
              date:"12.08.2019",
              time:"9:00", 
              title: 'I am learn vue.js', 
@@ -208,6 +209,7 @@ export default new Vuex.Store({
         },{ 
              id: 1,
              userId:1,
+             groupId:1,
              date:"13.08.2019",
              time:"10:00", 
              title: 'I am learn angular', 
@@ -221,6 +223,7 @@ export default new Vuex.Store({
         },{
              id: 2,
              userId:0,
+             groupId:2,
              date:"13.08.2019",
              time:"11:00", 
              title: 'I learn JavaScript', 
@@ -234,6 +237,7 @@ export default new Vuex.Store({
         },{
              id: 3,
              userId:0,
+             groupId:8,
              date:"13.02.2020",
              time:"11:00", 
              title: 'I installed LINUX ROSA', 
@@ -242,6 +246,20 @@ export default new Vuex.Store({
              repost:[1,6],
              views:[1,2,3,6],
              cat:["Work", "Linux"],
+             type:"post",
+             likeclick:false 
+        },{
+             id: 4,
+             userId:1,
+             groupId:3,
+             date:"13.02.2020",
+             time:"11:00", 
+             title: 'First typescript app', 
+             desc: 'Developed the first full-fledged typescript application. The project has already passed preliminary testing and will be published in a week',
+             like:[0,1,2,3],
+             repost:[0,2],
+             views:[0,1,2,3,6],
+             cat:["Work", "Angular","TypeScript"],
              type:"post",
              likeclick:false 
         }],
@@ -280,7 +298,7 @@ export default new Vuex.Store({
              category: "study",
              id:3,
              idAdmin:1,
-             idNews:[],
+             idNews:[4],
              followers:[1,3]        
         },{
              name: "Node.js",
@@ -320,13 +338,14 @@ export default new Vuex.Store({
              category: "study",
              id:8,
              idAdmin:4,
-             idNews:[],
+             idNews:[3],
              followers:[0,4]        
         }],
         userloginid:0      
     },
     getters: {
         users: state => {return state.users},
+        loginid: state => {return state.userloginid},
         messages: state => {return state.messages.filter((m)=>{return m.userId==state.userloginid})},
         cards: state => {return state.cards},
         postsUser: state => {return state.posts.filter((p)=>{return p.userId==state.userloginid})},

@@ -32,14 +32,19 @@
        background: #c5c!important;
        color: #0ff!important; 
        .nav-item {
+          outline: none!important;
           .nav-link.disabled {
               color: #0aa!important;   
               text-decoration:line-through!important;        
           } 
           .nav-link {
+              outline: none!important;
               color: #0ff!important; 
               text-decoration: underline!important;
           } 
+          .nav-link:active {
+              color:#0bb!important;
+          }
           .dropdown-menu {
               background: #c5c!important;
               .dropdown-item {
