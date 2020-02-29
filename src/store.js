@@ -1,6 +1,5 @@
 import Vuex from 'vuex'
 import Vue from 'vue'
-//import users from './users'
 
 Vue.use(Vuex);
 
@@ -12,6 +11,7 @@ export default new Vuex.Store({
             link:"https://test.ru/id",
             login: "iv2",
             gender:"men",
+            age:31,
             password: "12345",
             friends: [0,1,2],
             name:"Ivan Shavliuga (Ivanov)",
@@ -34,6 +34,7 @@ export default new Vuex.Store({
             login: "max",
             rang:"Moderator",
             gender: "men",
+            age:29,
             password: "12345",
             friends: [0,1,2],
             name:"Max Smirnov",
@@ -56,6 +57,7 @@ export default new Vuex.Store({
             login: "alex",
             password: "12345",
             rang:"User",
+            age:27,
             friends: [0,1,2],
             gender: "men",
             name:"Alex Frolov",
@@ -78,6 +80,7 @@ export default new Vuex.Store({
             login: "vlad",
             gender: "men",
             rang:"User",
+            age:24,
             friends: [3,4,5,6],
             password: "12345",
             name:"Vald Frolov",
@@ -102,6 +105,7 @@ export default new Vuex.Store({
             password: "12345",
             friends: [3,4,5,6],
             rang:"User",
+            age:30,
             name:"Oleg Frolov",
             spec:"Junior Data science Developer",
             skills:["python", "Data science", "Machine learning", "MySQL","Python", "Ruby","Ruby on rails"],
@@ -121,6 +125,7 @@ export default new Vuex.Store({
             link:"https://test.ru/id",
             login: "ann",
             rang:"User",
+            age:31,
             gender: "women",
             friends: [3,4,5,6],
             password: "12345",
@@ -143,6 +148,7 @@ export default new Vuex.Store({
             link:"https://test.ru/id",
             login: "angel",
             rang:"User",
+            age:27,
             friends: [3,4,5,6],
             gender: "women",
             password: "12345",
@@ -262,6 +268,21 @@ export default new Vuex.Store({
              cat:["Work", "Angular","TypeScript"],
              type:"post",
              likeclick:false 
+        },{
+             id: 5,
+             userId:0,
+             groupId:0,
+             date:"29.02.2020",
+             time:"11:00", 
+             title: 'First vu.js app', 
+             desc: 'Developed the first full-fledged vue.js application. The project has already passed preliminary testing and will be published in a week',
+             like:[1,2,3,4,5,6],
+             repost:[1,2],
+             views:[0,1,2,3,4,5,6],
+             cat:["Work", "Vue.js","SPA"],
+             type:"post",
+             likeclick:false 
+        
         }],
         alert: {
              header: "Test",
@@ -329,7 +350,7 @@ export default new Vuex.Store({
              desc: "Courses, code, simples, webinars",
              category: "study",
              id:7,
-             idAdmin:4,
+             idAdmin:5,
              idNews:[],
              followers:[3,4]        
         },{
@@ -337,7 +358,7 @@ export default new Vuex.Store({
              desc: "Courses, code, simples, webinars",
              category: "study",
              id:8,
-             idAdmin:4,
+             idAdmin:6,
              idNews:[3],
              followers:[0,4]        
         }],
@@ -383,7 +404,6 @@ export default new Vuex.Store({
             }  
             return rps;      
         }
-        
              
     }
 })

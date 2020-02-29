@@ -9,10 +9,11 @@ import Index  from './components/Index.vue';
 import Groups from './components/Groups.vue';
 import GroupsAll from './components/GroupsAll.vue';
 import Users from './components/Users.vue';
+import Home from './components/Home.vue';
 import App from './App.vue'
 
 export const  routes = [
-        {path: '/', component: Index},
+        {path: '/', component: Home},
         {
             path: '/profile',
             component: Profile,

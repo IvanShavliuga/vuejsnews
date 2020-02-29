@@ -6,6 +6,7 @@
     <tr><th colspan ="2">Information of user</th></tr>
      <tr><td>Login</td><td>{{user.login}}</td></tr>
      <tr><td>Rang</td><td>{{user.rang}}</td></tr>
+     <tr><td>Age</td><td>{{user.age}}</td></tr>
      <tr><td>Gender</td><td>{{user.gender}}</td></tr>
      <tr v-if="!showeditname" @click="showflagname()"><td>Name</td><td>{{user.name}}</td></tr>
      <tr v-else><td>Name</td><td><input type="text" placeholder="name" v-model="editname"><button class ="btn btn-primary" @click="checkname()">✔️</button></td></tr>
@@ -31,7 +32,7 @@
      </td>
      </tr>
      </table></p> 
- </div> <!-- sectionA -->
+ </div> 
 </template>
 <script>
 export default {
@@ -43,25 +44,6 @@ export default {
    },
    data() {
       return{
-        /*user:{
-            id:0,
-            link:"https://test.ru/id",
-            login: "iv2",
-            name:"Ivan Shavliuga (Ivanov)",
-            spec:"Junior Frotend Developer",
-            skills:["HTML", "CSS", "JavaScript (ES6)", "JQuery","Vue.js (vue companetes)", "Design","Animation"],
-            city:"Novopolotsk, Belarus",
-            contacts:[{
-               messenger:"phone",
-               contact:"+375 (111) 111-11-11"
-            },{
-               messenger :"email",
-               contact:"iva.drakon.nov@gmail.com"
-            },{
-               messenger:"telegram",
-               contact:"https://t.me/vuejscodesru"   
-            }] //contacts
-        },*/ //user
         editname:"",
         editspec:"",
         editcity:"",

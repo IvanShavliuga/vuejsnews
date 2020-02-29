@@ -1,8 +1,6 @@
 <template>
-  <div class="content"> 
-     <app-alert :alert="alert"></app-alert>
-     <app-cards :cards="cards" ></app-cards>
-     <app-news :posts="posts" :users="users"></app-news>
+  <div class="content">   
+     <router-view></router-view> 
   </div>  
 </template>
 <style lang="scss">
@@ -19,39 +17,28 @@
    
 
   export default {
-     props: {
-       alert: {
-           type: Object,
-           required: true     
-       },
-       posts:{
-           type: Array,
-           required: true       
-       },
-       cards:{
-           type: Array,
-           required: true       
-       },
-       users:{
-           type:Array,
-           required: true       
-       }     
-    },
-    data() {
+     data() {
          return {
-              title: "iv2news",
-              /*alert: {
-                  header: "Test",
-                  body:"This alert window created for tests",
-                  status:"Test OK"              
-              }*/         
+              user:{},
+              posts:[],
+              cards:[],
+              messages:[],
+              alert:{},
+              users:[],
+              userlogin:true     
          } 
      },
      components:{
          appNews: News,
          appCards: Cards,
          appAlert: Alert     
-     }   
+     },
+     created() {       
+         this.posts = this.$store.getters.postsAll;
+         this.cards = this.$store.getters.cards;
+         this.users = this.$store.getters.users;
+         this.alert = this.$store.getters.alert;
+     }     
   }
 
 </script>

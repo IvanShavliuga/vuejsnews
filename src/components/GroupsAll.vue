@@ -9,8 +9,10 @@
   </div>
   <div class="card-footer"><span class='text-primary'>
   <span>
-  {{g.category}}</span> 
-  <span>{{g.followers.length}}</span> 
+  <i class="fa fa-tags"></i>{{g.category}}</span> 
+  <span><i class="fa fa-user"></i>{{g.followers.length}}</span> 
+  <span>Admin: @{{users[g.idAdmin].login}}</span>
+ 
   </span>
   </div>
    </div>
@@ -21,11 +23,13 @@
 export default {
     data() {
         return {
-            groups: []
+            groups: [],
+            users:[]
         };
     },
     created() {
-        this.groups = this.$store.getters.groups;   
+        this.groups = this.$store.getters.groups; 
+        this.users = this.$store.getters.users;     
     }
 
 }

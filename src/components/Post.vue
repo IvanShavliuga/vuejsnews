@@ -4,8 +4,7 @@
   <div class="card-body">
   <h6 class="card-title">{{post.type}}: 
   <span class='text-primary'>
-  <i class="fa fa-user"></i>{{user.login}} {{post.date}} 
-  {{post.time}}</span></h6>
+  <i class="fa fa-user"></i>{{user.login}} {{post.date}} {{post.time}}</span></h6>
   <p class="card-text">{{post.desc}}</p></div>
   <div class="card-footer text-primary">
   <span><i class="fa fa-thumbs-up" @click="like(post.id)"></i>{{post.like.length}}</span> 
@@ -15,7 +14,7 @@
   <i class="fa fa-tags"></i>
   <span v-for="(c,kc) in post.cat" :key="kc">{{c+" "}}</span>
   <pre>
-  <span style="color:red">DEBUG MODE:</span>
+  <span class="pre-header">DEBUG MODE:</span>
   loginid: <b>{{loginid}}</b> 
   likes (id): <b>{{post.like}}</b>
   reposts (id): <b>{{post.repost}}</b>
@@ -41,11 +40,20 @@
       pre {
           background:#ccc; 
           line-height:14px; 
-          font-size:10px;  
+          font-size:10px; 
+          border:1px solid #555;
+          padding: 5px;
+          margin: 5px; 
           b{
              font-size:10px;
              line-height:14px;          
           }   
+          .pre-header {
+             color: red;
+             font-size: 14px;
+             text-align: center;
+             text-decoration:underline;           
+          }
       }
     }
     .card-body {

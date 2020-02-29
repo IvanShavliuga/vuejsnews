@@ -1,34 +1,31 @@
 <template>
-<main>
-     <div v-if="userlogin"> 
-        <app-content></app-content>
-     </div> 
-     <div v-else>
-        <app-signin></app-signin>
-     </div>
-</main>
+<div>
+     <app-alert :alert="alert"></app-alert>
+     <app-cards :cards="cards" ></app-cards>
+     <app-news :posts="posts" :users="users"></app-news>
+</div>
 </template>
 <script>
-  import Content  from './Content.vue';
-  import Signin from './Signin.vue';
-  import {eventBus} from '../main';
- 
+import News from './News.vue';
+import Cards  from './Cards.vue';
+import Alert from './Alert.vue';
+import {eventBus} from '../main';
 
-  export default {
-     data() {
+export default {
+data() {
          return {
               user:{},
               posts:[],
               cards:[],
               messages:[],
               alert:{},
-              users:[],
-              userlogin:true     
+              users:[],     
          } 
      },
      components:{
-         appContent: Content,
-         appSignin: Signin   
+         appNews: News,
+         appCards: Cards,
+         appAlert: Alert     
      },
      created() {
         
@@ -37,6 +34,5 @@
          this.users = this.$store.getters.users;
          this.alert = this.$store.getters.alert;
      }   
-  }
-
+ }
 </script>
