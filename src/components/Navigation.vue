@@ -45,12 +45,6 @@
           .nav-link:active {
               color:#0bb!important;
           }
-          .dropdown-menu {
-              background: #c5c!important;
-              .dropdown-item {
-                  color: #0ff!important;              
-              }
-          }
        }
        form button.btn.btn-outline-success {
           width:75px!important; 

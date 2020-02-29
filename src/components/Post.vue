@@ -25,14 +25,21 @@
 <style lang="scss">
   .card-header{
     font-weight: bold!important;
-    color: #93f!important;  
+    color: #93f!important;
+      
   }
   .card {
-    max-width: 18rem!important; 
+    max-width: 17rem!important; 
     margin:5px!important;
+    .card-title {
+       padding: 5px;
+       line-height:10px;
+              
+    }
     .card-footer {
       span {
-          padding-right: 15px;      
+          padding-right: 15px; 
+               
       }  
       span:hover {
           color:red;      

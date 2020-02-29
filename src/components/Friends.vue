@@ -11,6 +11,10 @@
  <tr><td>Specialization</td><td>{{f.spec}}</td></tr>
  <tr><td>Skills</td><td><span v-for="(s,ks) in f.skills" :key="ks"><span class='skill'>{{s+", "}}</span></span> </td></tr>
  <tr><td>City</td><td>{{f.city}}</td></tr>
+ <tr><td>Link profile</td><td>{{f.link}}</td></tr>
+ <tr v-for="(c,kc) in f.contacts" :key="kc"><td>
+ {{c.messenger}}
+ </td><td>{{c.contact}}</td></tr>
 </tbody>
 </table>
 </p>

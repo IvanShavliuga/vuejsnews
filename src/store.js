@@ -274,7 +274,7 @@ export default new Vuex.Store({
              groupId:0,
              date:"29.02.2020",
              time:"11:00", 
-             title: 'First vu.js app', 
+             title: 'First vue.js app', 
              desc: 'Developed the first full-fledged vue.js application. The project has already passed preliminary testing and will be published in a week',
              like:[1,2,3,4,5,6],
              repost:[1,2],
@@ -376,7 +376,7 @@ export default new Vuex.Store({
         groupsAdmin: state => {return state.groups.filter((g)=>{return g.idAdmin==state.userloginid})},
         user: state => {return state.users[state.userloginid]},
         friends: state => {
-           let fr = state.users[state.userloginid].friends;
+           let fr = state.users[state.userloginid].friends.filter((u)=>{return u!==state.userloginid});
            let usr = [];
            for(let i=0; i<fr.length; i++)
               usr.push(state.users[fr[i]]);

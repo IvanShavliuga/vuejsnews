@@ -1,7 +1,7 @@
 <template>
 <div>
      <app-alert :alert="alert"></app-alert>
-     <app-cards :cards="cards" ></app-cards>
+     <app-cards :cards="cards"></app-cards>
      <app-news :posts="posts" :users="users"></app-news>
 </div>
 </template>
@@ -17,7 +17,6 @@ data() {
               user:{},
               posts:[],
               cards:[],
-              messages:[],
               alert:{},
               users:[],     
          } 
@@ -27,8 +26,7 @@ data() {
          appCards: Cards,
          appAlert: Alert     
      },
-     created() {
-        
+     created() {       
          this.posts = this.$store.getters.postsAll;
          this.cards = this.$store.getters.cards;
          this.users = this.$store.getters.users;
