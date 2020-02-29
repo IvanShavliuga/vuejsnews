@@ -3,14 +3,19 @@
    <div class="content">
       <div class="row">
           <div class="card mb-2 block" v-for="(u,k) in users" :key="k">
-          <div class="card-header">{{u.name}}<br></div>
+          <div class="card-header">{{u.name}}</div>
           <div class="card-body">
           <h6 class="card-title">{{u.rang}}</h6>
-          <p class="card-text">{{u.gender}}<br>{{u.spec}}<br>{{u.city}}<br></p> 
+          <div class="card-text">
+          <p>{{u.gender}}, {{u.age}}</p>
+          <p>{{u.spec}}</p>
+          <p>{{u.city}}</p>
+          <p><span v-for="(s,k) in u.skills" :key="k">{{s}} </span></p>
+          <p>Friends: {{u.friends.length}}</p></div> 
           </div>
-          <div class="card-footer"><span class='text-primary'>
-          @{{u.login}}</span> 
-          </span>
+          <div class="card-footer">
+          <span class='text-primary login-user'>@{{u.login}}</span>  
+          <span v-if="friendscheck(u)" class="friend">{{(u.id===loginid)?('You'):('Friend')}}</span>
           </div>
           </div>
           </div>
@@ -20,18 +25,41 @@
 </template>
 <style lang="scss">
   .block {
-    width: 13rem;  
+    width: 17rem;  
+    span {
+       color:#07b;    
+    } 
+    .login-user {
+        font-size:14px;    
+    }
+    .friend {
+        color:red;
+        font-weight: bold;            
+    }
+    p {
+       margin: 5px;
+           
+    }
   }
 </style>
 <script>
 export default {
     data() {
         return {
-            users:[]        
+            users:[],
+            loginid:0        
         }    
     },
+    methods:{
+        friendscheck(u){
+           let f = u.friends.filter((fr)=>{return fr===this.loginid});
+           return f[0]!==undefined;       
+        }
+        
+    },
     created() {
-        this.users=this.$store.getters.users;    
+        this.users=this.$store.getters.users;
+        this.loginid=this.$store.getters.loginid;    
     }
 }
 

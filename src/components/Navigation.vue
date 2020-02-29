@@ -8,7 +8,7 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a href="#"><router-link to="/" class="nav-link" >Home <span class="sr-only">(current)</span></router-link></a>
+        <a href="#"><router-link to="/" class="nav-link" >Home</router-link></a>
       </li>
       <li class="nav-item">
         <a href="#"><router-link to="/profile" class="nav-link" >Profile</router-link></a>
@@ -44,12 +44,6 @@
           } 
           .nav-link:active {
               color:#0bb!important;
-          }
-          .dropdown-menu {
-              background: #c5c!important;
-              .dropdown-item {
-                  color: #0ff!important;              
-              }
           }
        }
        form button.btn.btn-outline-success {

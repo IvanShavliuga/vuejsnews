@@ -1,11 +1,7 @@
 <template>
 <main>
      <div v-if="userlogin"> 
-        <app-content 
-           :posts="posts"
-           :cards="cards"
-           :users="users"
-           :alert="alert"></app-content>
+        <app-content></app-content>
      </div> 
      <div v-else>
         <app-signin></app-signin>
