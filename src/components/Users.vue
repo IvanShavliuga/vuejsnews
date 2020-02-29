@@ -6,12 +6,16 @@
           <div class="card-header">{{u.name}}</div>
           <div class="card-body">
           <h6 class="card-title">{{u.rang}}</h6>
-          <p class="card-text">{{u.gender}}, {{u.age}}<br>{{u.spec}}<br>{{u.city}}<br>
-          <span v-for="(s,k) in u.skills" :key="k">{{s}} </span><br>Friends: {{u.friends.length}}</p> 
+          <div class="card-text">
+          <p>{{u.gender}}, {{u.age}}</p>
+          <p>{{u.spec}}</p>
+          <p>{{u.city}}</p>
+          <p><span v-for="(s,k) in u.skills" :key="k">{{s}} </span></p>
+          <p>Friends: {{u.friends.length}}</p></div> 
           </div>
-          <div class="card-footer"><span class='text-primary login-user'>
-          @{{u.login}}</span>  <span v-if="friendscheck(u)" class="friend">{{(u.id===loginid)?('You'):('Friends')}}</span>
-          </span>
+          <div class="card-footer">
+          <span class='text-primary login-user'>@{{u.login}}</span>  
+          <span v-if="friendscheck(u)" class="friend">{{(u.id===loginid)?('You'):('Friend')}}</span>
           </div>
           </div>
           </div>
@@ -32,6 +36,10 @@
         color:red;
         font-weight: bold;            
     }
+    p {
+       margin: 5px;
+           
+    }
   }
 </style>
 <script>
@@ -47,6 +55,7 @@ export default {
            let f = u.friends.filter((fr)=>{return fr===this.loginid});
            return f[0]!==undefined;       
         }
+        
     },
     created() {
         this.users=this.$store.getters.users;

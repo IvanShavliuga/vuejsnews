@@ -2,7 +2,7 @@
   <div class="card mb-2">
   <div class="card-header">{{post.title}}</div>
   <div class="card-body">
-  <h6 class="card-title">{{post.type}}: 
+  <h6 class="card-title"> 
   <span class='text-primary'>
   <i class="fa fa-user"></i>{{user.login}} {{post.date}} {{post.time}}</span></h6>
   <p class="card-text">{{post.desc}}</p></div>
@@ -13,7 +13,9 @@
   <hr>
   <i class="fa fa-tags"></i>
   <span v-for="(c,kc) in post.cat" :key="kc">{{c+" "}}</span>
-  <pre>
+  <hr>
+  <span @click="predisplay=!predisplay" class="debug">Debug</span>
+  <pre v-if="predisplay">
   <span class="pre-header">DEBUG MODE:</span>
   loginid: <b>{{loginid}}</b> 
   likes (id): <b>{{post.like}}</b>
@@ -23,26 +25,31 @@
    </div>
 </template>
 <style lang="scss">
-  .card-header{
-    font-weight: bold!important;
-    color: #93f!important;
-      
-  }
+  
   .card {
     max-width: 17rem!important; 
     margin:5px!important;
-    .card-title {
+     &-title {
        padding: 5px;
        line-height:10px;
               
     }
-    .card-footer {
+    &-header{
+      font-weight: bold!important;
+      color: #93f!important;
+    }
+    &-footer {
       span {
-          padding-right: 15px; 
+          padding-right: 6px; 
                
       }  
       span:hover {
           color:red;      
+      }
+      .debug{
+          cursor:pointer;
+          color:red;
+          font-weight:bold;      
       }
       pre {
           background:#ccc; 
@@ -63,9 +70,9 @@
           }
       }
     }
-    .card-body {
+    &-body {
        span {
-          padding-left: 7px;
+          padding-left: 4px;
           i { 
              padding-right: 7px;
           }   
@@ -91,6 +98,11 @@ export default {
        loginid: {
            type: Number,
            required: true        
+       }
+    },
+    data() {
+       return {
+           predisplay:false       
        }
     },
     methods:{            

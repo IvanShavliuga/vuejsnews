@@ -383,11 +383,9 @@ export default new Vuex.Store({
            return usr;                               
         },
         groupsUser: state => {
-           
            let grp = [];
            for(let i=0; i<state.groups.length; i++) {
            	  let fl = state.groups[i].followers.filter((v)=>{return v===state.userloginid});
-           	  
            	  if(fl[0]!==undefined) { 
                    grp.push(state.groups[i]);
               }
@@ -403,7 +401,16 @@ export default new Vuex.Store({
                      rps.push(state.posts[i]);                     
             }  
             return rps;      
-        }
-             
+        },
+        likesUser:state=> {
+            let rps=[];
+            let id = state.userloginid;
+            for(let i=0; i<state.posts.length; i++) {
+                 let r = state.posts[i].likes.filter((rid)=>{return rid===id});
+                 if(r[0] !==undefined)
+                     rps.push(state.posts[i]);                     
+            }  
+            return rps;      
+        }     
     }
 })

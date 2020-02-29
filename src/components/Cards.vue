@@ -6,9 +6,7 @@
 
 </template>
 <style lang="scss">
- .card__block {
-     background: #fff; 
- }  
+ 
 </style>
 <script>
 import Card from './Card.vue';

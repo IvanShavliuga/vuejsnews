@@ -104,7 +104,6 @@ export default{
    },
    created(){
         this.loginid=this.$store.getters.loginid;
-       
         this.user=this.$store.getters.user;
         this.messages=this.$store.getters.messages; 
         this.posts=this.$store.getters.postsUser;
