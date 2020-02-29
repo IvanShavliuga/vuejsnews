@@ -23,13 +23,21 @@
 .profile {
     background: #eee;
     padding: 10px;
+    
     button{
        width:28px;
        height:28px;
-       padding:5px!important;
+       padding-top:2px!important;
+       padding-left:8px!important;
+       i {
+          font-size:12px;
+          line-height:8px;                 
+       }
     }
     th{
-       text-align:center;
+       text-align:left;
+       font-size:18px;
+       color:#34a;
        background-color:#ffd;
     }
     tr:nth-child(2n+1){
@@ -38,8 +46,14 @@
     tr:nth-child(2n){
        background-color:#fff;
     }
+    td:first-child{
+       width:20%;
+       font-weight:bold;
+       text-align:left;     
+    }
     .skill{
        color:blue;
+       padding-right:5px;
     }
     .del{
        color:red;
@@ -51,6 +65,9 @@
     }
     .read{
        font-weight:normal;
+    }
+    .check{
+       margin-right:15px;    
     }
 }
 

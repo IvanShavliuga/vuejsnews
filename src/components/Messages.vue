@@ -7,8 +7,7 @@
     :key="km" 
     :class="m.read?'read':'unread'"
   >
-  <tr @click="showmess(km)"><td><input type="checkbox" @click="readmess(km)"></td>
-  <td>{{m.user}}</td><td>{{m.title}}</td></tr>
+  <tr @click="showmess(km)"><td><input type="checkbox" @click="readmess(km)" class="check">{{m.user}}</td><td>{{m.title}}</td></tr>
   <tr v-show="m.show"><td colspan=3>{{m.body}}</td></tr>
   </tbody>
 </table></p> 
