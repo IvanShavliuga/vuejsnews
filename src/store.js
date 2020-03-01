@@ -461,6 +461,10 @@ export default new Vuex.Store({
         },
         "ADDPOST" (state,post) {
         	  post.id = state.posts.length;
+        	  let d= new Date();
+           post.date=d.getDate()+"."+(d.getMonth()+1)+"."+d.getFullYear();
+           post.time=d.getHours()+":"+d.getMinutes();
+           state.groups[post.groupId].idNews.push(post.id); 
            state.posts.push(post);        
         }   
     }

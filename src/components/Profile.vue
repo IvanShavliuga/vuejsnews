@@ -10,14 +10,14 @@
   <a :class="['nav-link',(activelink==6)?'active':'']" href="#" @click="activelink=6">Add post</a>
 
 </nav>
-
+ <app-alert v-if="addflag" :alert="alert"></app-alert>
  <app-infouser v-if="activelink==0" :user="user"></app-infouser>
  <app-messages v-if="activelink==1" :messages="messages"></app-messages> 
  <app-news :posts="posts" v-if="activelink==2" :users="[user]" :loginid="loginid"></app-news>
  <app-groups :groups="groups" :loginid="loginid" v-if="activelink==3"></app-groups>
  <app-friends :friends="friends" v-if="activelink==4"></app-friends>
  <app-feeduser :posts="reposts" v-if="activelink==5" :user="user" :loginid="loginid"></app-feeduser>
- <app-addpost v-if="activelink==6"></app-addpost> 
+ <app-addpost v-if="activelink==6" @add="addpost(alert)"></app-addpost> 
 </div> 
 </template>
 <style lang="scss">
@@ -75,7 +75,7 @@
 
 </style>
 <script> 
-
+import Alert from './Alert.vue';
 import Infouser from './Infouser.vue';
 import Messages from './Messages.vue';
 import News from './News.vue';
@@ -94,8 +94,20 @@ export default{
             friends:[],
             groups:[],
             activelink:2,
-            loginid:0
+            loginid:0,
+            addflag:false,
+            alert:{}
         };
+   },
+   methods:{
+        addpost() {
+           this.addflag=true;
+           this.posts=this.$store.getters.postsUser;     
+           this.groups=this.$store.getters.groupsUser; 
+           this.alert.header = "Add post";
+           this.alert.body =  "This post added";
+           this.alert.status = "Success update";
+        }   
    },
    components: {
         appInfouser: Infouser,
@@ -104,7 +116,8 @@ export default{
         appGroups: Groups,
         appFriends: Friends,
         appFeeduser: Feeduser,
-        appAddpost: Addpost   
+        appAddpost: Addpost,
+        appAlert: Alert     
    },
    created(){
         this.loginid=this.$store.getters.loginid;
