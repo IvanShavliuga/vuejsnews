@@ -2,7 +2,7 @@
 <div>
      <app-alert :alert="alert"></app-alert>
      <app-cards :cards="cards"></app-cards>
-     <app-news :posts="posts" :users="users"></app-news>
+     <app-news :posts="posts" :users="users" :loginid="loginid"></app-news>
 </div>
 </template>
 <script>
@@ -18,7 +18,8 @@ data() {
               posts:[],
               cards:[],
               alert:{},
-              users:[],     
+              users:[],  
+              loginid:0   
          } 
      },
      components:{

@@ -412,5 +412,49 @@ export default new Vuex.Store({
             }  
             return rps;      
         }     
+    },
+    actions: {
+        likepost({commit}, post) {
+            commit("LIKEPOST",post);          
+        },
+        repost({commit},post) {
+            commit("REPOST",post);        
+        },
+        addfriend({commit},user) {
+            commit("ADDFRIEND",user);          
+        },        
+        groupfollow({commit},group) {
+            commit("GROUPFOLLOW",group);          
+        }   
+    },
+    mutations: {
+        "LIKEPOST" (state,post) {
+           let  lu  = post.like.filter((idl)=>{return idl===state.userloginid});
+           if(lu[0]!==undefined)
+               post.like = post.like.filter((idl) => {return idl !==state.userloginid});
+           else 
+               post.like.push(state.userloginid) 
+           state.posts[post.id]=post;
+        },  
+        "REPOST" (state,post) {
+           let  lu  = post.repost.filter((idl)=>{return idl===state.userloginid});
+           if(lu[0]!==undefined)
+               post.repost = post.repost.filter((idl) => {return idl !==state.userloginid});
+           else 
+               post.repost.push(state.userloginid) 
+           state.posts[post.id]=post;
+        },
+        "ADDFRIEND" (state,user) {
+           let uid= state.users.filter((u)=>{return u===state.userloginid});
+           if(uid[0]===undefined) {                             
+              state.users[state.userloginid].friends.push(user.id);
+              state.users[user.id].friends.push(state.userloginid);
+           }        
+        },
+        "GROUPFOLLOW" (state, group) {
+        	  let uid= state.groups.filter((gf)=>{return gf===state.userloginid});
+           if(uid[0]===undefined)           
+              state.groups[group.id].followers.push(state.userloginid);        
+        }   
     }
 })

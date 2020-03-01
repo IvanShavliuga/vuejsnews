@@ -7,20 +7,20 @@
   <i class="fa fa-user"></i>{{user.login}} {{post.date}} {{post.time}}</span></h6>
   <p class="card-text">{{post.desc}}</p></div>
   <div class="card-footer text-primary">
-  <span><i class="fa fa-thumbs-up" @click="like(post.id)"></i>{{post.like.length}}</span> 
-  <span><i class="fa fa-retweet" @click="repost(post.id)"></i>{{post.repost.length}}</span> 
+  <span><i class="fa fa-thumbs-up" @click="like(post)"></i>{{post.like.length}}</span> 
+  <span><i class="fa fa-retweet" @click="repost(post)"></i>{{post.repost.length}}</span> 
   <span><i class="fa fa-eye"></i>{{post.views.length}}</span> 
   <hr>
   <i class="fa fa-tags"></i>
   <span v-for="(c,kc) in post.cat" :key="kc">{{c+" "}}</span>
-  <hr>
+  <!--<hr>
   <span @click="predisplay=!predisplay" class="debug">Debug</span>
   <pre v-if="predisplay">
   <span class="pre-header">DEBUG MODE:</span>
   loginid: <b>{{loginid}}</b> 
   likes (id): <b>{{post.like}}</b>
   reposts (id): <b>{{post.repost}}</b>
-  </pre>
+  </pre>-->
   </div>
    </div>
 </template>
@@ -46,7 +46,7 @@
       span:hover {
           color:red;      
       }
-      .debug{
+      /*.debug{
           cursor:pointer;
           color:red;
           font-weight:bold;      
@@ -68,7 +68,7 @@
              text-align: center;
              text-decoration:underline;           
           }
-      }
+      }*/
     }
     &-body {
        span {
@@ -106,19 +106,11 @@ export default {
        }
     },
     methods:{            
-        like(id){
-           let  lu  = this.post.like.filter((idl)=>{return idl===this.loginid});
-           if(lu[0]!==undefined)
-              this.post.like = this.post.like.filter((idl) => {return idl !==this.loginid});
-           else 
-              this.post.like.push(this.loginid) 
+        like(post){
+           this.$store.dispatch("likepost",post)
         },
-        repost(id){
-           let  lu  = this.post.repost.filter((idl)=>{return idl===this.loginid});
-           if(lu[0]!==undefined)
-              this.post.repost = this.post.repost.filter((idl) => {return idl !==this.loginid});
-           else 
-              this.post.repost.push(this.loginid) 
+        repost(post){
+           this.$store.dispatch("repost",post)
         }
     },    
 }
