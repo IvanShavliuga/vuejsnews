@@ -425,6 +425,9 @@ export default new Vuex.Store({
         },        
         groupfollow({commit},group) {
             commit("GROUPFOLLOW",group);          
+        },
+        addpost({commit},post) {
+            commit("ADDPOST",post);        
         }   
     },
     mutations: {
@@ -455,6 +458,10 @@ export default new Vuex.Store({
         	  let uid= state.groups.filter((gf)=>{return gf===state.userloginid});
            if(uid[0]===undefined)           
               state.groups[group.id].followers.push(state.userloginid);        
+        },
+        "ADDPOST" (state,post) {
+        	  post.id = state.posts.length;
+           state.posts.push(post);        
         }   
     }
 })

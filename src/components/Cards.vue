@@ -2,8 +2,6 @@
 <div class="row mb-2">
     <app-card v-for="(c,k) in cards" :key="k" :card="c"></app-card>
 </div>
-
-
 </template>
 <style lang="scss">
  

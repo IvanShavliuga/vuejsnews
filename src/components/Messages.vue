@@ -1,5 +1,5 @@
 <template>
-<div>
+<section>
  <h3>Messages</h3> 
  <p><table class="table">
  <tbody 
@@ -11,7 +11,7 @@
   <tr v-show="m.show" ><td colspan=3 :style="(m.read)?'font-weight:normal':'font-weight:bold'">{{m.body}}</td></tr>
   </tbody>
 </table></p> 
-</div>
+</section>
 </template>
 <script>
 export default {
