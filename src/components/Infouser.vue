@@ -6,8 +6,13 @@
     <tr><th colspan ="2">Information of user</th></tr>
      <tr><td>Login</td><td>{{user.login}}</td></tr>
      <tr><td>Rang</td><td>{{user.rang}}</td></tr>
-     <tr><td>Age</td><td>{{user.age}}</td></tr>
-     <tr><td>Gender</td><td>{{user.gender}}</td></tr>
+     <tr v-if="!showeditage" @click="showflagage()"><td>Age</td><td>{{user.age}}</td></tr>
+     <tr v-else><td>Age</td><td><input type="number" placeholder="age" v-model="editage">
+      <button class ="btn btn-primary" @click="checkage()"><i class="fa fa-check"></i></button></td></tr>
+     <tr v-if="!showeditgender" @click="showflaggender()"><td>Gender</td><td>{{user.gender}}</td></tr>
+     <tr v-else><td>Gender</td><td><input type="radio" v-model="editgender" name="gender" value="men">Men
+                                   <input type="radio" v-model="editgender" name="gender" value="women">Women
+      <button class ="btn btn-primary" @click="checkgender()"><i class="fa fa-check"></i></button></td></tr>
      <tr v-if="!showeditname" @click="showflagname()"><td>Name</td><td>{{user.name}}</td></tr>
      <tr v-else><td>Name</td><td><input type="text" placeholder="name" v-model="editname">
      <button class ="btn btn-primary" @click="checkname()"><i class="fa fa-check"></i></button></td></tr>
@@ -46,9 +51,13 @@ export default {
    },
    data() {
       return{
+        editage:0,
+        editgender:"men",
         editname:"",
         editspec:"",
         editcity:"",
+        showeditage:false,
+        showeditgender:false,
         showeditname:false,
         showeditspec:false,
         showeditcity:false,
@@ -81,12 +90,26 @@ export default {
                 this.user.name=this.editname;
                 this.showeditname=false;
             },
+            checkage(){
+                this.user.age=this.editage;
+                this.showeditage=false;
+            },
+            showflagage(){
+                this.showeditage=!this.showeditage;
+            },
             showflagname(){
                 this.showeditname=!this.showeditname;
             },
             checkspec(){
                 this.user.spec=this.editspec;
                 this.showeditspec=false;
+            },
+            checkgender(){
+                this.user.gender=this.editgender;
+                this.showeditgender=false;
+            },
+            showflaggender(){
+                this.showeditgender=!this.showeditgender;
             },
             showflagspec(){
                 this.showeditspec=!this.showeditspec;

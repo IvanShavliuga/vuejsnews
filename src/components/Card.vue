@@ -22,8 +22,7 @@
       font-weight: bold;
       font-style:italic;
       color: #93f;
-      line-height:17px;
-          
+      line-height:17px;        
    } 
    h3:hover{
       text-decoration:underline!important;   
@@ -35,8 +34,7 @@
       font-size:14px;
       line-height:15px; 
       text-align:justify;
-      word-spacing:1px;
-              
+      word-spacing:1px;           
    }
     &__cat {
         margin-bottom:7px!important;   
