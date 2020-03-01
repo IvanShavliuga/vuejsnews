@@ -16,6 +16,7 @@
           <div class="card-footer">
           <span class='text-primary login-user'>@{{u.login}}</span>  
           <span v-if="friendscheck(u)" class="friend">{{(u.id===loginid)?('You'):('Friend')}}</span>
+          <span v-else @click="addfriend(u)" class="friend">Add friend</span>
           </div>
           </div>
           </div>
@@ -54,8 +55,10 @@ export default {
         friendscheck(u){
            let f = u.friends.filter((fr)=>{return fr===this.loginid});
            return f[0]!==undefined;       
+        },
+        addfriend(u) {
+           this.$store.dispatch("addfriend",u);        
         }
-        
     },
     created() {
         this.users=this.$store.getters.users;

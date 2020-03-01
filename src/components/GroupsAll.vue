@@ -9,7 +9,8 @@
   <div class="card-footer"><span class='text-primary'>
   <span><i class="fa fa-user"></i> {{g.followers.length}}</span> 
   <span class="admin-group">{{(g.idAdmin === loginid)?'You':('@'+users[g.idAdmin].login)}}</span>
-  <span class="readyou" v-if="groupread(g)">You read</span><br>
+  <span class="readyou" v-if="groupread(g)">You read</span>
+  <span class="readyou" v-else @click="groupfollow(g)">Follow</span>
   <span><i class="fa fa-tags"></i>{{g.category}}</span>
   </span> 
   
@@ -45,6 +46,9 @@ export default {
         groupread(g){
            let fl = g.followers.filter((gf)=>{return gf===this.loginid})
            return fl[0]!==undefined;
+        },
+        groupfollow(g) {
+           this.$store.dispatch("groupfollow",g);         
         } 
     },
     created() {
