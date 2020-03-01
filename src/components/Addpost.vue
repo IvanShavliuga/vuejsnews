@@ -1,11 +1,12 @@
 <template>
+<section>
+
 <div class="card mb-2 addpost">
   <form>
   <div class="form-group">
   <div class="card-header"><input class="form-control" type="text" v-model="post.title"></div>
   <div class="card-body">
   <p class="card-text"><textarea class="form-control" cols="50" rows="7"  v-model="post.desc"></textarea></p></div>
-  
   <div class="card-footer"><div class="input-group mb-3"><input class="form-control" type="text" v-model="catnew">
   <div class="input-group-append">
   <button class="btn btn-primary" @click="addcat"><i class="fa fa-plus"></i></button> 
@@ -19,6 +20,7 @@
   </div>
   </form>
    </div>
+</section>
 </template>
 <style lang="scss">
 .addpost {
@@ -27,6 +29,7 @@
 }
 </style>
 <script>
+import Alert from './Alert.vue';
 export default {
    data() {
        return {
@@ -44,7 +47,12 @@ export default {
                likeclick:false,
                type:"post"
            },
-           catnew:""       
+           alert:{
+               header: "Add post",
+               body:"This post added",
+               status:"Success"   
+           },
+           catnew:""      
        }   
    },
    methods: {
@@ -53,8 +61,13 @@ export default {
               this.post.cat.push(this.catnew);       
        },
        sendpost() {
-           this.$store.dispatch("addpost",this.post);       
+           this.$store.dispatch("addpost",this.post);
+           this.addflag=true; 
+           this.$emit("add");      
        }
+   },
+   components:{
+       appAlert: Alert   
    }
 }
 </script>
