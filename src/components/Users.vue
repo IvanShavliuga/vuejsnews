@@ -11,7 +11,7 @@
           <p>{{u.spec}}</p>
           <p>{{u.city}}</p>
           <p><span v-for="(s,k) in u.skills" :key="k">{{s}} </span></p>
-          <p>Friends: {{u.friends.length}}</p></div> 
+          <p>Friends: {{u.friends.length-1}}</p></div> 
           </div>
           <div class="card-footer">
           <span class='text-primary login-user'>@{{u.login}}</span>  

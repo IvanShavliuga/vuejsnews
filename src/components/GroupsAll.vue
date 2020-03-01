@@ -22,7 +22,7 @@
 <style lang="scss">
   .gblock {
     width:17rem;  
-  }
+  
   .admin-group{
      color: red;
      font-weight:bold;
@@ -31,6 +31,7 @@
   .readyou{
      color:#d5d;
      font-weight:bold;   
+  }
   }
 </style>
 <script>

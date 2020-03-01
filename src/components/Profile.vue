@@ -7,6 +7,8 @@
   <a :class="['nav-link',(activelink==3)?'active':'']" href="#" @click="activelink=3">Groups <span class="badge badge-success">{{groups.length}}</span></a>
   <a :class="['nav-link',(activelink==4)?'active':'']" href="#" @click="activelink=4">Friends <span class="badge badge-success">{{friends.length}}</span></a>
   <a :class="['nav-link',(activelink==5)?'active':'']" href="#" @click="activelink=5">Reposts <span class="badge badge-success">{{reposts.length}}</span></a>
+  <a :class="['nav-link',(activelink==6)?'active':'']" href="#" @click="activelink=6">Add post</a>
+
 </nav>
 
  <app-infouser v-if="activelink==0" :user="user"></app-infouser>
@@ -15,7 +17,7 @@
  <app-groups :groups="groups" :loginid="loginid" v-if="activelink==3"></app-groups>
  <app-friends :friends="friends" v-if="activelink==4"></app-friends>
  <app-feeduser :posts="reposts" v-if="activelink==5" :user="user" :loginid="loginid"></app-feeduser>
- 
+ <app-addpost v-if="activelink==6"></app-addpost> 
 </div> 
 </template>
 <style lang="scss">
@@ -24,7 +26,7 @@
     background: #eee;
     padding: 10px;
     
-    button{
+    .btn-adds{
        width:28px;
        height:28px;
        padding-top:2px!important;
@@ -80,6 +82,7 @@ import News from './News.vue';
 import Groups from './Groups.vue';
 import Friends from './Friends.vue';
 import Feeduser from './Feeduser.vue';
+import Addpost from './Addpost.vue';
 
 export default{
    data() {
@@ -100,7 +103,8 @@ export default{
         appNews: News,
         appGroups: Groups,
         appFriends: Friends,
-        appFeeduser: Feeduser   
+        appFeeduser: Feeduser,
+        appAddpost: Addpost   
    },
    created(){
         this.loginid=this.$store.getters.loginid;

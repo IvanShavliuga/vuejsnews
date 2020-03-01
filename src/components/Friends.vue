@@ -1,5 +1,5 @@
 <template>
-<div>
+<section>
  <h3>Friends</h3> 
  <p> <table class="table">
  <tbody v-for="(f,k) in friends" :key="k">
@@ -15,10 +15,9 @@
  <tr v-for="(c,kc) in f.contacts" :key="kc"><td>
  {{c.messenger}}
  </td><td>{{c.contact}}</td></tr>
-</tbody>
+ </tbody>
 </table>
-</p>
-</div>
+</p></section>
 </template>
 <script>
 export default {

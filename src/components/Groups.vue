@@ -1,5 +1,5 @@
 <template>
-<div>
+<section>
    <h3>Groups</h3> 
    <p>
    <table class="table">
@@ -10,7 +10,7 @@
         <td>{{g.desc}}</td></tr>
    </table>
    </p>
-</div>
+</section>
 </template>
 <style lang="scss">
    b {
