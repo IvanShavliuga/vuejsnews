@@ -1,8 +1,8 @@
 <template>
 <main>
-   <div class="content">
+   <section class="content">
       <div class="row">
-          <div class="card mb-2 block" v-for="(u,k) in users" :key="k">
+          <article class="card mb-2 block" v-for="(u,k) in users" :key="k">
           <div class="card-header">{{u.name}}</div>
           <div class="card-body">
           <h6 class="card-title">{{u.rang}}</h6>
@@ -11,17 +11,17 @@
           <p>{{u.spec}}</p>
           <p>{{u.city}}</p>
           <p><span v-for="(s,k) in u.skills" :key="k">{{s}} </span></p>
-          <p>Friends: {{u.friends.length-1}}</p></div> 
-          </div>
+          <p>Friends: {{u.friends.length-1}}</p> 
+          </div> <!--card-text-->
           <div class="card-footer">
           <span class='text-primary login-user'>@{{u.login}}</span>  
           <span v-if="friendscheck(u)" class="friend">{{(u.id===loginid)?('You'):('Friend')}}</span>
           <span v-else @click="addfriend(u)" class="friend">Add friend</span>
+          </div><!--card-footer-->
           </div>
-          </div>
-          </div>
+          </article>
       </div>
-   </div>
+   </section>
 </main>
 </template>
 <style lang="scss">
