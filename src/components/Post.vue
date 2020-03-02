@@ -1,5 +1,5 @@
 <template>
-  <div class="card mb-2">
+  <article class="card mb-2">
   <div class="card-header">{{post.title}}</div>
   <div class="card-body">
   <h6 class="card-title"> 
@@ -22,7 +22,7 @@
   reposts (id): <b>{{post.repost}}</b>
   </pre>-->
   </div>
-   </div>
+   </article>
 </template>
 <style lang="scss">
   

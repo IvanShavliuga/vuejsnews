@@ -1,6 +1,6 @@
 <template>
 <section>
-
+<h3>Add new group</h3> 
 <div class="card mb-2 addpost">
   <form>
   <div class="form-group">

@@ -18,8 +18,8 @@
  <app-news :posts="posts" v-if="activelink==2" :users="[user]" :loginid="loginid"></app-news>
  <app-groups :groups="groups" :loginid="loginid" v-if="activelink==3"></app-groups>
  <app-friends :friends="friends" v-if="activelink==4"></app-friends>
- <app-feeduser :posts="reposts" v-if="activelink==5" :user="user" :loginid="loginid"></app-feeduser>
- <app-addpost v-if="activelink==6" @add="addpost"></app-addpost> 
+ <app-feeduser :posts="reposts" v-if="activelink==5" :users="users" :loginid="loginid"></app-feeduser>
+ <app-addpost v-if="activelink==6" @add="addpost" :admingroups="admingroups"></app-addpost> 
  <app-addgroup v-if="activelink==7" @add="addgroup"></app-addgroup>
 </div> 
 </template>
@@ -95,11 +95,13 @@ export default{
    data() {
         return {
             user:{},
+            users:{},
             messages:[],
             posts:[],
             reposts:[],
             friends:[],
             groups:[],
+            admingroups:[],
             activelink:2,
             loginid:0,
             addflag:false,
@@ -137,11 +139,13 @@ export default{
    created(){
         this.loginid=this.$store.getters.loginid;
         this.user=this.$store.getters.user;
+        this.users=this.$store.getters.users;
         this.messages=this.$store.getters.messages; 
         this.posts=this.$store.getters.postsUser;
         this.reposts=this.$store.getters.repostsUser;  
         this.groups=this.$store.getters.groupsUser;
         this.friends=this.$store.getters.friends;
+        this.admingroups = this.$store.getters.groupsAdmin;
         
    }
 }
