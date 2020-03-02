@@ -269,6 +269,7 @@ export default new Vuex.Store({
              type:"post",
              likeclick:false 
         },{
+             like:[1,2,3,4,5,6],
              id: 5,
              userId:0,
              groupId:0,
@@ -276,13 +277,40 @@ export default new Vuex.Store({
              time:"11:00", 
              title: 'First vue.js app', 
              desc: 'Developed the first full-fledged vue.js application. The project has already passed preliminary testing and will be published in a week',
-             like:[1,2,3,4,5,6],
              repost:[1,2],
              views:[0,1,2,3,4,5,6],
              cat:["Work", "Vue.js","SPA"],
              type:"post",
              likeclick:false 
         
+        },{
+             id: 6,
+             userId:4,
+             groupId:6,
+             date:"29.02.2020",
+             time:"11:00", 
+             title: 'First python code', 
+             desc:"I started studying Python and have already written my first neural network that determines who is depicted in the photo.",
+             repost:[3,5],
+             like:[3,5],
+             views:[0,1,2,3,4,5,6],
+             cat:["Work", "Python"],
+             type:"post",
+             likeclick:false         
+        },{
+             id: 7,
+             userId:2,
+             groupId:4,
+             date:"29.02.2020",
+             time:"11:00", 
+             title: 'First node.js', 
+             desc:"I started learning node.js and wrote his first multi-user chat.",
+              repost:[1,2],
+             like:[1,5],
+             views:[0,1,2],
+             cat:["Work", "Node.js","Study"],
+             type:"post",
+             likeclick:false     
         }],
         alert: {
              header: "Test",
@@ -343,7 +371,7 @@ export default new Vuex.Store({
              category: "study",
              id:6,
              idAdmin:3,
-             idNews:[],
+             idNews:[6],
              followers:[2,3]        
         },{
              name: "C/C++/C#",
@@ -369,7 +397,26 @@ export default new Vuex.Store({
         loginid: state => {return state.userloginid},
         messages: state => {return state.messages.filter((m)=>{return m.userId==state.userloginid})},
         cards: state => {return state.cards},
-        postsUser: state => {return state.posts.filter((p)=>{return p.userId==state.userloginid})},
+        postsUser: state => {
+        	    let pu = [];//state.posts.filter((p)=>{return p.userId==state.userloginid});
+        	    for(let i=0; i<state.posts.length; i++) {
+        	    	  let gi = state.posts[i].groupId;
+        	    	  let pf=false;                         	    	  
+                 let fl = state.groups[gi].followers.filter((rp)=>{return rp===state.userloginid});
+        	        let ru = state.posts[i].repost.filter((rp)=>{return rp===state.userloginid});
+                 if(ru[0]!==undefined){
+                 	  pf=true;
+                    pu.push(state.posts[i]);
+                 }else if(state.groups[gi].idAdmin!==state.userloginid&&fl[0]==state.userloginid&&pf===false) {                  
+                    pu.push(state.posts[i]);
+                 }else if(state.posts[i].userId===state.userloginid&&pf===false){ 
+                    pu.push(state.posts[i]);
+                 }
+                 pf=false;
+                 
+        	    }
+        	    return pu
+        },
         postsAll: state => {return state.posts},
         alert: state => {return state.alert},
         groups: state => {return state.groups},

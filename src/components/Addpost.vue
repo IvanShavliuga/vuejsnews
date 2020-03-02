@@ -23,7 +23,7 @@
   <div class="card-footer">
   <i class="fa fa-tags"></i>
   <span v-for="(c,kc) in post.cat" :key="kc">{{c+" "}}</span><hr>
-  <button class="btn btn-outline-success my-2 my-sm-0 sendbutton" @click="sendpost">Send post</button>
+  <button class="btn btn-outline-success my-2 my-sm-0" @click="sendpost">Send post</button>
   </div>
   </div>
   </form>
