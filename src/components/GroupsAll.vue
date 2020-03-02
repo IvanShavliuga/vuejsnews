@@ -13,7 +13,6 @@
   <span class="readyou" v-else @click="groupfollow(g)">Follow</span>
   <span><i class="fa fa-tags"></i>{{g.category}}</span>
   </span> 
-  
   </div>
    </div>
  </div>
@@ -21,17 +20,15 @@
 </template>
 <style lang="scss">
   .gblock {
-    width:17rem;  
-  
-  .admin-group{
-     color: red;
-     font-weight:bold;
-      
-  } 
-  .readyou{
-     color:#d5d;
-     font-weight:bold;   
-  }
+    width:17rem;   
+    .admin-group{
+       color: red;
+       font-weight:bold;
+    } 
+    .readyou{
+       color:#d5d;
+       font-weight:bold;   
+    }
   }
 </style>
 <script>

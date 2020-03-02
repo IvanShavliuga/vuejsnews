@@ -112,6 +112,6 @@ export default {
         repost(post){
            this.$store.dispatch("repost",post)
         }
-    },    
+    }    
 }
 </script>

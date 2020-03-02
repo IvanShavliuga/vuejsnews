@@ -38,8 +38,7 @@
         font-weight: bold;            
     }
     p {
-       margin: 5px;
-           
+       margin: 5px;          
     }
   }
 </style>
