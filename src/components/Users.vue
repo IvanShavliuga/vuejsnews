@@ -13,12 +13,13 @@
           <p><span v-for="(s,k) in u.skills" :key="k">{{s}} </span></p>
           <p>Friends: {{u.friends.length-1}}</p> 
           </div> <!--card-text-->
+          
+          </div>
           <div class="card-footer">
           <span class='text-primary login-user'>@{{u.login}}</span>  
           <span v-if="friendscheck(u)" class="friend">{{(u.id===loginid)?('You'):('Friend')}}</span>
           <span v-else @click="addfriend(u)" class="friend">Add friend</span>
           </div><!--card-footer-->
-          </div>
           </article>
       </div>
    </section>
