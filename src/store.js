@@ -428,6 +428,9 @@ export default new Vuex.Store({
         },
         addpost({commit},post) {
             commit("ADDPOST",post);        
+        },
+        addgroup({commit},group) {
+            commit("ADDGROUP",group);        
         }   
     },
     mutations: {
@@ -466,6 +469,20 @@ export default new Vuex.Store({
            post.time=d.getHours()+":"+d.getMinutes();
            state.groups[post.groupId].idNews.push(post.id); 
            state.posts.push(post);        
-        }   
+        },
+        "EDITPOST" (state,post) {
+        	  let d= new Date();
+           post.date=d.getDate()+"."+(d.getMonth()+1)+"."+d.getFullYear();
+           post.time=d.getHours()+":"+d.getMinutes();
+           state.posts[post.id]=post;        
+        },
+        "EDITGROUP" (state,group) {
+           state.groups[group.id]=group;        
+        },
+        "ADDGROUP" (state,group) {
+        	  group.id=state.groups.length;
+           state.groups.push(group);        
+        }        
+           
     }
 })

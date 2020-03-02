@@ -8,6 +8,8 @@
   <a :class="['nav-link',(activelink==4)?'active':'']" href="#" @click="activelink=4">Friends <span class="badge badge-success">{{friends.length}}</span></a>
   <a :class="['nav-link',(activelink==5)?'active':'']" href="#" @click="activelink=5">Reposts <span class="badge badge-success">{{reposts.length}}</span></a>
   <a :class="['nav-link',(activelink==6)?'active':'']" href="#" @click="activelink=6">Add post</a>
+  <a :class="['nav-link',(activelink==7)?'active':'']" href="#" @click="activelink=7">Add group</a>
+
 
 </nav>
  <app-alert v-if="addflag" :alert="alert"></app-alert>
@@ -17,7 +19,8 @@
  <app-groups :groups="groups" :loginid="loginid" v-if="activelink==3"></app-groups>
  <app-friends :friends="friends" v-if="activelink==4"></app-friends>
  <app-feeduser :posts="reposts" v-if="activelink==5" :user="user" :loginid="loginid"></app-feeduser>
- <app-addpost v-if="activelink==6" @add="addpost(alert)"></app-addpost> 
+ <app-addpost v-if="activelink==6" @add="addpost"></app-addpost> 
+ <app-addgroup v-if="activelink==7" @add="addgroup"></app-addgroup>
 </div> 
 </template>
 <style lang="scss">
@@ -53,6 +56,9 @@
        font-weight:bold;
        text-align:left;     
     }
+    td{
+       cursor: pointer;    
+    }
     .skill{
        color:blue;
        padding-right:5px;
@@ -83,6 +89,7 @@ import Groups from './Groups.vue';
 import Friends from './Friends.vue';
 import Feeduser from './Feeduser.vue';
 import Addpost from './Addpost.vue';
+import Addgroup from './Addgroup.vue';
 
 export default{
    data() {
@@ -107,7 +114,14 @@ export default{
            this.alert.header = "Add post";
            this.alert.body =  "This post added";
            this.alert.status = "Success update";
-        }   
+        },
+        addgroup() {
+           this.addflag=true;
+           this.groups=this.$store.getters.groupsUser; 
+           this.alert.header = "Add group";
+           this.alert.body =  "This group added";
+           this.alert.status = "Success update";
+        }    
    },
    components: {
         appInfouser: Infouser,
@@ -117,7 +131,8 @@ export default{
         appFriends: Friends,
         appFeeduser: Feeduser,
         appAddpost: Addpost,
-        appAlert: Alert     
+        appAlert: Alert,
+        appAddgroup:Addgroup    
    },
    created(){
         this.loginid=this.$store.getters.loginid;
