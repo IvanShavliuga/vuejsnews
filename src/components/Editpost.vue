@@ -1,6 +1,6 @@
 <template>
 <section>
-<h3>Add new post</h3> 
+<h3>Edit post</h3> 
 <div class="card mb-2 addpost">
   <form>
   <div class="form-group">
@@ -41,7 +41,7 @@ import Alert from './Alert.vue';
 export default {
    data() {
        return {
-           post: {
+          /* post: {
                title:"",
                userId:0,
                date:"1.1.21",
@@ -54,7 +54,7 @@ export default {
                groupId:0,
                likeclick:false,
                type:"post"
-           },
+           },*/
            alert:{
                header: "Add post",
                body:"This post added",
@@ -67,6 +67,10 @@ export default {
        admingroups: {
           type:Array,
           required:true       
+       },
+       post: {
+          type: Object,
+          required: true
        }
    },
    methods: {
@@ -75,9 +79,9 @@ export default {
               this.post.cat.push(this.catnew);       
        },
        sendpost() {
-           this.$store.dispatch("addpost",this.post);
+           this.$store.dispatch("editpost",this.post);
            this.addflag=true; 
-           this.$emit("add");      
+           this.$emit("edit");      
        }
    },
    components:{

@@ -8,17 +8,18 @@
   <a :class="['nav-link',(activelink==4)?'active':'']" href="#" @click="activelink=4">Friends <span class="badge badge-success">{{friends.length}}</span></a>
   <a :class="['nav-link',(activelink==5)?'active':'']" href="#" @click="activelink=5">Add post</a>
   <a :class="['nav-link',(activelink==6)?'active':'']" href="#" @click="activelink=6">Add group</a>
-
+  <a :class="['nav-link',(activelink==7)?'active':'']" href="#" @click="activelink=7">Edit post</a>
 
 </nav>
  <app-alert v-if="addflag" :alert="alert"></app-alert>
  <app-infouser v-if="activelink==0" :user="user"></app-infouser>
  <app-messages v-if="activelink==1" :messages="messages"></app-messages> 
- <app-news :posts="posts" v-if="activelink==2" :users="users" :loginid="loginid"></app-news>
+ <app-news :posts="posts" v-if="activelink==2" :users="users" :loginid="loginid" :admingroups="admingroups"></app-news>
  <app-groups :groups="groups" :loginid="loginid" v-if="activelink==3"></app-groups>
  <app-friends :friends="friends" v-if="activelink==4"></app-friends>
  <app-addpost v-if="activelink==5" @add="addpost" :admingroups="admingroups"></app-addpost> 
  <app-addgroup v-if="activelink==6" @add="addgroup"></app-addgroup>
+ <app-editpost v-if="activelink==7" @edit="editpost" :post="posts[0]"  :admingroups="admingroups"></app-editpost>
 </div> 
 </template>
 <style lang="scss">
@@ -88,6 +89,7 @@ import Friends from './Friends.vue';
 import Feeduser from './Feeduser.vue';
 import Addpost from './Addpost.vue';
 import Addgroup from './Addgroup.vue';
+import Editpost from './Editpost.vue';
 
 export default{
    data() {
@@ -121,7 +123,15 @@ export default{
            this.alert.header = "Add group";
            this.alert.body =  "This group added";
            this.alert.status = "Success update";
-        }    
+        },
+        editpost() {
+           this.addflag=true;
+           this.posts=this.$store.getters.postsUser;     
+           this.groups=this.$store.getters.groupsUser; 
+           this.alert.header = "Edit post";
+           this.alert.body =  "This post changed";
+           this.alert.status = "Success update";
+        },    
    },
    components: {
         appInfouser: Infouser,
@@ -132,7 +142,8 @@ export default{
         appFeeduser: Feeduser,
         appAddpost: Addpost,
         appAlert: Alert,
-        appAddgroup:Addgroup    
+        appAddgroup:Addgroup,
+        appEditpost:Editpost    
    },
    created(){
         this.loginid=this.$store.getters.loginid;
