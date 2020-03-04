@@ -476,6 +476,9 @@ export default new Vuex.Store({
         addpost({commit},post) {
             commit("ADDPOST",post);        
         },
+        editpost({commit},post) {
+            commit("EDITPOST",post);        
+        },
         addgroup({commit},group) {
             commit("ADDGROUP",group);        
         }   

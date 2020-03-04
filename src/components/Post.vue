@@ -1,5 +1,6 @@
 <template>
-  <article class="card mb-2">
+<section>
+  <article class="card mb-2" v-if="!editpost">
   <div class="card-header">{{post.title}}</div>
   <div class="card-body">
   <h6 class="card-title"> 
@@ -10,9 +11,11 @@
   <span><i class="fa fa-thumbs-up" @click="like(post)"></i>{{post.like.length}}</span> 
   <span><i class="fa fa-retweet" @click="repost(post)"></i>{{post.repost.length}}</span> 
   <span><i class="fa fa-eye"></i>{{post.views.length}}</span> 
+  <span v-if="post.userId===loginid"><button class="btn btn-success" @click="editpost=true">Edit</button></span>
   <hr>
   <i class="fa fa-tags"></i>
-  <span v-for="(c,kc) in post.cat" :key="kc">{{c+" "}}</span>
+  <span v-for="(c,kc) in post.cat" :key="kc">{{c+" "}}</span><br>
+  
   <!--<hr>
   <span @click="predisplay=!predisplay" class="debug">Debug</span>
   <pre v-if="predisplay">
@@ -23,6 +26,8 @@
   </pre>-->
   </div>
    </article>
+   <app-editpost v-else  @edit="editpostfun" :post="post" :admingroups="admingroups"></app-editpost>
+</section>
 </template>
 <style lang="scss">
   
@@ -85,6 +90,7 @@
   
 </style>
 <script>
+import Editpost from './Editpost.vue';
 export default {
     props:{
        post: {
@@ -98,11 +104,17 @@ export default {
        loginid: {
            type: Number,
            required: true        
-       }
+       },
+      admingroups: {
+         type:Array,
+         required:true      
+      } 
+       
     },
     data() {
        return {
-           predisplay:false       
+           predisplay:false,
+           editpost:false       
        }
     },
     methods:{            
@@ -111,7 +123,14 @@ export default {
         },
         repost(post){
            this.$store.dispatch("repost",post)
+        },
+        editpostfun(){
+           this.$store.dispatch("editpost",this.post)
+           this.editpost=false;        
         }
+    },
+    components:{
+        appEditpost: Editpost
     }    
 }
 </script>
