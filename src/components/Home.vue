@@ -2,7 +2,7 @@
 <div>
      <app-alert :alert="alert"></app-alert>
      <app-cards :cards="cards"></app-cards>
-     <app-news :posts="posts" :users="users" :loginid="loginid"></app-news>
+     <app-news :posts="posts" :users="users" :loginid="loginid" :admingroups="admingroups"></app-news>
 </div>
 </template>
 <script>
@@ -18,7 +18,8 @@ data() {
               posts:[],
               cards:[],
               alert:{},
-              users:[],  
+              users:[], 
+              admingroups:[],
               loginid:0   
          } 
      },
@@ -32,6 +33,7 @@ data() {
          this.cards = this.$store.getters.cards;
          this.users = this.$store.getters.users;
          this.alert = this.$store.getters.alert;
+         this.admingroups=this.$store.getters.groupsAdmin;
      }   
  }
 </script>

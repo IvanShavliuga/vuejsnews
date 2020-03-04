@@ -2,7 +2,7 @@
 <div class="content"> 
 <div class="row">
    <app-post v-for="(n,k) in posts" :post="n" :key="k" :user="user" 
-         :loginid="loginid"></app-post>
+         :loginid="loginid" :admingroups="admingroups"></app-post>
 </div>
 </div>
 </template>
@@ -21,7 +21,11 @@ export default  {
         loginid: {
             type: Number,
             required: true        
-        }    
+        },
+        admingroups: {
+         type:Array,
+         required:true      
+        }     
     },
     components: {
         appPost: Post    

@@ -524,7 +524,8 @@ export default new Vuex.Store({
         	  let d= new Date();
            post.date=d.getDate()+"."+(d.getMonth()+1)+"."+d.getFullYear();
            post.time=d.getHours()+":"+d.getMinutes();
-           state.groups[post.groupId].idNews.push(post.id); 
+           if(post.groupId>=0)
+                state.groups[post.groupId].idNews.push(post.id); 
            state.posts.push(post);        
         },
         "EDITPOST" (state,post) {

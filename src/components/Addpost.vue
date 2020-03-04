@@ -11,6 +11,7 @@
     <label class="input-group-text" for="groups">Groups</label>
   </div>
   <select class="custom-select" id="groups" v-model="post.groupId"  placeholder="groups">
+    <option value="-1" @click="post.groupId=-1">Personal post</option>  
     <option v-for="(gid,k) in admingroups" :value="gid.id" :key="k">{{gid.name}}</option>
   </select>
 </div>

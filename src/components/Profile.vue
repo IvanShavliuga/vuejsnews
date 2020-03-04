@@ -18,7 +18,7 @@
  <app-news :posts="posts" v-if="activelink==2" :users="users" :loginid="loginid" :admingroups="admingroups"></app-news>
  <app-groups :groups="groups" :loginid="loginid" v-if="activelink==3"></app-groups>
  <app-friends :friends="friends" v-if="activelink==4"></app-friends>
- <app-feeduser :posts="personalposts" :loginid="loginid" :user="user" v-if="activelink==5"></app-feeduser>
+ <app-feeduser :posts="personalposts" :loginid="loginid" :user="user" v-if="activelink==5" :admingroups="admingroups"></app-feeduser>
  <app-addpost v-if="activelink==6" @add="addpost" :admingroups="admingroups"></app-addpost> 
  <app-addgroup v-if="activelink==7" @add="addgroup"></app-addgroup>
 
@@ -116,6 +116,7 @@ export default{
            this.addflag=true;
            this.posts=this.$store.getters.postsUser;     
            this.groups=this.$store.getters.groupsUser; 
+           this.personalposts=this.$store.getters.personalposts;
            this.alert.header = "Add post";
            this.alert.body =  "This post added";
            this.alert.status = "Success update";
