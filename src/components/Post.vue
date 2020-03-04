@@ -105,10 +105,10 @@ export default {
            type: Number,
            required: true        
        },
-      admingroups: {
+       admingroups: {
          type:Array,
          required:true      
-      } 
+       } 
        
     },
     data() {
