@@ -6,9 +6,10 @@
   <a :class="['nav-link',(activelink==2)?'active':'']" href="#" @click="activelink=2">Posts <span class="badge badge-success">{{posts.length}}</span></a>
   <a :class="['nav-link',(activelink==3)?'active':'']" href="#" @click="activelink=3">Groups <span class="badge badge-success">{{groups.length}}</span></a>
   <a :class="['nav-link',(activelink==4)?'active':'']" href="#" @click="activelink=4">Friends <span class="badge badge-success">{{friends.length}}</span></a>
-  <a :class="['nav-link',(activelink==5)?'active':'']" href="#" @click="activelink=5">Add post</a>
-  <a :class="['nav-link',(activelink==6)?'active':'']" href="#" @click="activelink=6">Add group</a>
-  <a :class="['nav-link',(activelink==7)?'active':'']" href="#" @click="activelink=7">Edit post</a>
+  <a :class="['nav-link',(activelink==5)?'active':'']" href="#" @click="activelink=5">Personal posts <span class="badge badge-success">{{personalposts.length}}</span></a>  
+  <a :class="['nav-link',(activelink==6)?'active':'']" href="#" @click="activelink=6">Add post</a>
+  <a :class="['nav-link',(activelink==7)?'active':'']" href="#" @click="activelink=7">Add group</a>
+
 
 </nav>
  <app-alert v-if="addflag" :alert="alert"></app-alert>
@@ -17,9 +18,10 @@
  <app-news :posts="posts" v-if="activelink==2" :users="users" :loginid="loginid" :admingroups="admingroups"></app-news>
  <app-groups :groups="groups" :loginid="loginid" v-if="activelink==3"></app-groups>
  <app-friends :friends="friends" v-if="activelink==4"></app-friends>
- <app-addpost v-if="activelink==5" @add="addpost" :admingroups="admingroups"></app-addpost> 
- <app-addgroup v-if="activelink==6" @add="addgroup"></app-addgroup>
- <app-editpost v-if="activelink==7" @edit="editpost" :post="posts[0]"  :admingroups="admingroups"></app-editpost>
+ <app-feeduser :posts="personalposts" :loginid="loginid" :user="user" v-if="activelink==5"></app-feeduser>
+ <app-addpost v-if="activelink==6" @add="addpost" :admingroups="admingroups"></app-addpost> 
+ <app-addgroup v-if="activelink==7" @add="addgroup"></app-addgroup>
+
 </div> 
 </template>
 <style lang="scss">
@@ -101,6 +103,7 @@ export default{
             reposts:[],
             friends:[],
             groups:[],
+            personalposts:[],
             admingroups:[],
             activelink:2,
             loginid:0,
@@ -155,7 +158,7 @@ export default{
         this.groups=this.$store.getters.groupsUser;
         this.friends=this.$store.getters.friends;
         this.admingroups = this.$store.getters.groupsAdmin;
-        
+        this.personalposts= this.$store.getters.personalposts; 
    }
 }
 

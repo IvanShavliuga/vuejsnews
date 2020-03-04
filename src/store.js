@@ -243,7 +243,7 @@ export default new Vuex.Store({
         },{
              id: 3,
              userId:0,
-             groupId:8,
+             groupId:-1,
              date:"13.02.2020",
              time:"11:00", 
              title: 'I installed LINUX ROSA', 
@@ -397,10 +397,17 @@ export default new Vuex.Store({
         loginid: state => {return state.userloginid},
         messages: state => {return state.messages.filter((m)=>{return m.userId==state.userloginid})},
         cards: state => {return state.cards},
+        personalposts: state => {
+             return state.posts.filter((g)=>{return g.groupId === -1 && g.userId === state.userloginid})
+        },
         postsUser: state => {
         	    let pu = [];//state.posts.filter((p)=>{return p.userId==state.userloginid});
         	    for(let i=0; i<state.posts.length; i++) {
         	    	  let gi = state.posts[i].groupId;
+        	    	  if(gi === -1){
+        	    	     pu.push(state.posts[i])
+        	    	     continue;
+        	    	  }
         	    	  let pf=false;                         	    	  
                  let fl = state.groups[gi].followers.filter((rp)=>{return rp===state.userloginid});
         	        let ru = state.posts[i].repost.filter((rp)=>{return rp===state.userloginid});
