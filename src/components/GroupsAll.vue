@@ -7,11 +7,12 @@
   <p class="card-text">{{g.desc}}</p>
   </div>
   <div class="card-footer"><span class='text-primary'>
-  <span><i class="fa fa-user"></i> {{g.followers.length}}</span> 
+  <span v-if="g.category.length"><i class="fa fa-tags"></i>{{g.category}}</span><br>
+  <span v-if="g.followers.length"><i class="fa fa-user"></i> {{g.followers.length}}</span> 
   <span class="admin-group">{{(g.idAdmin === loginid)?'You':('@'+users[g.idAdmin].login)}}</span>
   <span class="readyou" v-if="groupread(g)">You read</span>
   <span class="readyou" v-else @click="groupfollow(g)">Follow</span>
-  <span><i class="fa fa-tags"></i>{{g.category}}</span>
+  
   </span> 
   </div>
    </div>
@@ -20,7 +21,12 @@
 </template>
 <style lang="scss">
   .gblock {
-    width:17rem;   
+    width:17rem; 
+    min-height: 300px; 
+    max-height: 350px; 
+    span {
+       cursor: pointer;    
+    }   
     .admin-group{
        color: red;
        font-weight:bold;

@@ -44,7 +44,8 @@
      img {
        width:200px;
        height:250px;
-       border:1px solid white;   
+       border:2px solid white;  
+        
      }
     }  
   } 

@@ -27,7 +27,8 @@
 </template>
 <style lang="scss">
   .block {
-    width: 17rem;  
+    width: 17rem;
+    min-height: 80px;  
     span {
        color:#07b;    
     } 

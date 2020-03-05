@@ -33,12 +33,12 @@
 </template>
 <style lang="scss">
 .addpost {
-   max-width:35rem!important;
+   max-width:25rem!important;
    
 }
 </style>
 <script>
-import Alert from './Alert.vue';
+
 export default {
    data() {
        return {
@@ -55,11 +55,6 @@ export default {
                groupId:0,
                likeclick:false,
                type:"post"
-           },
-           alert:{
-               header: "Add post",
-               body:"This post added",
-               status:"Success"   
            },
            catnew:""      
        }   
@@ -80,9 +75,6 @@ export default {
            this.addflag=true; 
            this.$emit("add");      
        }
-   },
-   components:{
-       appAlert: Alert   
    }
 }
 </script>

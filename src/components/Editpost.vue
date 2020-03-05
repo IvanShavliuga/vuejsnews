@@ -1,6 +1,6 @@
 <template>
 <section>
-<h3>Edit post</h3> 
+
 <div class="card mb-2 addpost">
   <form>
   <div class="form-group">
@@ -11,13 +11,15 @@
     <label class="input-group-text" for="groups">Groups</label>
   </div>
   <select class="custom-select" id="groups" v-model="post.groupId"  placeholder="groups">
+    <option value="-1" @click="post.groupId=-1">Personal post</option>
     <option v-for="(gid,k) in admingroups" :value="gid.id" :key="k">{{gid.name}}</option>
   </select>
 </div>
-  <p class="card-text"><textarea class="form-control" cols="50" rows="7"  v-model="post.desc">text</textarea></p></div>
+  <p class="card-text"><textarea class="form-control" cols="50" rows="7"  v-model="post.desc">text</textarea></p>
   <div class="input-group mb-3"><input class="form-control" type="text" v-model="catnew"  placeholder="category">
   <div class="input-group-append">
-  <button class="btn btn-primary" @click="addcat"><i class="fa fa-plus"></i></button> 
+  <button class="btn btn-primary" @click="addcat"><i class="fa fa-plus"></i></button>
+  </div> 
   </div>
   </div>
   <div class="card-footer">
@@ -32,8 +34,13 @@
 </template>
 <style lang="scss">
 .addpost {
-   max-width:35rem!important;
-   
+   max-width:25rem!important;
+   span {
+       cursor:pointer;   
+   }
+   form {
+       margin-bottom:-15px!important;   
+   }
 }
 </style>
 <script>
