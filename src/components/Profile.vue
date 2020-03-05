@@ -9,7 +9,7 @@
   <a :class="['nav-link',(activelink==5)?'active':'']" href="#" @click="activelink=5">Personal posts <span class="badge badge-success">{{personalposts.length}}</span></a>  
   <a :class="['nav-link',(activelink==6)?'active':'']" href="#" @click="activelink=6">Add post</a>
   <a :class="['nav-link',(activelink==7)?'active':'']" href="#" @click="activelink=7">Add group</a>
-
+  <a :class="['nav-link',(activelink==8)?'active':'']" href="#" @click="activelink=8">You cards <span class="badge badge-success">{{personalcards.length}}</span></a>
 
 </nav>
  <app-alert v-if="addflag" :alert="alert"></app-alert>
@@ -21,7 +21,7 @@
  <app-feeduser :posts="personalposts" :loginid="loginid" :user="user" v-if="activelink==5" :admingroups="admingroups"></app-feeduser>
  <app-addpost v-if="activelink==6" @add="addpost" :admingroups="admingroups"></app-addpost> 
  <app-addgroup v-if="activelink==7" @add="addgroup"></app-addgroup>
-
+ <app-cardsuser v-if="activelink==8" :personalcards="personalcards"></app-cardsuser>
 </div> 
 </template>
 <style lang="scss">
@@ -29,7 +29,19 @@
 .profile {
     background: #eee;
     padding: 10px;
-    
+    .nav {
+       border:1px solid #0dd;
+       background:#ddeeee;
+       
+       &-link {
+          margin-right: -20px;  
+          outline: none;   
+       }
+       a.nav-link.active {
+         font-weight: bold!important;
+         text-transform: uppercase!important;
+      }   
+    }
     .btn-adds{
        width:28px;
        height:28px;
@@ -92,6 +104,7 @@ import Feeduser from './Feeduser.vue';
 import Addpost from './Addpost.vue';
 import Addgroup from './Addgroup.vue';
 import Editpost from './Editpost.vue';
+import Cardsuser from './Cardsuser.vue';
 
 export default{
    data() {
@@ -104,6 +117,7 @@ export default{
             friends:[],
             groups:[],
             personalposts:[],
+            personalcards:[],
             admingroups:[],
             activelink:2,
             loginid:0,
@@ -147,7 +161,8 @@ export default{
         appAddpost: Addpost,
         appAlert: Alert,
         appAddgroup:Addgroup,
-        appEditpost:Editpost    
+        appEditpost:Editpost,
+        appCardsuser:Cardsuser    
    },
    created(){
         this.loginid=this.$store.getters.loginid;
@@ -160,6 +175,7 @@ export default{
         this.friends=this.$store.getters.friends;
         this.admingroups = this.$store.getters.groupsAdmin;
         this.personalposts= this.$store.getters.personalposts; 
+        this.personalcards= this.$store.getters.personalcards;
    }
 }
 
