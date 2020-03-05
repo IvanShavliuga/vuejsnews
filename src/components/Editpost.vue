@@ -1,6 +1,6 @@
 <template>
 <section>
-<h3>Edit post</h3> 
+
 <div class="card mb-2 addpost">
   <form>
   <div class="form-group">
@@ -11,18 +11,20 @@
     <label class="input-group-text" for="groups">Groups</label>
   </div>
   <select class="custom-select" id="groups" v-model="post.groupId"  placeholder="groups">
+    <option value="-1" @click="post.groupId=-1">Personal post</option>
     <option v-for="(gid,k) in admingroups" :value="gid.id" :key="k">{{gid.name}}</option>
   </select>
 </div>
-  <p class="card-text"><textarea class="form-control" cols="50" rows="7"  v-model="post.desc">text</textarea></p></div>
+  <p class="card-text"><textarea class="form-control" cols="50" rows="7"  v-model="post.desc">text</textarea></p>
   <div class="input-group mb-3"><input class="form-control" type="text" v-model="catnew"  placeholder="category">
   <div class="input-group-append">
-  <button class="btn btn-primary" @click="addcat"><i class="fa fa-plus"></i></button> 
+  <button class="btn btn-primary" @click="addcat"><i class="fa fa-plus"></i></button>
+  </div> 
   </div>
   </div>
   <div class="card-footer">
   <i class="fa fa-tags"></i>
-  <span v-for="(c,kc) in post.cat" :key="kc">{{c+" "}}</span><hr>
+  <span v-for="(c,kc) in post.cat" :key="kc" @click="delcat(kc)">{{c+" "}}</span><hr>
   <button class="btn btn-outline-success my-2 my-sm-0" @click="sendpost">Send post</button>
   </div>
   </div>
@@ -32,12 +34,17 @@
 </template>
 <style lang="scss">
 .addpost {
-   max-width:35rem!important;
-   
+   max-width:25rem!important;
+   span {
+       cursor:pointer;   
+   }
+   form {
+       margin-bottom:-15px!important;   
+   }
 }
 </style>
 <script>
-import Alert from './Alert.vue';
+
 export default {
    data() {
        return {
@@ -55,11 +62,6 @@ export default {
                likeclick:false,
                type:"post"
            },*/
-           alert:{
-               header: "Add post",
-               body:"This post added",
-               status:"Success"   
-           },
            catnew:""      
        }   
    },
@@ -82,10 +84,10 @@ export default {
            this.$store.dispatch("editpost",this.post);
            this.addflag=true; 
            this.$emit("edit");      
+       },
+       delcat(id) {
+           this.post.cat.splice(id,1);
        }
-   },
-   components:{
-       appAlert: Alert   
    }
 }
 </script>

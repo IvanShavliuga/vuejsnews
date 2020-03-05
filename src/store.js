@@ -189,12 +189,14 @@ export default new Vuex.Store({
              header:"Development of a news portal",
              date:"25.02.2020",
              userId:0,
+             id:0,
              body:"The site must be developed using  technology Vue.js. The news portal must be set up using bootstrap."          
         },{
              category:"Work",
              header:"Development of a news portal",
              date:"25.02.2020",
              userId:0,
+             id:1,
              body:"The site must be developed using  technology Vue.js. The news portal must be set up using bootstrap."          
                      
         }],
@@ -397,6 +399,7 @@ export default new Vuex.Store({
         loginid: state => {return state.userloginid},
         messages: state => {return state.messages.filter((m)=>{return m.userId==state.userloginid})},
         cards: state => {return state.cards},
+        personalcards: state => {return state.cards.filter((c)=>{return c.userId === state.userloginid})},
         personalposts: state => {
              return state.posts.filter((g)=>{return g.groupId === -1 && g.userId === state.userloginid})
         },
@@ -540,6 +543,9 @@ export default new Vuex.Store({
         "ADDGROUP" (state,group) {
         	  group.id=state.groups.length;
            state.groups.push(group);        
+        },
+        "EDITCARD" (state, card) {
+           state.card[card.id]=card;       
         }        
            
     }
