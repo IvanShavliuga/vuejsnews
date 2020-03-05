@@ -24,7 +24,7 @@
   </div>
   <div class="card-footer">
   <i class="fa fa-tags"></i>
-  <span v-for="(c,kc) in post.cat" :key="kc">{{c+" "}}</span><hr>
+  <span v-for="(c,kc) in post.cat" :key="kc" @click="delcat(kc)">{{c+" "}}</span><hr>
   <button class="btn btn-outline-success my-2 my-sm-0" @click="sendpost">Send post</button>
   </div>
   </div>
@@ -44,7 +44,7 @@
 }
 </style>
 <script>
-import Alert from './Alert.vue';
+
 export default {
    data() {
        return {
@@ -62,11 +62,6 @@ export default {
                likeclick:false,
                type:"post"
            },*/
-           alert:{
-               header: "Add post",
-               body:"This post added",
-               status:"Success"   
-           },
            catnew:""      
        }   
    },
@@ -89,10 +84,10 @@ export default {
            this.$store.dispatch("editpost",this.post);
            this.addflag=true; 
            this.$emit("edit");      
+       },
+       delcat(id) {
+           this.post.cat.splice(id,1);
        }
-   },
-   components:{
-       appAlert: Alert   
    }
 }
 </script>

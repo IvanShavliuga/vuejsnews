@@ -23,7 +23,7 @@
   </div>
   <div class="card-footer">
   <i class="fa fa-tags"></i>
-  <span v-for="(c,kc) in post.cat" :key="kc">{{c+" "}}</span><hr>
+  <span v-for="(c,kc) in post.cat" :key="kc" @click="delcat(kc)">{{c+" "}}</span><hr>
   <button class="btn btn-outline-success my-2 my-sm-0" @click="sendpost">Send post</button>
   </div>
   </div>
@@ -34,7 +34,12 @@
 <style lang="scss">
 .addpost {
    max-width:25rem!important;
-   
+   span {
+       cursor:pointer;   
+   }
+   form {
+       margin-bottom:-15px!important;   
+   }
 }
 </style>
 <script>
@@ -74,6 +79,9 @@ export default {
            this.$store.dispatch("addpost",this.post);
            this.addflag=true; 
            this.$emit("add");      
+       },
+       delcat(id) {
+           this.post.cat.splice(id,1);
        }
    }
 }
