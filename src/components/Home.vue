@@ -1,7 +1,7 @@
 <template>
 <div>
      <app-alert :alert="alert"></app-alert>
-     <app-cards :cards="cards"></app-cards>
+     <app-cards :cards="cards" :index=index></app-cards>
      <app-news :posts="posts" :users="users" :loginid="loginid" :admingroups="admingroups"></app-news>
 </div>
 </template>
@@ -20,7 +20,8 @@ data() {
               alert:{},
               users:[], 
               admingroups:[],
-              loginid:0   
+              loginid:0,
+              index:0   
          } 
      },
      components:{

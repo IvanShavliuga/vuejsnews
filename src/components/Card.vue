@@ -6,17 +6,17 @@
           <h3 class="mb-0">{{card.header}}</h3>
           <div class="mb-1 text-muted promo__date">{{card.date}}</div>
           <p class="card-text mb-auto">{{card.body}}</p>
-          <a href="#" class="stretched-link">Continue reading</a>
+          <a href="#" class="stretched-link" @click="clickcard(card.id)">Edit card</a>
         </div>
         <div class="col-auto d-none d-lg-block  promo__image">
           <img src="../assets/images/robot2.jpg">          
           </div>
       </div>
-    </div>
+    </div> 
 </template>
 <style lang="scss">
  .promo{
-   background: #fff; 
+   background: #fff;
    h3 {
       font-size: 16px;
       font-weight: bold;
@@ -44,18 +44,25 @@
      img {
        width:200px;
        height:250px;
-       border:2px solid white;  
+       border:1px solid white;  
         
      }
     }  
   } 
 </style>
 <script>
+
 export default {
    props: {
        card: {
            type: Object,
            required: true     
+       }
+   },
+   methods: {
+       clickcard(id) {
+           console.log("CARD: "+id);
+           this.$emit("cardclick",id);       
        }   
    }
 }

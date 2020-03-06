@@ -34,8 +34,7 @@
             padding-bottom:2px; 
             span:nth-child(2n) {
                color: #00f;
-               font-weight: bold;        
-                 
+               font-weight: bold;                         
             } 
         } 
         p {
@@ -82,7 +81,6 @@
 </style>
 <script>
 import Navigation from './Navigation.vue';
-import {eventBus} from '../main';
 
 export default {
     components: {
