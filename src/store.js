@@ -491,6 +491,9 @@ export default new Vuex.Store({
         },
         addgroup({commit},group) {
             commit("ADDGROUP",group);        
+        },
+        editcard({commit},card) {
+            commit("EDITCARD",card);        
         }   
     },
     mutations: {
@@ -545,7 +548,7 @@ export default new Vuex.Store({
            state.groups.push(group);        
         },
         "EDITCARD" (state, card) {
-           state.card[card.id]=card;       
+           state.cards[card.id]=card;       
         }        
            
     }

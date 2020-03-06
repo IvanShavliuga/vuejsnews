@@ -1,6 +1,6 @@
 <template>
 <div class="row mb-2">
-    <app-card v-for="(c,k) in cards" :key="k" :card="c"></app-card>
+    <app-card v-for="(c,k) in cards" :key="k" :card="c" @cardclick="clickcard(k)"></app-card>
 </div>
 </template>
 <style lang="scss">
@@ -14,10 +14,16 @@ export default {
        cards: {
            type: Array,
            required: true       
-       }
+       }  
     },
     components:{
         appCard: Card    
+    },
+    methods: {
+        clickcard(k)  {
+            console.log("CARDS: "+k);
+            this.$emit("cardclick",k);       
+        }    
     }
 }
 </script>

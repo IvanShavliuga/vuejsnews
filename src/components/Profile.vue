@@ -10,7 +10,6 @@
   <a :class="['nav-link',(activelink==6)?'active':'']" href="#" @click="activelink=6">Add post</a>
   <a :class="['nav-link',(activelink==7)?'active':'']" href="#" @click="activelink=7">Add group</a>
   <a :class="['nav-link',(activelink==8)?'active':'']" href="#" @click="activelink=8">You cards <span class="badge badge-success">{{personalcards.length}}</span></a>
-
 </nav>
  <app-alert v-if="addflag" :alert="alert"></app-alert>
  <app-infouser v-if="activelink==0" :user="user"></app-infouser>
@@ -21,7 +20,7 @@
  <app-feeduser :posts="personalposts" :loginid="loginid" :user="user" v-if="activelink==5" :admingroups="admingroups"></app-feeduser>
  <app-addpost v-if="activelink==6" @add="addpost" :admingroups="admingroups"></app-addpost> 
  <app-addgroup v-if="activelink==7" @add="addgroup"></app-addgroup>
- <app-cardsuser v-if="activelink==8" :personalcards="personalcards"></app-cardsuser>
+ <app-cardsuser v-if="activelink==8" :personalcards="personalcards" @edit="editcard"></app-cardsuser>
 </div> 
 </template>
 <style lang="scss">
@@ -149,7 +148,14 @@ export default{
            this.alert.header = "Edit post";
            this.alert.body =  "This post changed";
            this.alert.status = "Success update";
-        },    
+        }, 
+        editcard(){
+           this.personalcards=this.$store.getters.personalcards;
+           this.alert.header = "Edit card";
+           this.alert.body =  "This card changed";
+           this.alert.status = "Success update";   
+           this.addflag=true;     
+        }   
    },
    components: {
         appInfouser: Infouser,
