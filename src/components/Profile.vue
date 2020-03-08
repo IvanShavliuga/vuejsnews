@@ -13,7 +13,7 @@
 </nav>
  <app-alert v-if="addflag" :alert="alert"></app-alert>
  <app-infouser v-if="activelink==0" :user="user"></app-infouser>
- <app-messages v-if="activelink==1" :messages="messages" :users="users"></app-messages> 
+ <app-messages v-if="activelink==1" :messages="messages" :users="users" @addfriend="addfriend"></app-messages> 
  <app-news :posts="posts" v-if="activelink==2" :users="users" :loginid="loginid" :admingroups="admingroups" :groups="groups"></app-news>
  <app-groups :groups="groups" :loginid="loginid" v-if="activelink==3"></app-groups>
  <app-friends :friends="friends" v-if="activelink==4"></app-friends>
@@ -139,7 +139,7 @@ export default{
            this.groups=this.$store.getters.groupsUser; 
            this.alert.header = "Add group";
            this.alert.body =  "This group added";
-           this.alert.status = "Success update";
+           this.alert.status = "Success added";
         },
         editpost() {
            this.addflag=true;
@@ -155,6 +155,14 @@ export default{
            this.alert.body =  "This card changed";
            this.alert.status = "Success update";   
            this.addflag=true;     
+        },
+        addfriend(id) {
+           this.$store.dispatch("addfriend",this.users[id]);
+           this.friends=this.$store.getters.friends;
+           this.alert.header = "Add friend";
+           this.alert.body =  "This user add to friend";
+           this.alert.status = "Success added";   
+           this.addflag=true;        
         }   
    },
    components: {
