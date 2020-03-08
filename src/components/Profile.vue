@@ -13,7 +13,7 @@
 </nav>
  <app-alert v-if="addflag" :alert="alert"></app-alert>
  <app-infouser v-if="activelink==0" :user="user"></app-infouser>
- <app-messages v-if="activelink==1" :messages="messages"></app-messages> 
+ <app-messages v-if="activelink==1" :messages="messages" :users="users"></app-messages> 
  <app-news :posts="posts" v-if="activelink==2" :users="users" :loginid="loginid" :admingroups="admingroups"></app-news>
  <app-groups :groups="groups" :loginid="loginid" v-if="activelink==3"></app-groups>
  <app-friends :friends="friends" v-if="activelink==4"></app-friends>
