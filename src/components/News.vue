@@ -5,7 +5,8 @@
              :post="n" :key="k" 
              :user="users[n.userId]" 
              :loginid="loginid" 
-             :admingroups="admingroups">
+             :admingroups="admingroups"
+             :groups="groups">
    </app-post>
 </div>
 </div>
@@ -36,7 +37,11 @@ export default {
       admingroups: {
          type:Array,
          required:true      
-      }    
+      },
+        groups: {
+            type: Array,
+            required:true        
+        }     
    },
     components: {
         appPost: Post    

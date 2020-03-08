@@ -14,10 +14,10 @@
  <app-alert v-if="addflag" :alert="alert"></app-alert>
  <app-infouser v-if="activelink==0" :user="user"></app-infouser>
  <app-messages v-if="activelink==1" :messages="messages" :users="users"></app-messages> 
- <app-news :posts="posts" v-if="activelink==2" :users="users" :loginid="loginid" :admingroups="admingroups"></app-news>
+ <app-news :posts="posts" v-if="activelink==2" :users="users" :loginid="loginid" :admingroups="admingroups" :groups="groups"></app-news>
  <app-groups :groups="groups" :loginid="loginid" v-if="activelink==3"></app-groups>
  <app-friends :friends="friends" v-if="activelink==4"></app-friends>
- <app-feeduser :posts="personalposts" :loginid="loginid" :user="user" v-if="activelink==5" :admingroups="admingroups"></app-feeduser>
+ <app-feeduser :posts="personalposts" :loginid="loginid" :user="user" v-if="activelink==5" :admingroups="admingroups" :groups="groups"></app-feeduser>
  <app-addpost v-if="activelink==6" @add="addpost" :admingroups="admingroups"></app-addpost> 
  <app-addgroup v-if="activelink==7" @add="addgroup"></app-addgroup>
  <app-cardsuser v-if="activelink==8" :personalcards="personalcards" @edit="editcard"></app-cardsuser>
