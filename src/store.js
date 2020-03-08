@@ -168,17 +168,19 @@ export default new Vuex.Store({
             }] //contacts
         }], //user  
         messages:[{
-            user:"admin",
-            id:1,
+            type:"system",
+            id:0,
             title:"success registration",
-            userId:0,
-            body:"You have successfully registered for the website test.com. Terms of use and licensing agreement here. Please fill out your profile and Sub be to the news columns of your choice.",
+            to:0,
+            from:-1,
+            body:"You have successfully registered for the website vuejsnews.com. Terms of use and licensing agreement here. Please fill out your profile and Sub be to the news columns of your choice.",
             read:false,
             show:false
         },{
-            user:"admin",
-            id:2,
-            userId:0,
+            type:"user-add",
+            id:1,
+            from:6,
+            to:0,
             title:"User Angel application add to friends",
             body:"Please add my contact as a friend",
             read:false,
@@ -397,7 +399,7 @@ export default new Vuex.Store({
     getters: {
         users: state => {return state.users},
         loginid: state => {return state.userloginid},
-        messages: state => {return state.messages.filter((m)=>{return m.userId==state.userloginid})},
+        messages: state => {return state.messages.filter((m)=>{return m.to==state.userloginid})},
         cards: state => {return state.cards},
         personalcards: state => {return state.cards.filter((c)=>{return c.userId === state.userloginid})},
         personalposts: state => {
