@@ -1,8 +1,14 @@
 <template>
 <div class="content"> 
 <div class="row">
-   <app-post v-for="(n,k) in posts" :post="n" :key="k" :user="user" 
-         :loginid="loginid" :admingroups="admingroups"></app-post>
+   <app-post v-for="(n,k) in posts" 
+         :post="n" 
+         :key="k" 
+         :user="user" 
+         :loginid="loginid" 
+         :admingroups="admingroups" 
+         :groups="groups">
+   </app-post>
 </div>
 </div>
 </template>
@@ -25,6 +31,10 @@ export default  {
         admingroups: {
          type:Array,
          required:true      
+        },
+        groups: {
+            type: Array,
+            required:true        
         }     
     },
     components: {

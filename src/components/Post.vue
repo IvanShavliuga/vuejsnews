@@ -11,6 +11,7 @@
   <span><i class="fa fa-thumbs-up" @click="like(post)"></i>{{post.like.length}}</span> 
   <span><i class="fa fa-retweet" @click="repost(post)"></i>{{post.repost.length}}</span> 
   <span><i class="fa fa-eye"></i>{{post.views.length}}</span> 
+  <span>{{post.groupId>=0?groups[post.groupId].name:'Personal post'}}</span><br>
   <span v-if="post.userId===loginid"><button class="btn btn-success" @click="editpost=true">Edit</button></span>
   <hr>
   <i class="fa fa-tags"></i>
@@ -33,6 +34,7 @@
   
   .card {
     max-width: 17rem!important; 
+    min-height: 500px!important;
     margin:5px!important;
      &-title {
        padding: 5px;
@@ -108,6 +110,10 @@ export default {
        admingroups: {
          type:Array,
          required:true      
+       },
+       groups: {
+         type:Array,
+         required: true       
        } 
        
     },
