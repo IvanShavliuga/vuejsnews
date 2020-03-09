@@ -11,7 +11,7 @@
   <a :class="['nav-link',(activelink==7)?'active':'']" href="#" @click="activelink=7">Add group</a>
   <a :class="['nav-link',(activelink==8)?'active':'']" href="#" @click="activelink=8">You cards <span class="badge badge-success">{{personalcards.length}}</span></a>
 </nav>
- <app-alert v-if="addflag" :alert="alert"></app-alert>
+ <app-alert v-if="addflag" :alert="alert" @close="closealert"></app-alert>
  <app-infouser v-if="activelink==0" :user="user"></app-infouser>
  <app-messages v-if="activelink==1" :messages="messages" :users="users" @addfriend="addfriend"></app-messages> 
  <app-news :posts="posts" v-if="activelink==2" :users="users" :loginid="loginid" :admingroups="admingroups" :groups="groups"></app-news>
@@ -125,6 +125,9 @@ export default{
         };
    },
    methods:{
+        closealert() {
+           this.addflag=false; 
+        },
         addpost() {
            this.addflag=true;
            this.posts=this.$store.getters.postsUser;     

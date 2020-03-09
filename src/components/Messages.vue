@@ -9,7 +9,7 @@
   >
   <tr  class="msg__title"><td><input type="checkbox" @click="readmess(km)" class="check">{{m.type==="system"?"system":users[m.from].login}}</td><td @click="showmess(km)">{{m.title}}</td></tr>
   <tr v-show="m.show" class="msg__body"><td colspan=3 :style="(m.read)?'font-weight:normal':'font-weight:bold'">{{m.body}}</td></tr>
-  <tr v-if="m.show&&m.type==='user-add'" class="msg__body"><td colspan=3><button class="btn btn-success" @click="addfriend(m.from)">Add friend</button></td></tr>
+  <tr v-if="m.show&&m.type==='user-add'&&!addfriendflag" class="msg__body"><td colspan=3><button class="btn btn-success" @click="addfriend(m.from)">Add friend</button></td></tr>
   </tbody>
 </table></p> 
 </section>
@@ -34,6 +34,11 @@ export default {
        required: true      
      }   
    },
+   data() {
+     return {
+        addfriendflag:false       
+     } 
+   },
    methods: {
      readmess(id){
         this.messages[id].read=!this.messages[id].read;
@@ -42,7 +47,8 @@ export default {
         this.messages[id].show=!this.messages[id].show;
      },
      addfriend(id){
-        this.$emit("addfriend",id);      
+        this.$emit("addfriend",id);
+        this.addfriendflag=true;      
      }
    }
 }
