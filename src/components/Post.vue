@@ -34,7 +34,7 @@
   
   .card {
     max-width: 17rem!important; 
-    min-height: 500px!important;
+    min-height: 420px!important;
     margin:5px!important;
      &-title {
        padding: 5px;

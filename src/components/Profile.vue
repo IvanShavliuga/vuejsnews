@@ -13,7 +13,7 @@
 </nav>
  <app-alert v-if="addflag" :alert="alert" @close="closealert"></app-alert>
  <app-infouser v-if="activelink==0" :user="user"></app-infouser>
- <app-messages v-if="activelink==1" :messages="messages" :users="users" @addfriend="addfriend" @addgroup="follow"></app-messages> 
+ <app-messages v-if="activelink==1" :messages="messages" :users="users" @addfriend="addfriend" @addgroup="follow" @addmessage="addmsg" :friends="friends" :userloginid="loginid"></app-messages> 
  <app-news :posts="posts" v-if="activelink==2" :users="users" :loginid="loginid" :admingroups="admingroups" :groups="groups"></app-news>
  <app-groups :groups="groups" :loginid="loginid" v-if="activelink==3"></app-groups>
  <app-friends :friends="friends" v-if="activelink==4"></app-friends>
@@ -176,6 +176,13 @@ export default{
            this.addflag=true;     
            this.$store.dispatch("groupfollow",this.groupsall[id]);
            this.groups=this.$store.getters.groupsUser; 
+        },
+        addmsg() {
+           this.alert.header = "Message send";
+           this.alert.body =  "You sent message user";
+           this.alert.status = "Success send";   
+           this.addflag=true;
+           this.messages=this.$store.getters.messages;
         }   
    },
    components: {

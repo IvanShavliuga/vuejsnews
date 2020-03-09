@@ -411,7 +411,7 @@ export default new Vuex.Store({
     getters: {
         users: state => {return state.users},
         loginid: state => {return state.userloginid},
-        messages: state => {return state.messages.filter((m)=>{return m.to==state.userloginid})},
+        messages: state => {return state.messages.filter((m)=>{return m.to==state.userloginid||m.from==state.userloginid})},
         cards: state => {return state.cards},
         personalcards: state => {return state.cards.filter((c)=>{return c.userId === state.userloginid})},
         personalposts: state => {
@@ -508,6 +508,9 @@ export default new Vuex.Store({
         },
         editcard({commit},card) {
             commit("EDITCARD",card);        
+        },
+        addmessage({commit}, msg) {
+            commit("ADDMESSAGE",msg);        
         }   
     },
     mutations: {
@@ -563,6 +566,10 @@ export default new Vuex.Store({
         },
         "EDITCARD" (state, card) {
            state.cards[card.id]=card;       
+        },
+        "ADDMESSAGE" (state, msg) {
+        	  msg.id = state.messages.length;
+           state.messages.push(msg);        
         }        
            
     }

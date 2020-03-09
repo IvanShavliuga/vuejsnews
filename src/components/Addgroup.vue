@@ -19,7 +19,12 @@
 <style lang="scss">
 .addpost {
    max-width:35rem!important;
-   
+   .card-footer{
+     margin-top:35px!important;   
+     button {
+        margin-top:15px!important;     
+     }
+   }
 }
 </style>
 <script>

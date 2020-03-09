@@ -7,12 +7,18 @@
     :key="km" 
     :class="m.read?'read':'unread'"
   >
-  <tr  class="msg__title"><td><input type="checkbox" @click="readmess(km)" class="check">{{m.type==="system"?"system":users[m.from].login}}</td><td @click="showmess(km)">{{m.title}}</td></tr>
+  <tr class="msg__title">
+      <td><input type="checkbox" @click="readmess(km)" class="check">
+      <span :style="m.to?'color:red':'color:purple'">{{m.to==userloginid?'inbox':'outbox'}}</span>
+      <span @click="showmess(km)"> {{m.type==="system"?"system":users[m.from].login}}</span></td>
+      <td @click="showmess(km)">{{m.title}}</td>
+  </tr>
   <tr v-show="m.show" class="msg__body"><td colspan=3 :style="(m.read)?'font-weight:normal':'font-weight:bold'">{{m.body}}</td></tr>
   <tr v-if="m.show&&m.type==='user-add'&&!addfriendflag" class="msg__body"><td colspan=3><button class="btn btn-success" @click="addfriend(m.from)">Add friend</button></td></tr>
   <tr v-if="m.show&&m.type==='group-add'&&!addgroupflag" class="msg__body"><td colspan=3><button class="btn btn-success" @click="addgroup(m.groupId)">Follow</button></td></tr>
   </tbody>
 </table></p> 
+<app-addmessage :friends="friends" :userloginid="userloginid" @addmessage="addmsg"></app-addmessage>
 </section>
 </template>
 <style lang="scss">
@@ -24,6 +30,8 @@
   }
 </style>
 <script>
+import Addmessage from './Addmessage.vue';
+
 export default {
    props: {
      messages:{
@@ -33,6 +41,14 @@ export default {
      users: {
        type: Array,
        required: true      
+     },
+     friends: {
+       type: Array,
+       required: true     
+     },
+     userloginid: {
+       type: Number,
+       required: true     
      }   
    },
    data() {
@@ -55,7 +71,13 @@ export default {
      addgroup(id){
         this.$emit("addgroup",id);
         this.addgroupflag=true;      
+     },
+     addmsg() {
+        this.$emit("addmessage");     
      }
+   },
+   components:{
+     appAddmessage: Addmessage   
    }
 }
 </script>  
