@@ -1,6 +1,6 @@
 <template>
 <div>
-     <app-alert :alert="alert"></app-alert>
+     <app-alert :alert="alert" @close="closealert" v-if="alertflag"></app-alert>
      <app-cards :cards="cards" :index=index></app-cards>
      <app-news :posts="posts" :users="users" :loginid="loginid" :admingroups="admingroups" :groups="groups"></app-news>
 </div>
@@ -18,6 +18,7 @@ data() {
               posts:[],
               cards:[],
               alert:{},
+              alertflag:true,
               users:[],
               groups:[], 
               admingroups:[],
@@ -29,6 +30,11 @@ data() {
          appNews: News,
          appCards: Cards,
          appAlert: Alert     
+     },
+     methods: {
+         closealert(){
+            this.alertflag=false;
+         }
      },
      created() {       
          this.posts = this.$store.getters.postsAll;
