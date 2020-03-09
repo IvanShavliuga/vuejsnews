@@ -173,6 +173,7 @@ export default new Vuex.Store({
             title:"success registration",
             to:0,
             from:-1,
+            groupId:-1,
             body:"You have successfully registered for the website vuejsnews.com. Terms of use and licensing agreement here. Please fill out your profile and Sub be to the news columns of your choice.",
             read:false,
             show:false
@@ -181,8 +182,19 @@ export default new Vuex.Store({
             id:1,
             from:6,
             to:0,
+            groupId:-1,
             title:"User Angel application add to friends",
             body:"Please add my contact as a friend",
+            read:false,
+            show:false
+        },{
+            type:"group-add",
+            id:2,
+            from:1,
+            to:0,
+            groupId:3,
+            title:"The user sent an invitation to join the group",
+            body:"Please subscribe to my group",
             read:false,
             show:false
         }], //messages
@@ -327,7 +339,7 @@ export default new Vuex.Store({
              category: "study",
              id:0,
              idAdmin:0,
-             idNews:[0],
+             idNews:[0,5],
              followers:[0,1]        
         },{
              name: "Angular.js",

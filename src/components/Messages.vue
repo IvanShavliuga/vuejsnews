@@ -10,6 +10,7 @@
   <tr  class="msg__title"><td><input type="checkbox" @click="readmess(km)" class="check">{{m.type==="system"?"system":users[m.from].login}}</td><td @click="showmess(km)">{{m.title}}</td></tr>
   <tr v-show="m.show" class="msg__body"><td colspan=3 :style="(m.read)?'font-weight:normal':'font-weight:bold'">{{m.body}}</td></tr>
   <tr v-if="m.show&&m.type==='user-add'&&!addfriendflag" class="msg__body"><td colspan=3><button class="btn btn-success" @click="addfriend(m.from)">Add friend</button></td></tr>
+  <tr v-if="m.show&&m.type==='group-add'&&!addgroupflag" class="msg__body"><td colspan=3><button class="btn btn-success" @click="addgroup(m.groupId)">Follow</button></td></tr>
   </tbody>
 </table></p> 
 </section>
@@ -36,7 +37,8 @@ export default {
    },
    data() {
      return {
-        addfriendflag:false       
+        addfriendflag:false,
+        addgroupflag:false       
      } 
    },
    methods: {
@@ -49,6 +51,10 @@ export default {
      addfriend(id){
         this.$emit("addfriend",id);
         this.addfriendflag=true;      
+     },
+     addgroup(id){
+        this.$emit("addgroup",id);
+        this.addgroupflag=true;      
      }
    }
 }

@@ -13,7 +13,7 @@
 </nav>
  <app-alert v-if="addflag" :alert="alert" @close="closealert"></app-alert>
  <app-infouser v-if="activelink==0" :user="user"></app-infouser>
- <app-messages v-if="activelink==1" :messages="messages" :users="users" @addfriend="addfriend"></app-messages> 
+ <app-messages v-if="activelink==1" :messages="messages" :users="users" @addfriend="addfriend" @addgroup="follow"></app-messages> 
  <app-news :posts="posts" v-if="activelink==2" :users="users" :loginid="loginid" :admingroups="admingroups" :groups="groups"></app-news>
  <app-groups :groups="groups" :loginid="loginid" v-if="activelink==3"></app-groups>
  <app-friends :friends="friends" v-if="activelink==4"></app-friends>
@@ -115,6 +115,7 @@ export default{
             reposts:[],
             friends:[],
             groups:[],
+            groupsall:[],
             personalposts:[],
             personalcards:[],
             admingroups:[],
@@ -132,6 +133,7 @@ export default{
            this.addflag=true;
            this.posts=this.$store.getters.postsUser;     
            this.groups=this.$store.getters.groupsUser; 
+           this.groupsall=this.$store.getters.groups;
            this.personalposts=this.$store.getters.personalposts;
            this.alert.header = "Add post";
            this.alert.body =  "This post added";
@@ -166,6 +168,14 @@ export default{
            this.alert.body =  "This user add to friend";
            this.alert.status = "Success added";   
            this.addflag=true;        
+        },
+        follow(id) {
+           this.alert.header = "Subscribe group";
+           this.alert.body =  "This group subscribe";
+           this.alert.status = "Success subscribe";   
+           this.addflag=true;     
+           this.$store.dispatch("groupfollow",this.groupsall[id]);
+           this.groups=this.$store.getters.groupsUser; 
         }   
    },
    components: {
@@ -193,6 +203,7 @@ export default{
         this.admingroups = this.$store.getters.groupsAdmin;
         this.personalposts= this.$store.getters.personalposts; 
         this.personalcards= this.$store.getters.personalcards;
+        this.groupsall=this.$store.getters.groups;
    }
 }
 
