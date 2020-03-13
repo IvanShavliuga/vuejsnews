@@ -15,7 +15,7 @@
   </div>
   </form>
    </div>
-   <app-cards :cards="personalcards" @cardclick="cc"></app-cards>
+   <app-cards :cards="personalcards" @cardclick="cardclick"></app-cards>
 </section>
 </template>
 <script>
@@ -41,7 +41,7 @@ export default {
         }    
     },
     methods: {
-        cc(index){
+        cardclick(index){
             console.log("CARDUSER: "+index);
             this.index=index;
             this.cardcheck=true;

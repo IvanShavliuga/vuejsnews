@@ -5,13 +5,17 @@
   <div class="card-body">
   <h6 class="card-title"> 
   <span class='text-primary'>
-  <i class="fa fa-user"></i>{{user.login}} {{post.date}} {{post.time}}</span></h6>
+  <i class="fa fa-user"></i>{{users[post.userId].login}} {{post.date}} {{post.time}}</span></h6>
   <p class="card-text">{{post.desc}}</p></div>
   <div class="card-footer text-primary">
-  <span><i class="fa fa-thumbs-up" @click="like(post)"></i>{{post.like.length}}</span> 
+  <p><span><i class="fa fa-thumbs-up" @click="like(post)"></i>{{post.like.length}}</span> 
   <span><i class="fa fa-retweet" @click="repost(post)"></i>{{post.repost.length}}</span> 
   <span><i class="fa fa-eye"></i>{{post.views.length}}</span> 
-  <span>{{post.groupId>=0?groups[post.groupId].name:'Personal post'}}</span><br>
+  <span>{{post.groupId>=0?groups[post.groupId].name:'Personal post'}}</span>
+  <span>Comments: {{post.comments.length}}</span><br></p>
+  <p v-if="post.comments.length" >
+  <p v-for="(c,k) in post.comments" class="comments" ><b>{{users[comments[c].userId].login}}</b><br>
+  {{comments[c].text}}</p></p>
   <span v-if="post.userId===loginid"><button class="btn btn-success" @click="editpost=true">Edit</button></span>
   <hr>
   <i class="fa fa-tags"></i>
@@ -53,12 +57,12 @@
       span:hover {
           color:red;      
       }
-      /*.debug{
+      .debug{
           cursor:pointer;
           color:red;
           font-weight:bold;      
       }
-      pre {
+      .comments {
           background:#ccc; 
           line-height:14px; 
           font-size:10px; 
@@ -67,7 +71,8 @@
           margin: 5px; 
           b{
              font-size:10px;
-             line-height:14px;          
+             line-height:14px;
+             color:#a5a;          
           }   
           .pre-header {
              color: red;
@@ -75,7 +80,7 @@
              text-align: center;
              text-decoration:underline;           
           }
-      }*/
+      }
     }
     &-body {
        span {
@@ -99,8 +104,8 @@ export default {
            type: Object,
            required: true     
        },
-       user: {
-           type: Object,
+       users: {
+           type: Array,
            required: true        
        },
        loginid: {
@@ -114,8 +119,11 @@ export default {
        groups: {
          type:Array,
          required: true       
-       } 
-       
+       }, 
+       comments:{
+           type:Array,
+           required: true        
+       }
     },
     data() {
        return {

@@ -2,7 +2,7 @@
 <div>
      <app-alert :alert="alert" @close="closealert" v-if="alertflag"></app-alert>
      <app-cards :cards="cards" :index=index></app-cards>
-     <app-news :posts="posts" :users="users" :loginid="loginid" :admingroups="admingroups" :groups="groups"></app-news>
+     <app-news :posts="posts" :users="users" :loginid="loginid" :admingroups="admingroups" :groups="groups" :comments="comments"></app-news>
 </div>
 </template>
 <script>
@@ -22,6 +22,7 @@ data() {
               users:[],
               groups:[], 
               admingroups:[],
+              comments:[],
               loginid:0,
               index:0  
          } 
@@ -43,6 +44,7 @@ data() {
          this.alert = this.$store.getters.alert;
          this.admingroups=this.$store.getters.groupsAdmin;
          this.groups = this.$store.getters.groups;
+         this.comments = this.$store.getters.comments;
      }   
  }
 </script>

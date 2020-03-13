@@ -3,9 +3,10 @@
 <div class="row">
    <app-post v-for="(n,k) in posts" 
              :post="n" :key="k" 
-             :user="users[n.userId]" 
+             :users="users" 
              :loginid="loginid" 
              :admingroups="admingroups"
+             :comments="comments"
              :groups="groups">
    </app-post>
 </div>
@@ -41,7 +42,11 @@ export default {
         groups: {
             type: Array,
             required:true        
-        }     
+        },
+      comments:{
+          type:Array,
+          required:true      
+      }     
    },
     components: {
         appPost: Post    
