@@ -60,7 +60,7 @@
  <app-feeduser 
       :posts="personalposts" 
       :loginid="loginid" 
-      :user="user" 
+      :users="users" 
       v-if="activelink==5" 
       :admingroups="admingroups" 
       :groups="groups"
