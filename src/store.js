@@ -537,6 +537,9 @@ export default new Vuex.Store({
         },
         addmessage({commit}, msg) {
             commit("ADDMESSAGE",msg);        
+        },
+        addcomment({commit}, com) {
+        	   commit("ADDCOMMENT",com);
         }   
     },
     mutations: {
@@ -596,6 +599,13 @@ export default new Vuex.Store({
         "ADDMESSAGE" (state, msg) {
         	  msg.id = state.messages.length;
            state.messages.push(msg);        
+        },
+        "ADDCOMMENT" (state, com) {
+        	  let idcom = state.comments.length;
+        	  let comment= com;
+        	  comment.id=idcom;
+           state.posts[com.postId].comments.push(idcom);
+           state.comments.push(comment);         
         }        
            
     }

@@ -4,19 +4,24 @@
   <div class="card-header">{{post.title}}</div>
   <div class="card-body">
   <h6 class="card-title"> 
-  <span class='text-primary'>
-  <i class="fa fa-user"></i>{{users[post.userId].login}} {{post.date}} {{post.time}}</span></h6>
+  <span class='text-primary user-data' title="author">
+  <i class="fa fa-user" ></i>{{users[post.userId].login}} {{post.date}} {{post.time}}</span>
+  <span v-if="post.userId===loginid"  @click="editpost=true" class="text-success user-data" title="Edit your post"> 
+  <i class="fa fa-pencil"></i> Edit</span>
+  <span v-else title="You repost" class="text-success user-data">repost</span></h6>
   <p class="card-text">{{post.desc}}</p></div>
   <div class="card-footer text-primary">
-  <p><span><i class="fa fa-thumbs-up" @click="like(post)"></i>{{post.like.length}}</span> 
-  <span><i class="fa fa-retweet" @click="repost(post)"></i>{{post.repost.length}}</span> 
-  <span><i class="fa fa-eye"></i>{{post.views.length}}</span> 
-  <span>{{post.groupId>=0?groups[post.groupId].name:'Personal post'}}</span>
-  <span>Comments: {{post.comments.length}}</span><br></p>
+  <p><span title="likes"><i class="fa fa-thumbs-up" @click="like(post)"></i>{{post.like.length}}</span> 
+  <span title="reposts"><i class="fa fa-retweet" @click="repost(post)"></i>{{post.repost.length}}</span> 
+  <span title="views"><i class="fa fa-eye"></i>{{post.views.length}}</span> 
+  <span title="comments"><i class="fa fa-comments"></i>{{post.comments.length}}</span><br>
+  <span title="group"><i class="fa fa-users"></i> {{post.groupId>=0?groups[post.groupId].name:'Personal post'}}</span></p>
   <p v-if="post.comments.length" >
   <p v-for="(c,k) in post.comments" class="comments" ><b>{{users[comments[c].userId].login}}</b><br>
   {{comments[c].text}}</p></p>
-  <span v-if="post.userId===loginid"><button class="btn btn-success" @click="editpost=true">Edit</button></span>
+  
+  <textarea v-model="comment" placeholder="Your comment"></textarea> 
+  <button @click="addcomment" class="btn btn-primary">Comment</button>
   <hr>
   <i class="fa fa-tags"></i>
   <span v-for="(c,kc) in post.cat" :key="kc">{{c+" "}}</span><br>
@@ -92,6 +97,10 @@
        span:hover {
           color:red;      
       } 
+      .user-data{
+          font-size:14px;  
+          cursor: pointer;    
+      }
     }
   }
   
@@ -128,7 +137,8 @@ export default {
     data() {
        return {
            predisplay:false,
-           editpost:false       
+           editpost:false,
+           comment:''       
        }
     },
     methods:{            
@@ -141,6 +151,14 @@ export default {
         editpostfun(){
            this.$store.dispatch("editpost",this.post)
            this.editpost=false;        
+        },
+        addcomment() {
+           let dcm = {
+              text:this.comment,
+              postId:this.post.id,
+              userId:this.loginid,           
+           }
+           this.$store.dispatch("addcomment",dcm);        
         }
     },
     components:{

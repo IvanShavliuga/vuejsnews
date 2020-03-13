@@ -4,10 +4,11 @@
    <app-post v-for="(n,k) in posts" 
          :post="n" 
          :key="k" 
-         :user="user" 
+         :users="users" 
          :loginid="loginid" 
          :admingroups="admingroups" 
-         :groups="groups">
+         :groups="groups"
+         :comments="comments">
    </app-post>
 </div>
 </div>
@@ -20,8 +21,8 @@ export default  {
            type: Array,
            required: true        
         },
-        user: {
-            type: Object,
+        users: {
+            type: Array,
             required: true
         },
         loginid: {
@@ -34,6 +35,10 @@ export default  {
         },
         groups: {
             type: Array,
+            required:true        
+        },
+        comments: {
+            type:Array,
             required:true        
         }     
     },
