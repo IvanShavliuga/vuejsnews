@@ -224,6 +224,7 @@ export default new Vuex.Store({
              desc: 'Vue.js is modern framework. This modern framework comes from China and is already gaining popularity. It is easy to learn and suitable for beginners.',
              like:[1,2,3],
              repost:[1,2,3],
+             comments:[],
              views:[1,2,3],
              cat:["Study", "Vue.js", "Frontend"],
              type:"post",
@@ -237,6 +238,7 @@ export default new Vuex.Store({
              title: 'I am learn angular', 
              desc: 'Angular is popular framework. This framework is used by large banks and online stores. At one time it was actively promoted by google. Angular-developers receive consistently high salaries',
              like:[1,2,3],
+             comments:[],
              repost:[1,2,3],
              views:[1,2,3],
              cat:["Study", "Angular", "Frontend", "TypeScript"],
@@ -253,6 +255,7 @@ export default new Vuex.Store({
              like:[1,2,3],
              repost:[1,2,3],
              views:[1,2,3],
+             comments:[],
              cat:["Study", "JavaScript", "Frontend"],
              type:"post",
              likeclick:false 
@@ -266,6 +269,7 @@ export default new Vuex.Store({
              desc: 'My dream has finally come true. When I was at University, I wanted to install Linux Mandriva. But then it was not possible, the iron was weak and unsuitable. But now I have a Russian Mandriva (for Linux Rosa)',
              like:[1,6],
              repost:[1,6],
+             comments:[1],
              views:[1,2,3,6],
              cat:["Work", "Linux"],
              type:"post",
@@ -279,6 +283,7 @@ export default new Vuex.Store({
              title: 'First typescript app', 
              desc: 'Developed the first full-fledged typescript application. The project has already passed preliminary testing and will be published in a week',
              like:[0,1,2,3],
+             comments:[],
              repost:[0,2],
              views:[0,1,2,3,6],
              cat:["Work", "Angular","TypeScript"],
@@ -289,6 +294,7 @@ export default new Vuex.Store({
              id: 5,
              userId:0,
              groupId:0,
+             comments:[2],
              date:"29.02.2020",
              time:"11:00", 
              title: 'First vue.js app', 
@@ -309,6 +315,7 @@ export default new Vuex.Store({
              desc:"I started studying Python and have already written my first neural network that determines who is depicted in the photo.",
              repost:[3,5],
              like:[3,5],
+             coments:[],
              views:[0,1,2,3,4,5,6],
              cat:["Work", "Python"],
              type:"post",
@@ -324,9 +331,27 @@ export default new Vuex.Store({
               repost:[1,2],
              like:[1,5],
              views:[0,1,2],
+             comments:[0],
              cat:["Work", "Node.js","Study"],
              type:"post",
              likeclick:false     
+        }],
+        comments:[{
+        	    id:0,
+        	    userId:0,
+        	    postId:7,
+        	    text:"It`s cool. Good work"
+        },{
+        	    id:1,
+        	    userId:6,
+             postId:3,
+             text:"It`s cool."        	    
+        	    
+        },{
+        	    id:2,
+        	    userId:1,
+        	    postId:5,
+        	    text:"Good work. Liked it"
         }],
         alert: {
              header: "Test",
@@ -482,7 +507,8 @@ export default new Vuex.Store({
                      rps.push(state.posts[i]);                     
             }  
             return rps;      
-        }     
+        },
+        comments:state => {return state.comments}     
     },
     actions: {
         likepost({commit}, post) {

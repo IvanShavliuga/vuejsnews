@@ -1,26 +1,85 @@
 <template>
  <div class="profile">
  <nav class="nav">
-  <a :class="['nav-link',(activelink==0)?'active':'']" href="#" @click="activelink=0"> Profile</a>
-  <a :class="['nav-link',(activelink==1)?'active':'']" href="#" @click="activelink=1">Messages <span class="badge badge-success">{{messages.length}}</span></a>
-  <a :class="['nav-link',(activelink==2)?'active':'']" href="#" @click="activelink=2">Posts <span class="badge badge-success">{{posts.length}}</span></a>
-  <a :class="['nav-link',(activelink==3)?'active':'']" href="#" @click="activelink=3">Groups <span class="badge badge-success">{{groups.length}}</span></a>
-  <a :class="['nav-link',(activelink==4)?'active':'']" href="#" @click="activelink=4">Friends <span class="badge badge-success">{{friends.length}}</span></a>
-  <a :class="['nav-link',(activelink==5)?'active':'']" href="#" @click="activelink=5">Personal posts <span class="badge badge-success">{{personalposts.length}}</span></a>  
-  <a :class="['nav-link',(activelink==6)?'active':'']" href="#" @click="activelink=6">Add post</a>
-  <a :class="['nav-link',(activelink==7)?'active':'']" href="#" @click="activelink=7">Add group</a>
-  <a :class="['nav-link',(activelink==8)?'active':'']" href="#" @click="activelink=8">You cards <span class="badge badge-success">{{personalcards.length}}</span></a>
+  <a :class="['nav-link',(activelink==0)?'active':'']" href="#" @click="activelink=0"> 
+     Profile</a>
+  <a :class="['nav-link',(activelink==1)?'active':'']" href="#" @click="activelink=1">
+     Messages <span class="badge badge-success">{{messages.length}}</span></a>
+  <a :class="['nav-link',(activelink==2)?'active':'']" href="#" @click="activelink=2">
+     Posts <span class="badge badge-success">{{posts.length}}</span></a>
+  <a :class="['nav-link',(activelink==3)?'active':'']" href="#" @click="activelink=3">
+     Groups <span class="badge badge-success">{{groups.length}}</span></a>
+  <a :class="['nav-link',(activelink==4)?'active':'']" href="#" @click="activelink=4">
+     Friends <span class="badge badge-success">{{friends.length}}</span></a>
+  <a :class="['nav-link',(activelink==5)?'active':'']" href="#" @click="activelink=5">
+     Personal posts <span class="badge badge-success">{{personalposts.length}}</span></a>  
+  <a :class="['nav-link',(activelink==6)?'active':'']" href="#" @click="activelink=6">
+     Add post</a>
+  <a :class="['nav-link',(activelink==7)?'active':'']" href="#" @click="activelink=7">
+     Add group</a>
+  <a :class="['nav-link',(activelink==8)?'active':'']" href="#" @click="activelink=8">
+     You cards <span class="badge badge-success">{{personalcards.length}}</span></a>
 </nav>
- <app-alert v-if="addflag" :alert="alert" @close="closealert"></app-alert>
- <app-infouser v-if="activelink==0" :user="user"></app-infouser>
- <app-messages v-if="activelink==1" :messages="messages" :users="users" @addfriend="addfriend" @addgroup="follow" @addmessage="addmsg" :friends="friends" :userloginid="loginid"></app-messages> 
- <app-news :posts="posts" v-if="activelink==2" :users="users" :loginid="loginid" :admingroups="admingroups" :groups="groups"></app-news>
- <app-groups :groups="groups" :loginid="loginid" v-if="activelink==3"></app-groups>
- <app-friends :friends="friends" v-if="activelink==4"></app-friends>
- <app-feeduser :posts="personalposts" :loginid="loginid" :user="user" v-if="activelink==5" :admingroups="admingroups" :groups="groups"></app-feeduser>
- <app-addpost v-if="activelink==6" @add="addpost" :admingroups="admingroups"></app-addpost> 
- <app-addgroup v-if="activelink==7" @add="addgroup"></app-addgroup>
- <app-cardsuser v-if="activelink==8" :personalcards="personalcards" @edit="editcard"></app-cardsuser>
+ <app-alert 
+      v-if="addflag" 
+      :alert="alert" 
+      @close="closealert">
+ </app-alert>
+ <app-infouser      
+      v-if="activelink==0" 
+      :user="user">
+ </app-infouser>
+ <app-messages 
+      v-if="activelink==1" 
+      :messages="messages" 
+      :users="users" 
+      @addfriend="addfriend" 
+      @addgroup="follow" 
+      @addmessage="addmsg" 
+      :friends="friends" 
+      :userloginid="loginid">
+ </app-messages> 
+ <app-news 
+      :posts="posts" 
+      v-if="activelink==2" 
+      :users="users" 
+      :loginid="loginid" 
+      :admingroups="admingroups" 
+      :groups="groups"
+      :comments="comments">
+ </app-news>
+ <app-groups 
+      :groups="groups" 
+      :loginid="loginid" 
+      v-if="activelink==3">
+ </app-groups>
+ <app-friends 
+      :friends="friends" 
+      v-if="activelink==4">
+ </app-friends>
+ <app-feeduser 
+      :posts="personalposts" 
+      :loginid="loginid" 
+      :user="user" 
+      v-if="activelink==5" 
+      :admingroups="admingroups" 
+      :groups="groups"
+      :comments="comments">
+ </app-feeduser>
+ <app-addpost 
+      v-if="activelink==6" 
+      @add="addpost" 
+      :admingroups="admingroups">
+ </app-addpost> 
+ <app-addgroup 
+      v-if="activelink==7" 
+      @add="addgroup">
+ </app-addgroup>
+ <app-cardsuser 
+      v-if="activelink==8" 
+      :personalcards="personalcards" 
+      @edit="editcard">
+ </app-cardsuser>
 </div> 
 </template>
 <style lang="scss">
@@ -30,8 +89,7 @@
     padding: 10px;
     .nav {
        border:1px solid #0dd;
-       background:#ddeeee;
-       
+       background:#ddeeee;     
        &-link {
           margin-right: -20px;  
           outline: none;   
@@ -119,6 +177,7 @@ export default{
             personalposts:[],
             personalcards:[],
             admingroups:[],
+            comments:[],
             activelink:2,
             loginid:0,
             addflag:false,
@@ -210,10 +269,9 @@ export default{
         this.admingroups = this.$store.getters.groupsAdmin;
         this.personalposts= this.$store.getters.personalposts; 
         this.personalcards= this.$store.getters.personalcards;
+        this.comments=this.$store.getters.comments;
         this.groupsall=this.$store.getters.groups;
    }
 }
-
-
  </script> 
 
