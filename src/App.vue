@@ -8,7 +8,9 @@
      <app-footer></app-footer>
     </div>
     <div v-else class="userlogin">
-       <app-signin :users="users" @signin="signinfun"></app-signin>
+       <app-signin :users="users" @signin="signinfun" v-if="!registration"></app-signin>
+       <app-signup @signup="signupfun" :users="users" v-else></app-signup>
+       <p class="signlink" @click="registration=!registration">{{(!registration)?'Sign up':'sign in'}}</p>
     </div>
   </div>
 </template>
@@ -24,30 +26,37 @@
   .userlogin {
      margin:0;
      padding:0;
-     height:100%;  
+     height:100%;
+     text-align:center;  
   }
   .content{
      padding: 15px;
      background: #eee;
+  }
+  .signlink{
+     color:#fff;  
   }
 </style>
 <script>
   import Header from './components/Header.vue';
   import Signin from './components/Signin.vue';
   import Footer from './components/Footer.vue';
-  import {eventBus} from './main';
+  import Signup from './components/Signup.vue';
+
 
   export default {
      data() {
          return {
               title: "iv2news",
               userlogin: false,
+              registration:false,
               users:[]         
          } 
      },
      components:{
          appHeader: Header,
          appSignin: Signin,
+         appSignup: Signup,
          appFooter: Footer   
      },
      created() {
@@ -59,7 +68,14 @@
                 this.$store.dispatch("signin",rd.user);
                 this.userlogin=true;             
              }
-         }     
+         },
+         signupfun(rd) {
+             if(!rd.error) {
+                console.log("rd.user "+rd.user)
+                this.$store.dispatch("signup",rd.user);
+                this.userlogin=true;             
+             }
+         }        
      }   
   }
 
