@@ -435,7 +435,7 @@ export default new Vuex.Store({
     },
     getters: {
         users: state => {return state.users},
-        loginid: state => {return state.userloginid},
+        loginid: state =>{return state.userloginid},
         messages: state => {return state.messages.filter((m)=>{return m.to==state.userloginid||m.from==state.userloginid})},
         cards: state => {return state.cards},
         personalcards: state => {return state.cards.filter((c)=>{return c.userId === state.userloginid})},
@@ -447,7 +447,9 @@ export default new Vuex.Store({
         	    for(let i=0; i<state.posts.length; i++) {
         	    	  let gi = state.posts[i].groupId;
         	    	  if(gi === -1){
-        	    	     pu.push(state.posts[i])
+        	    	  	  let frid = state.users[state.userloginid].friends.filter( (f) => {return f === state.userloginid});
+        	    	  	  if(frid[0]!==undefined)
+        	    	         pu.push(state.posts[i])
         	    	     continue;
         	    	  }
         	    	  let pf=false;                         	    	  
@@ -630,9 +632,21 @@ export default new Vuex.Store({
                    
         },
         "SIGNUP" (state,user) {
-        	  console.log("state (user): " + user)
+        	  console.log("state (user): " + user.id)
            state.users.push(user);
-           state.userloginid=user.id;        
+           state.userloginid=user.id;
+           let msg = {
+           	  type:"system",
+            id:state.messages.length,
+            title:"success registration, "+user.login,
+            to:user.id,
+            from:-1,
+            groupId:-1,
+            body:"userloginid: "+state.userloginid+" user.id: "+user.id+" user.login: "+user.login+"\nUser "+user.name+" success registration",           
+            read:false,
+            show:false 
+           };
+           state.messages.push(msg);        
         }        
            
     }

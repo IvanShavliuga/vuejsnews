@@ -15,7 +15,7 @@
   <span title="reposts"><i class="fa fa-retweet" @click="repost(post)"></i>{{post.repost.length}}</span> 
   <span title="views"><i class="fa fa-eye"></i>{{post.views.length}}</span> 
   <span title="comments"><i class="fa fa-comments"></i>{{post.comments.length}}</span><br>
-  <span title="group"><i class="fa fa-users"></i>{{post.groupId}} 
+  <span title="group"><i class="fa fa-users"></i>  
   {{checkgroup()}} </span></p>
   <p v-if="post.comments.length" >
   <p v-for="(c,k) in post.comments" class="comments" ><b>{{users[comments[c].userId].login}}</b><br>
@@ -58,7 +58,9 @@
     &-footer {
       span {
           padding-right: 6px; 
-               
+          i {
+            padding-right:4px;          
+          }     
       }  
       span:hover {
           color:red;      
