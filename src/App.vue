@@ -1,15 +1,20 @@
 <template>
   <div class="container">
+    <div v-if="userlogin">
      <app-header></app-header>
      <div class="content">
       <router-view></router-view>
      </div> 
      <app-footer></app-footer>
+    </div>
+    <div v-else class="userlogin">
+       <app-signin :users="users" @signin="signinfun"></app-signin>
+    </div>
   </div>
 </template>
 <style lang="scss">
   body, div.container{
-     background: #a0a!important;
+     background: #808!important;
   } 
   body,html {
      margin:0;
@@ -21,7 +26,7 @@
      padding:0;
      height:100%;  
   }
-  .content {
+  .content{
      padding: 15px;
      background: #eee;
   }
@@ -36,13 +41,25 @@
      data() {
          return {
               title: "iv2news",
-              userlogin: true         
+              userlogin: false,
+              users:[]         
          } 
      },
      components:{
          appHeader: Header,
          appSignin: Signin,
          appFooter: Footer   
+     },
+     created() {
+         this.users = this.$store.getters.users;              
+     },
+     methods:{
+         signinfun(rd) {
+             if(!rd.error) {
+                this.$store.dispatch("signin",rd.user);
+                this.userlogin=true;             
+             }
+         }     
      }   
   }
 

@@ -315,7 +315,7 @@ export default new Vuex.Store({
              desc:"I started studying Python and have already written my first neural network that determines who is depicted in the photo.",
              repost:[3,5],
              like:[3,5],
-             coments:[],
+             comments:[],
              views:[0,1,2,3,4,5,6],
              cat:["Work", "Python"],
              type:"post",
@@ -540,6 +540,9 @@ export default new Vuex.Store({
         },
         addcomment({commit}, com) {
         	   commit("ADDCOMMENT",com);
+        },
+        signin({commit},user){
+            commit("SIGNIN",user);          
         }   
     },
     mutations: {
@@ -606,6 +609,11 @@ export default new Vuex.Store({
         	  comment.id=idcom;
            state.posts[com.postId].comments.push(idcom);
            state.comments.push(comment);         
+        },
+        "SIGNIN" (state, user) {
+        	  console.log('user.id: ',user.id)
+           state.userloginid = user.id;
+                   
         }        
            
     }
