@@ -1,28 +1,22 @@
 <template>
 <form class="form-signin">
-  <div class="text-center mb-4">
-    <img class="mb-4" src="/docs/4.4/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
-    <h1 class="h3 mb-3 font-weight-normal">Floating labels</h1>
-    <p>Build form controls with floating labels via the <code>:placeholder-shown</code> pseudo-element. <a href="https://caniuse.com/#feat=css-placeholder-shown">Works in latest Chrome, Safari, and Firefox.</a></p>
-  </div>
-
-  <div class="form-label-group">
-    <input type="login" id="inputLogin" class="form-control" placeholder="Login" required autofocus v-model="login">
+  <div class="header__logo text-center">
+            <h1 class="header__logo__title"><span>N</span><span>e</span><span>w</span><span>s</span> 
+            <span>p</span><span>o</span><span>r</span><span>t</span><span>a</span><span>l</span></h1>
+  <p class="signparagraph">
+      Vue.js news portal
+  </p> 
+        </div>
+  <div class="form-label-group signelem">
     <label for="inputLogin">Login</label>
+    <input type="login" id="inputLogin" class="form-control" placeholder="Login" required autofocus v-model="login">
   </div>
 
-  <div class="form-label-group">
-    <input type="password" id="inputPassword" class="form-control" placeholder="Password" required v-model="password">
+  <div class="form-label-group signelem">
     <label for="inputPassword">Password</label>
+    <input type="password" id="inputPassword" class="form-control" placeholder="Password" required v-model="password">
   </div>
-
-  <div class="checkbox mb-3">
-    <label>
-      <input type="checkbox" value="remember-me"> Remember me
-    </label>
-  </div>
-  <button class="btn btn-lg btn-primary btn-block" @click.prevent="signinfun">Sign in</button>
-  <p class="mt-5 mb-3 text-muted text-center">&copy; 2020</p>
+  <button class="btn btn-lg btn-primary btn-block btn-sign" @click.prevent="signinfun">Sign in</button>
 </form>
 
 
@@ -36,7 +30,18 @@
         -ms-user-select: none;
         user-select: none;
       }
-
+      .signelem {
+         color:white;      
+      }
+      .signparagraph {
+         color:#e0e;      
+      }
+      .btn-sign {
+         margin-top: 25px;       
+      }
+      .form-signin {
+         margin-top: 60px!important;      
+      }
       @media (min-width: 768px) {
         .bd-placeholder-img-lg {
           font-size: 3.5rem;
