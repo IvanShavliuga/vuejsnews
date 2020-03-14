@@ -328,7 +328,7 @@ export default new Vuex.Store({
              time:"11:00", 
              title: 'First node.js', 
              desc:"I started learning node.js and wrote his first multi-user chat.",
-              repost:[1,2],
+             repost:[0,1],
              like:[1,5],
              views:[0,1,2],
              comments:[0],
@@ -396,7 +396,7 @@ export default new Vuex.Store({
              category: "study",
              id:4,
              idAdmin:2,
-             idNews:[],
+             idNews:[7],
              followers:[0,1,2]        
         },{
              name: "Ruby on rails",
@@ -480,11 +480,20 @@ export default new Vuex.Store({
         },
         groupsUser: state => {
            let grp = [];
+           let addcheck=false;
            for(let i=0; i<state.groups.length; i++) {
            	  let fl = state.groups[i].followers.filter((v)=>{return v===state.userloginid});
-           	  if(fl[0]!==undefined) { 
-                   grp.push(state.groups[i]);
+           	  if(state.groups[i].idAdmin===state.userloginid){
+                 grp.push(state.groups[i]);
+                 addcheck=true;
               }
+           	  if(fl[0]!==undefined&&addcheck!=true) { 
+                   grp.push(state.groups[i]);
+                   addcheck=true;
+              }
+          
+              
+              addcheck=false;   
            }   
            return grp;                               
         },
@@ -494,7 +503,8 @@ export default new Vuex.Store({
             for(let i=0; i<state.posts.length; i++) {
                  let r = state.posts[i].repost.filter((rid)=>{return rid===id});
                  if(r[0] !==undefined)
-                     rps.push(state.posts[i]);                     
+                     rps.push(state.posts[i]);  
+                                
             }  
             return rps;      
         },
