@@ -553,7 +553,11 @@ export default new Vuex.Store({
         },
         signin({commit},user){
             commit("SIGNIN",user);          
-        }   
+        },
+        signup({commit},user){
+            commit("SIGNUP",user);        
+        }
+           
     },
     mutations: {
         "LIKEPOST" (state,post) {
@@ -624,6 +628,11 @@ export default new Vuex.Store({
         	  console.log('user.id: ',user.id)
            state.userloginid = user.id;
                    
+        },
+        "SIGNUP" (state,user) {
+        	  console.log("state (user): " + user)
+           state.users.push(user);
+           state.userloginid=user.id;        
         }        
            
     }

@@ -11,8 +11,7 @@
     <label for="inputLogin">Login</label>
     <input type="login" id="inputLogin" class="form-control" placeholder="Login" required autofocus v-model="login">
   </div>
-
-  <div class="form-label-group signelem">
+ <div class="form-label-group signelem">
     <label for="inputPassword">Password</label>
     <input type="password" id="inputPassword" class="form-control" placeholder="Password" required v-model="password">
   </div>
@@ -59,6 +58,7 @@ export default {
        return {
            login:'',
            password:'',
+           phone:'',
            regdata: {
               status:'',
               error:false,
