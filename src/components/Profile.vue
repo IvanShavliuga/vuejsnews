@@ -271,6 +271,7 @@ export default{
         this.personalcards= this.$store.getters.personalcards;
         this.comments=this.$store.getters.comments;
         this.groupsall=this.$store.getters.groups;
+        console.log("user login id: "+this.loginid)
    }
 }
  </script> 

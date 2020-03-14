@@ -15,7 +15,8 @@
   <span title="reposts"><i class="fa fa-retweet" @click="repost(post)"></i>{{post.repost.length}}</span> 
   <span title="views"><i class="fa fa-eye"></i>{{post.views.length}}</span> 
   <span title="comments"><i class="fa fa-comments"></i>{{post.comments.length}}</span><br>
-  <span title="group"><i class="fa fa-users"></i> {{post.groupId>=0?groups[post.groupId].name:'Personal post'}}</span></p>
+  <span title="group"><i class="fa fa-users"></i>{{post.groupId}} 
+  {{checkgroup()}} </span></p>
   <p v-if="post.comments.length" >
   <p v-for="(c,k) in post.comments" class="comments" ><b>{{users[comments[c].userId].login}}</b><br>
   {{comments[c].text}}</p></p>
@@ -159,10 +160,18 @@ export default {
               userId:this.loginid,           
            }
            this.$store.dispatch("addcomment",dcm);        
+        },
+        checkgroup(){
+           console.log("group: "+this.groups[this.post.groupId]);
+           return (this.post.groupId!=-1&&this.groups[this.post.groupId]!=undefined)?(this.groups[this.post.groupId].name):('Personal post')
         }
     },
     components:{
         appEditpost: Editpost
+    },
+    created() {
+        console.log("post.id "+this.post.id);   
+        console.log("post.groupId "+this.post.groupId);  
     }    
 }
 </script>
