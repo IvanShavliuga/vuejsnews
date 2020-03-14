@@ -15,9 +15,9 @@
   </tr>
   <tr v-show="m.show" class="msg__body">
       <td colspan=3 :style="(m.read)?'font-weight:normal':'font-weight:bold'">{{m.body}}</td></tr>
-  <tr v-if="m.show&&m.type==='user-add'&&!addfriendflag" class="msg__body">
+  <tr v-if="m.show&&m.type==='user-add'&&!addfriendflag&&m.to==userloginid" class="msg__body">
       <td colspan=3><button class="btn btn-success" @click="addfriend(m.from)">Add friend</button></td></tr>
-  <tr v-if="m.show&&m.type==='group-add'&&!addgroupflag" class="msg__body">
+  <tr v-if="m.show&&m.type==='group-add'&&!addgroupflag&&m.to==userloginid" class="msg__body">
       <td colspan=3><button class="btn btn-success" @click="addgroup(m.groupId)">Follow</button></td></tr>
   </tbody>
 </table></p> 

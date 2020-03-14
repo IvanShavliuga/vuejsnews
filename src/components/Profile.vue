@@ -45,7 +45,7 @@
       :users="users" 
       :loginid="loginid" 
       :admingroups="admingroups" 
-      :groups="groups"
+      :groups="groupsall"
       :comments="comments">
  </app-news>
  <app-groups 
@@ -63,7 +63,7 @@
       :users="users" 
       v-if="activelink==5" 
       :admingroups="admingroups" 
-      :groups="groups"
+      :groups="groupsall"
       :comments="comments">
  </app-feeduser>
  <app-addpost 
@@ -271,7 +271,7 @@ export default{
         this.personalcards= this.$store.getters.personalcards;
         this.comments=this.$store.getters.comments;
         this.groupsall=this.$store.getters.groups;
-        console.log("user login id: "+this.loginid)
+        
    }
 }
  </script> 

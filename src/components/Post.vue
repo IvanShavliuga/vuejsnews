@@ -162,14 +162,20 @@ export default {
            this.$store.dispatch("addcomment",dcm);        
         },
         checkgroup(){
-           console.log("group: "+this.groups[this.post.groupId]);
-           return (this.post.groupId!=-1&&this.groups[this.post.groupId]!=undefined)?(this.groups[this.post.groupId].name):('Personal post')
+          
+           if(this.post.groupId===-1)
+               return "Personal post";
+           else if(this.post.groupId >= this.groups.length)
+               return "Undefined error";
+           else if(this.post.groupId>=0)
+               return this.groups[this.post.groupId].name
+           
         }
     },
     components:{
         appEditpost: Editpost
     },
-    created() {
+    updated() {
         console.log("post.id "+this.post.id);   
         console.log("post.groupId "+this.post.groupId);  
     }    
