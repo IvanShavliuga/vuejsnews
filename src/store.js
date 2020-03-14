@@ -448,7 +448,8 @@ export default new Vuex.Store({
         	    	  let gi = state.posts[i].groupId;
         	    	  if(gi === -1){
         	    	  	  let frid = state.users[state.userloginid].friends.filter( (f) => {return f === state.userloginid});
-        	    	  	  if(frid[0]!==undefined)
+        	    	  	  
+        	    	  	  if(frid[0]!==undefined||state.posts[i].userId===state.userloginid)
         	    	         pu.push(state.posts[i])
         	    	     continue;
         	    	  }
@@ -635,6 +636,9 @@ export default new Vuex.Store({
         	  console.log("state (user): " + user.id)
            state.users.push(user);
            state.userloginid=user.id;
+           let d =  new Date();
+           let strdate=d.getDate()+"."+(d.getMonth()+1)+"."+d.getFullYear();
+           let strtime=d.getHours()+":"+d.getMinutes();
            let msg = {
            	  type:"system",
             id:state.messages.length,
@@ -642,7 +646,7 @@ export default new Vuex.Store({
             to:user.id,
             from:-1,
             groupId:-1,
-            body:"userloginid: "+state.userloginid+" user.id: "+user.id+" user.login: "+user.login+"\nUser "+user.name+" success registration",           
+            body:"userloginid: <i>"+state.userloginid+"</i> user.id: <i>"+user.id+"</i> user.login: <i>"+user.login+"</i><br>User <i>"+user.name+"</i> success registration <i>"+strdate+" "+strtime+"</i>",           
             read:false,
             show:false 
            };

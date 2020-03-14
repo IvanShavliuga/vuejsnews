@@ -69,6 +69,7 @@
  <app-addpost 
       v-if="activelink==6" 
       @add="addpost" 
+      :loginid="loginid"
       :admingroups="admingroups">
  </app-addpost> 
  <app-addgroup 

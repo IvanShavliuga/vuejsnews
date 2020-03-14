@@ -49,7 +49,7 @@ export default {
        return {
            post: {
                title:"",
-               userId:0,
+               userId:-1,
                date:"1.1.21",
                time:"0:0:0",
                desc:"",
@@ -57,6 +57,7 @@ export default {
                like:[],
                repost:[],
                views:[],
+               comments:[],
                groupId:0,
                likeclick:false,
                type:"post"
@@ -68,6 +69,10 @@ export default {
        admingroups: {
           type:Array,
           required:true       
+       },
+       loginid:{
+          type:Number,
+          required:true        
        }
    },
    methods: {
@@ -76,6 +81,7 @@ export default {
               this.post.cat.push(this.catnew);       
        },
        sendpost() {
+           this.post.userId=this.loginid;
            this.$store.dispatch("addpost",this.post);
            this.addflag=true; 
            this.$emit("add");      

@@ -14,7 +14,7 @@
       <td @click="showmess(km)">{{m.title}}</td>
   </tr>
   <tr v-show="m.show" class="msg__body">
-      <td colspan=3 :style="(m.read)?'font-weight:normal':'font-weight:bold'">{{m.body}}</td></tr>
+      <td colspan=3 :style="(m.read)?'font-weight:normal':'font-weight:bold'" class="msg__body"><div v-html="m.body"></div></td></tr>
   <tr v-if="m.show&&m.type==='user-add'&&!addfriendflag&&m.to==userloginid" class="msg__body">
       <td colspan=3><button class="btn btn-success" @click="addfriend(m.from)">Add friend</button></td></tr>
   <tr v-if="m.show&&m.type==='group-add'&&!addgroupflag&&m.to==userloginid" class="msg__body">
@@ -29,7 +29,11 @@
       background: #fdf!important;   
    }
 .msg__body {
-      background: #fff!important;   
+      background: #fff!important;
+      i {
+         color:#06d;
+               
+      }   
   }
 </style>
 <script>

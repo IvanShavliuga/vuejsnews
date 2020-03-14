@@ -11,7 +11,7 @@
           <p>{{u.spec}}</p>
           <p>{{u.city}}</p>
           <p><span v-for="(s,k) in u.skills" :key="k">{{s}} </span></p>
-          <p>Friends: {{u.friends.length-1}}</p> 
+          <p>Friends: {{(u.friends.length>0)?(u.friends.length-1):'not friends'}}</p> 
           </div> <!--card-text-->
           
           </div>

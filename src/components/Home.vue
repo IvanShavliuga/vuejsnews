@@ -45,6 +45,7 @@ data() {
          this.admingroups=this.$store.getters.groupsAdmin;
          this.groups = this.$store.getters.groups;
          this.comments = this.$store.getters.comments;
+         this.loginid = this.$store.getters.loginid;
      }   
  }
 </script>
