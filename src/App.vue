@@ -10,7 +10,7 @@
     <div v-else class="userlogin">
        <app-signin :users="users" @signin="signinfun" v-if="!registration"></app-signin>
        <app-signup @signup="signupfun" :users="users" v-else></app-signup>
-       <p class="signlink" @click="registration=!registration">{{(!registration)?'Sign up':'sign in'}}</p>
+       <p class="signlink" @click="registration=!registration" :title="(!registration)?'Sign up':'sign in'">{{(!registration)?'Sign up':'sign in'}}</p>
     </div>
   </div>
 </template>
@@ -34,7 +34,8 @@
      background: #eee;
   }
   .signlink{
-     color:#fff;  
+     color:#fff;
+     cursor:pointer;  
   }
 </style>
 <script>
