@@ -7,7 +7,7 @@
           <div class="card-body">
           <h6 class="card-title">{{u.rang}}</h6>
           <div class="card-text">
-          <img :src="u.avatar" width="80" height="80">
+          <img :src="u.avatar" class="avatar" width="80" height="80">
           <p>{{u.gender}}, {{u.age}}</p>
           <p>{{u.spec}}</p>
           <p>{{u.city}}</p>
@@ -42,6 +42,11 @@
     }
     p {
        margin: 5px;          
+    }
+    .avatar {
+       width:80!important;
+       height:80!important;
+       border-radius:50%;    
     }
   }
 </style>

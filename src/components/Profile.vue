@@ -148,6 +148,11 @@
     .check{
        margin-right:15px;    
     }
+    .avatar {
+       width:80;
+       height:80;
+       border-radius:50%;    
+    }
 }
 
 </style>
