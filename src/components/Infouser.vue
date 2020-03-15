@@ -4,8 +4,8 @@
    <p>
    <table class="table">
     <tr><th colspan ="2">Information of user</th></tr>
-     <tr><td>Login</td><td>{{user.login}}</td></tr>
-     <tr><td>Rang</td><td>{{user.rang}}</td></tr>
+     <tr><td rowspan="2"><img :src="user.avatar" class="avatar"  width="80" height="80"></td><td>{{user.login}}</td></tr>
+     <tr><td style="background:#fff;border-top:none">{{user.rang}}</td></tr>
      <tr v-if="!showeditage" @click="showflagage()"><td>Age</td><td>{{user.age}}</td></tr>
      <tr v-else><td>Age</td><td><input type="number" placeholder="age" v-model="editage">
       <button class ="btn btn-primary" @click="checkage()"><i class="fa fa-check"></i></button></td></tr>

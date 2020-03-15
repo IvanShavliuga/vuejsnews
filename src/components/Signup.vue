@@ -129,6 +129,7 @@ export default {
                      spec:this.specialization,
                      name:this.name,
                      age:this.age,
+                     avatar:'src/assets/images/avatar.png',
                      gender:this.editgender,
                      password:this.password,
                      city:this.city,

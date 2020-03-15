@@ -7,12 +7,11 @@
         </div>
         <div class="header__profile">
             <div class="header__profile__avatar">
-                <img src="../assets/images/iv2.jpg" alt="profile avatar">
+                <img :src="user.avatar" alt="profile avatar">
             </div>
             <div class="header__profile__info">
-                <p>Ivan Ivanov (Shavliuga)</p>
-                <p>iva.drakon.nov@gmail.com</p>
-                <p>Admin</p>
+                <p>{{user.name}} @{{user.login}}</p>
+                <p>{{user.rang}}</p>
             </div>
         </div>
         <app-navigation></app-navigation>
@@ -48,6 +47,7 @@
         display: inline-block;
         float: right;
         margin-top:30px;
+        width:200px;
         &__avatar {
            width:60px;
            height:60px; 
@@ -85,6 +85,14 @@ import Navigation from './Navigation.vue';
 export default {
     components: {
         appNavigation: Navigation    
+    },
+    data() {
+        return {
+            user:{}        
+        }    
+    },
+    created() {
+        this.user = this.$store.getters.user    
     }
 }
 </script>
