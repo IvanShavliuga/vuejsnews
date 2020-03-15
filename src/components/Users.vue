@@ -7,11 +7,12 @@
           <div class="card-body">
           <h6 class="card-title">{{u.rang}}</h6>
           <div class="card-text">
+          <img :src="u.avatar" width="80" height="80">
           <p>{{u.gender}}, {{u.age}}</p>
           <p>{{u.spec}}</p>
           <p>{{u.city}}</p>
           <p><span v-for="(s,k) in u.skills" :key="k">{{s}} </span></p>
-          <p>Friends: {{(u.friends.length>0)?(u.friends.length-1):'not friends'}}</p> 
+          <p>Friends: {{(u.friends.length>1)?(u.friends.length-1):'not friends'}}</p> 
           </div> <!--card-text-->
           
           </div>

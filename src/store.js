@@ -12,6 +12,7 @@ export default new Vuex.Store({
             login: "iv2",
             gender:"men",
             age:31,
+            avatar:'src/assets/images/iv2.jpg',
             password: "12345",
             friends: [0,1,2],
             name:"Ivan Shavliuga (Ivanov)",
@@ -34,6 +35,7 @@ export default new Vuex.Store({
             login: "max",
             rang:"Moderator",
             gender: "men",
+            avatar:'src/assets/images/team1.jpg',
             age:29,
             password: "12345",
             friends: [0,1,2],
@@ -60,6 +62,7 @@ export default new Vuex.Store({
             age:27,
             friends: [0,1,2],
             gender: "men",
+            avatar:'src/assets/images/team2.jpg',
             name:"Alex Frolov",
             spec:"Junior Backend Developer",
             skills:["node.js", "php", "mongoDB", "MySQL","Python", "Ruby","Ruby on rails"],
@@ -83,6 +86,7 @@ export default new Vuex.Store({
             age:24,
             friends: [3,4,5,6],
             password: "12345",
+            avatar:'src/assets/images/team4.jpg',
             name:"Vald Frolov",
             spec:"Junior Data science Developer",
             skills:["python", "Data ", "mongoDB", "MySQL","Python", "Ruby","Ruby on rails"],
@@ -106,6 +110,7 @@ export default new Vuex.Store({
             friends: [3,4,5,6],
             rang:"User",
             age:30,
+            avatar:'src/assets/images/1.jpg',
             name:"Oleg Frolov",
             spec:"Junior Data science Developer",
             skills:["python", "Data science", "Machine learning", "MySQL","Python", "Ruby","Ruby on rails"],
@@ -130,6 +135,7 @@ export default new Vuex.Store({
             friends: [3,4,5,6],
             password: "12345",
             name:"Ann Lenina",
+            avatar:'src/assets/images/team3.jpg',
             spec:"Junior Systems Developer",
             skills:["C", "C++", "C#", "Linux"],
             city:"Rostov, Russia",
@@ -153,6 +159,7 @@ export default new Vuex.Store({
             gender: "women",
             password: "12345",
             name:"Angel Lenina",
+            avatar:'src/assets/images/me.jpg',
             spec:"Junior Systems Developer",
             skills:["C", "C++", "C#", "Linux"],
             city:"Rostov, Russia",
@@ -634,6 +641,7 @@ export default new Vuex.Store({
         },
         "SIGNUP" (state,user) {
         	  console.log("state (user): " + user.id)
+        	  user.friends.push(user.id);
            state.users.push(user);
            state.userloginid=user.id;
            let d =  new Date();
