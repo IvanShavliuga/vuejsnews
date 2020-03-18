@@ -18,7 +18,8 @@
   <span title="group"><i class="fa fa-users"></i>  
   {{checkgroup()}} </span></p>
   <p v-if="post.comments.length" >
-  <p v-for="(c,k) in post.comments" class="comments" ><b>{{users[comments[c].userId].login}}</b><br>
+  <p v-for="(c,k) in post.comments" class="comments" ><img class="avatar-comment" :src="users[comments[c].userId].avatar">
+  <b>@{{users[comments[c].userId].login}}:</b><br>
   {{comments[c].text}}</p></p>
   
   <textarea v-model="comment" placeholder="Your comment"></textarea> 
@@ -78,7 +79,7 @@
           padding: 5px;
           margin: 5px; 
           b{
-             font-size:10px;
+             font-size:13px;
              line-height:14px;
              color:#a5a;          
           }   
@@ -87,6 +88,12 @@
              font-size: 14px;
              text-align: center;
              text-decoration:underline;           
+          }
+          .avatar-comment {
+             width: 20px;
+             height: 20px;
+             border-radius: 50%;  
+             margin-right: 4px;        
           }
       }
     }

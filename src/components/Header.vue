@@ -10,8 +10,8 @@
                 <img :src="user.avatar" alt="profile avatar">
             </div>
             <div class="header__profile__info">
-                <p>{{user.name}} @{{user.login}}</p>
-                <p>{{user.rang}}</p>
+                <p>{{user.name}}</p>
+                <p>{{user.rang}} @{{user.login}}</p>
             </div>
         </div>
         <app-navigation></app-navigation>
@@ -47,7 +47,7 @@
         display: inline-block;
         float: right;
         margin-top:30px;
-        width:200px;
+        width:300px;
         &__avatar {
            width:60px;
            height:60px; 
