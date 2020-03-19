@@ -5,9 +5,9 @@
   <div class="card-body">
   <h6 class="card-title"> 
   <span class='text-primary user-data' title="author">
-  <i class="fa fa-user" ></i>{{users[post.userId].login}} {{post.date}} {{post.time}}</span>
+  <img :src="users[post.userId].avatar" class="avatar-comment"> @{{users[post.userId].login}} {{post.date}} {{post.time}}</span>
   <span v-if="post.userId===loginid"  @click="editpost=true" class="text-success user-data" title="Edit your post"> 
-  <i class="fa fa-pencil"></i> Edit</span>
+  <i class="fa fa-pencil" title="edit"></i></span>
   <span v-else title="You repost" class="text-success user-data">repost</span></h6>
   <p class="card-text">{{post.desc}}</p></div>
   <div class="card-footer text-primary">
@@ -47,6 +47,12 @@
     max-width: 17rem!important; 
     min-height: 420px!important;
     margin:5px!important;
+       .avatar-comment {
+             width: 20px;
+             height: 20px;
+             border-radius: 50%;  
+             margin-right: 4px; 
+          }
      &-title {
        padding: 5px;
        line-height:10px;
@@ -58,7 +64,8 @@
     }
     &-footer {
       span {
-          padding-right: 6px; 
+          padding-right: 6px;
+          cursor: default; 
           i {
             padding-right:4px;          
           }     
@@ -78,6 +85,7 @@
           border:1px solid #555;
           padding: 5px;
           margin: 5px; 
+          cursor: default;
           b{
              font-size:13px;
              line-height:14px;
@@ -89,12 +97,7 @@
              text-align: center;
              text-decoration:underline;           
           }
-          .avatar-comment {
-             width: 20px;
-             height: 20px;
-             border-radius: 50%;  
-             margin-right: 4px;        
-          }
+        
       }
     }
     &-body {
