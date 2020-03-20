@@ -8,7 +8,7 @@
   <img :src="users[post.userId].avatar" class="avatar-comment"> @{{users[post.userId].login}} {{post.date}} {{post.time}}</span>
   <span v-if="post.userId===loginid"  @click="editpost=true" class="text-success user-data" title="Edit your post"> 
   <i class="fa fa-pencil" title="edit"></i></span>
-  <span v-else title="You repost" class="text-success user-data">repost</span></h6>
+  <span v-else title="You repost" class="text-success user-data"><i class="fa fa-retweet"></i></span></h6>
   <p class="card-text">{{post.desc}}</p></div>
   <div class="card-footer text-primary">
   <p><span title="likes"><i class="fa fa-thumbs-up" @click="like(post)"></i>{{post.like.length}}</span> 
