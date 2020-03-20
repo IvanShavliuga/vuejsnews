@@ -3,8 +3,8 @@ News portal using the technologies of vue.js and css, bootstrap. This project is
 
 https://isschavliuga.ucoz.net
 
-<img width="600" src="https://github.com/IvanShavliuga/vuejsnews/src/assets/images/vujsnews1.jpg">
-<img width="600" src="https://github.com/IvanShavliuga/vuejsnews/src/assets/images/vuejsnews2.jpg">
+<img width="600" src="https://github.com/IvanShavliuga/vuejsnews/src/assets/images/vujsnews1.png">
+<img width="600" src="https://github.com/IvanShavliuga/vuejsnews/src/assets/images/vuejsnews2.png">
 
 ## Getting up and Running
 
