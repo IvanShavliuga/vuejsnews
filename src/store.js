@@ -388,7 +388,7 @@ export default new Vuex.Store({
              id:2,
              idAdmin:0,
              idNews:[2],
-             followers:[0,1,2,3]        
+             followers:[0,1,2,3,4,5,6]        
         },{
              name: "TypeScript",
              desc: "Courses, code, simples, webinars",
