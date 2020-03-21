@@ -50,6 +50,7 @@
  </app-news>
  <app-groups 
       :groups="groups" 
+      :users="users"
       :loginid="loginid" 
       v-if="activelink==3">
  </app-groups>
