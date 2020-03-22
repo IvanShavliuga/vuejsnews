@@ -22,7 +22,7 @@
   <b>@{{users[comments[c].userId].login}}:</b><br>
   {{comments[c].text}}</p></p>
   
-  <textarea v-model="comment" placeholder="Your comment"></textarea> 
+  <textarea  class="form-control" v-model="comment" placeholder="Your comment"></textarea><br> 
   <button @click="addcomment" class="btn btn-primary">Comment</button>
   <hr>
   <i class="fa fa-tags"></i>
@@ -116,11 +116,38 @@
       }
     }
   }
+   @media screen and (min-width: 1300px){
+      .card {
+         max-width: 21rem!important;    
+     }  
+   }  
+  
+   @media screen and (min-width: 1200px) and (max-width:1300px){
+     .card {
+         max-width: 20rem!important;    
+     }  
+   }
+   @media screen and (min-width:774px) and (max-width:1190px) {
+     .card {
+         max-width: 17rem!important;    
+     }  
+  }
+  @media screen and (min-width:696px) and (max-width:769px) {
+     .card {
+         max-width: 23rem!important;    
+     }  
+  }
+  @media screen and (min-width:230px) and (max-width:694px) {
+     .card {
+         max-width: 28rem!important;    
+     }  
+  }
   @media screen and (max-width:298px) {
      .card {
          max-width: 14rem!important;    
      }  
   }
+  
   
 </style>
 <script>
