@@ -78,6 +78,18 @@
     }
     
 }
+ @media screen and (max-width:544px) {
+     .header__profile{
+        display:none;
+           
+     }  
+  }
+  @media screen and (max-width:760px) {
+     .header__profile{
+         margin-top:0;
+         width: 240px;  
+     }  
+  }
 </style>
 <script>
 import Navigation from './Navigation.vue';
