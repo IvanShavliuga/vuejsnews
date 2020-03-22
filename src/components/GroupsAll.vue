@@ -23,7 +23,7 @@
 </template>
 <style lang="scss">
   .gblock {
-    width:17rem; 
+     
     min-height: 300px; 
     max-height: 350px; 
     span {
@@ -52,6 +52,37 @@
         }     
      }   
    }
+  }
+  @media screen and (min-width: 1300px){
+      .card {
+         max-width: 21rem!important;    
+     }  
+   }  
+  
+   @media screen and (min-width: 1200px) and (max-width:1300px){
+     .card {
+         max-width: 20rem!important;    
+     }  
+   }
+   @media screen and (min-width:774px) and (max-width:1190px) {
+     .card {
+         max-width: 17rem!important;    
+     }  
+  }
+  @media screen and (min-width:696px) and (max-width:769px) {
+     .card {
+         max-width: 23rem!important;    
+     }  
+  }
+  @media screen and (min-width:230px) and (max-width:694px) {
+     .card {
+         max-width: 28rem!important;    
+     }  
+  }
+  @media screen and (max-width:298px) {
+     .card {
+         max-width: 14rem!important;    
+     }  
   }
 </style>
 <script>
