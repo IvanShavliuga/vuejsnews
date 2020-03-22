@@ -116,6 +116,11 @@
       }
     }
   }
+  @media screen and (max-width:298px) {
+     .card {
+         max-width: 14rem!important;    
+     }  
+  }
   
 </style>
 <script>
