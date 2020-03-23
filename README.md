@@ -1,5 +1,5 @@
 # vuejsnews
-News portal using the technologies of vue.js and css, bootstrap. This project is a simple social news network. The project was created specifically for self-learning. Groups, users, news feed, the ability to edit material and create groups, as well as send messages, put likes, comments and reposts should be implemented.
+NA news portal using vue technologies .js and css, bootstrap. This project is a simple social news network. The project was created specifically for self- learning. Implemented groups, users, news feed, the ability to edit material and create groups, as well as send messages, put likes, comments and reposts. I will be happy if you find errors in the code.
 
 https://isschavliuga.ucoz.net
 
