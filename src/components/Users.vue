@@ -51,33 +51,39 @@
   }
   @media screen and (min-width: 1300px){
       .card {
-         max-width: 21rem!important;    
+         max-width: 21rem!important; 
+         min-width: 21rem!important;   
      }  
    }  
   
    @media screen and (min-width: 1200px) and (max-width:1300px){
      .card {
-         max-width: 20rem!important;    
+         max-width: 20rem!important;
+         min-width: 20rem!important;    
      }  
    }
    @media screen and (min-width:774px) and (max-width:1190px) {
      .card {
-         max-width: 17rem!important;    
+         max-width: 17rem!important;
+         min-width: 17rem!important;    
      }  
   }
   @media screen and (min-width:696px) and (max-width:769px) {
      .card {
-         max-width: 23rem!important;    
+         max-width: 23rem!important;
+         min-width: 23rem!important;    
      }  
   }
   @media screen and (min-width:230px) and (max-width:694px) {
      .card {
-         max-width: 28rem!important;    
+         max-width: 28rem!important;
+         
      }  
   }
   @media screen and (max-width:298px) {
      .card {
-         max-width: 14rem!important;    
+         max-width: 14rem!important;
+           
      }  
   }
 </style>
