@@ -3,7 +3,7 @@ NA news portal using vue technologies .js and css, bootstrap. This project is a 
 
 https://isschavliuga.ucoz.net
 
-<img width="600" src="https://github.com/IvanShavliuga/vuejsnews/blob/master/src/assets/images/vujsnews1.png">
+<img width="600" src="https://github.com/IvanShavliuga/vuejsnews/blob/master/src/assets/images/Screenshot%20at%202020-03-21%2019:13:54.png">
 <img width="600" src="https://github.com/IvanShavliuga/vuejsnews/blob/master/src/assets/images/vuejsnews2.png">
 
 ## Getting up and Running
