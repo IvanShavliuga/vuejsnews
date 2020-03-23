@@ -49,7 +49,12 @@
       .form-signin {
           width: 300px!important; 
           margin:auto;   
-      }       
+      }  
+      @media (max-width: 300px) {
+        .form-signin {
+           width: 200px!important;         
+        }
+      }     
        
 </style>
 <script>
