@@ -5,7 +5,7 @@ Used technology Vue.js, Vuex, VueRouter, Webpack, SCSS
 
 https://isschavliuga.ucoz.net
 
-##Screenshots
+## Screenshots
 
 <img width="600" src="https://github.com/IvanShavliuga/vuejsnews/blob/master/src/assets/images/Screenshot%20at%202020-03-21%2019:13:54.png">
 <img width="600" src="https://github.com/IvanShavliuga/vuejsnews/blob/master/src/assets/images/vuejsnews2.png">
