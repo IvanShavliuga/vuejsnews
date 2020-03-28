@@ -13,5 +13,11 @@
      padding-top: 5px;     
      
   }
+   @media screen and (max-width:380px) {
+     .footer {
+         height: 60px!important;  
+         font-size:12px;  
+     }  
+  }
 
 </style>
