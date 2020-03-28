@@ -45,7 +45,7 @@
   
   .card {
     max-width: 17rem!important; 
-    min-height: 420px!important;
+    height: 600px!important;
     margin:5px!important;
        .avatar-comment {
              width: 20px;
@@ -58,6 +58,7 @@
        line-height:10px;
               
     }
+   
     &-header{
       font-weight: bold!important;
       color: #93f!important;
