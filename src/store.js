@@ -1,5 +1,7 @@
 import Vuex from 'vuex'
 import Vue from 'vue'
+import api from "./server/api.js"
+    
 
 Vue.use(Vuex);
 
@@ -562,6 +564,8 @@ export default new Vuex.Store({
         	   commit("ADDCOMMENT",com);
         },
         signin({commit},user){
+            api.fetchUsersLists().then(response => console.log(response.data))
+            console.log('-'.repeat(15))
             commit("SIGNIN",user);          
         },
         signup({commit},user){
