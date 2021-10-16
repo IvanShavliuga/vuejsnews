@@ -18,7 +18,6 @@
 </template>
 <style lang="scss">
 .addpost {
-  
    .card-footer{
      margin-top:35px!important;   
      button {
