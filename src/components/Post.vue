@@ -58,6 +58,7 @@
        line-height:10px;
               
     }
+   
     &-header{
       font-weight: bold!important;
       color: #93f!important;
