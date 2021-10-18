@@ -61,14 +61,12 @@
          appFooter: Footer   
      },
      created() {
-         this.users = this.$store.getters.users;              
+         this.users = this.$store.getters.users;
+   this.userlogin=this.$store.getters.auth;   
      },
      methods:{
          signinfun(rd) {
-             if(!rd.error) {
-                this.$store.dispatch("signin",rd.user);
-                this.userlogin=true;             
-             }
+             this.userlogin = rd.auth
          },
          signupfun(rd) {
              if(!rd.error) {

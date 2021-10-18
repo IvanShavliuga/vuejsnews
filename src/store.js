@@ -440,7 +440,8 @@ export default new Vuex.Store({
              idNews:[3],
              followers:[0,4]        
         }],
-        userloginid:0      
+        userloginid:0,
+        auth: false
     },
     getters: {
         users: state => {return state.users},
@@ -564,9 +565,15 @@ export default new Vuex.Store({
         	   commit("ADDCOMMENT",com);
         },
         signin({commit},user){
-            api.fetchUsersLists().then(response => console.log(response.data))
-            console.log('-'.repeat(15))
-            commit("SIGNIN",user);          
+            // api.fetchUsersLists().then(response => console.dir(response.data))
+            let usr = null
+            return api.getUser(user).then(r => r.data).then((d) => {
+                if (d[0] === undefined) return {auth: false}
+                else {
+                    commit("SIGNIN", d[0])
+                    return {auth: true}
+                }
+            })
         },
         signup({commit},user){
             commit("SIGNUP",user);        
@@ -639,9 +646,15 @@ export default new Vuex.Store({
            state.comments.push(comment);         
         },
         "SIGNIN" (state, user) {
+            console.log(user)
         	  console.log('user.id: ',user.id)
-           state.userloginid = user.id;
-                   
+           if(user === undefined) {
+              state.auth = false;
+              state.userloginid = user.id;
+           } else {
+               state.userloginid = user.id;
+               state.auth = true
+           }
         },
         "SIGNUP" (state,user) {
         	  console.log("state (user): " + user.id)
