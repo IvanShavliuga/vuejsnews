@@ -73,9 +73,17 @@ export default {
    },
    methods: {
        signinfun() {
-           this.$store.dispatch("signin", { login: this.login, password: this.password }).then(d => this.$emit("signin", d));
+           this.$store.dispatch("signin", { login: this.login, password: this.password }).then((d) => {
+             this.$emit("signin", d)
+             this.$store.dispatch('fetchAll').then((r) => {
+			 setTimeout(() => this.$router.push('/profile'), 1000)
+			}) 
+			});
            // this.$emit("signin", {auth: true});       
        }   
+   },
+   created () {
+	this.$router.push('/')
    }
 }
 
