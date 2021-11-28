@@ -1,7 +1,7 @@
 {
   "name": "vuejsnews",
   "description": "A Vue.js news portal project",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "author": "Ivan Ivanov (Shavliuga)",
   "email": "iva.drakon.nov@gmail.com",
   "private": true,

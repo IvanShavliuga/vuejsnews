@@ -62,13 +62,7 @@ export default {
    data() {
        return {
            login:'',
-           password:'',
-           phone:'',
-           regdata: {
-              status:'',
-              error:false,
-              user:{}
-           }         
+           password:''
        }   
    },
    props: {
@@ -79,30 +73,17 @@ export default {
    },
    methods: {
        signinfun() {
-           if(this.login === '') {
-               this.regdata.status = 'Empty login';
-               this.regdata.error=true;
-               this.regdata.user={};           
-           }else {  
-           console.log("Users: "+this.users);
-           let usr = this.users.filter( (u) => {return u.login === this.login});
-           console.log("usr "+usr[0]);
-           if(usr[0]!==undefined) {
-               if(usr[0].password===this.password) {
-                     this.regdata.user=usr[0];
-                     this.regdata.status="Success sign in";
-                     this.regdata.error=false;  
-                     console.log("OK")             
-               }else{
-                     this.regdata.user={};
-                     this.regdata.status="Password invalid";
-                     this.regdata.error=true;               
-               }//else   
-            }//if        
-           }//else
-           console.log("status: "+this.regdata.status)
-           this.$emit("signin",this.regdata);       
+           this.$store.dispatch("signin", { login: this.login, password: this.password }).then((d) => {
+             this.$emit("signin", d)
+             this.$store.dispatch('fetchAll').then((r) => {
+			 setTimeout(() => this.$router.push('/profile'), 1000)
+			}) 
+			});
+           // this.$emit("signin", {auth: true});       
        }   
+   },
+   created () {
+	this.$router.push('/')
    }
 }
 

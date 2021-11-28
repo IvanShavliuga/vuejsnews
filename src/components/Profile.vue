@@ -251,6 +251,11 @@ export default{
            this.messages=this.$store.getters.messages;
         }   
    },
+   watch: {
+     activelink() {
+		console.log('active link')
+	 }
+   },
    components: {
         appInfouser: Infouser,
         appMessages: Messages,
