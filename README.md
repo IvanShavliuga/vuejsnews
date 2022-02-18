@@ -3,11 +3,8 @@ News portal using vue technologies .js and css, bootstrap. This project is a sim
 
 Used technology Vue.js, Vuex, VueRouter, Webpack, SCSS
 
-https://isschavliuga.ucoz.net
-
 ## Screenshots
 
-<img width="600" src="https://github.com/IvanShavliuga/vuejsnews/blob/master/src/assets/images/Screenshot%20at%202020-03-21%2019:13:54.png">
 <img width="600" src="https://github.com/IvanShavliuga/vuejsnews/blob/master/src/assets/images/vuejsnews2.png">
 
 ## Getting up and Running
