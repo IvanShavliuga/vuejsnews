@@ -24,6 +24,7 @@
     </div>
   </div>
 </template>
+
 <style lang="scss">
 body,
 div.container {
@@ -50,11 +51,12 @@ html {
   cursor: pointer;
 }
 </style>
+
 <script>
-import Header from "./components/Header.vue";
-import Signin from "./components/Signin.vue";
-import Footer from "./components/Footer.vue";
-import Signup from "./components/Signup.vue";
+import Header from "@/components/Header.vue";
+import Signin from "@/components/Signin.vue";
+import Footer from "@/components/Footer.vue";
+import Signup from "@/components/Signup.vue";
 
 export default {
   data() {

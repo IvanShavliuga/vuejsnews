@@ -1,19 +1,6 @@
-import Vue from 'vue';
-import VueRouter from 'vue-router';
-import App from './App.vue';
-import store from './store';
-import {routes} from './routes';
-Vue.use(VueRouter);
-const router = new VueRouter({
-	mode: 'history',
-	routes
-});
+import { createApp } from "vue";
+import App from "./App.vue";
+import router from "./router/index.js";
+import store from "./store/index.js";
 
-export const eventBus = new Vue();
-
-let vm=new Vue({
-  el: '#app',
-  store,
-  router,
-  render: h => h(App)
-})
+createApp(App).use(store).use(router).mount("#app");

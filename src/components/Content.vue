@@ -1,15 +1,12 @@
 <template>
-  <div class="content">   
-     <router-view></router-view> 
-  </div>  
+  <div class="content">
+    <router-view></router-view>
+  </div>
 </template>
 <style lang="scss">
-  .content {
-      padding: 10px;
-      background: #eee;
-  }
+.content {
+  padding: 10px;
+  background: #eee;
+}
 </style>
-<script>
-  
-
-</script>
+<script></script>
