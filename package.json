@@ -10,7 +10,7 @@
     "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint",
-    "server": "json-server --watch /home/iv2/vuejsnews/src/server/db.json"
+    "server": "json-server --watch ./src/server/db.json"
   },
   "dependencies": {
     "bootstrap": "^4.4.1",
