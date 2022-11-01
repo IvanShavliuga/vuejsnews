@@ -25,9 +25,6 @@
   </div>
 </template>
 <style lang="scss">
-// @import "font-awesome-sprockets";
-// @import "font-awesome";
-
 body,
 div.container {
   background: #808 !important;

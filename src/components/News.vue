@@ -16,8 +16,6 @@
   </div>
 </template>
 <style>
-]
-
  .content {
   padding: 10px !important;
   background: #eee;

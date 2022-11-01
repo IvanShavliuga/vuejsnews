@@ -350,14 +350,9 @@ ul.inbox-pagination li {
     display: block;
 }
 
-* html .fileinput-button {
+.fileinput-button {
     line-height: 24px;
     margin: 1px -3px 0 0;
-}
-
-* + html .fileinput-button {
-    margin: 1px 0 0;
-    padding: 2px 15px;
 }
 
 @media (max-width: 767px) {
