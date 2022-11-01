@@ -71,17 +71,6 @@
     ></app-addmessage>
   </section>
 </template>
-<style lang="scss">
-.msg__title {
-  background: #fdf !important;
-}
-.msg__body {
-  background: #fff !important;
-  i {
-    color: #06d;
-  }
-}
-</style>
 <script>
 import Addmessage from "./Addmessage.vue";
 
