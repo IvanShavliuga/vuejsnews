@@ -5,10 +5,13 @@
       <div class="card-body">
         <h6 class="card-title">
           <span class="text-primary user-data" title="author">
-            <img :src="users[post.userId].avatar" class="avatar-comment" /> @{{
-              users[post.userId].login
-            }}
-            {{ post.date }} {{ post.time }}</span
+            <img
+              :src="users[post.userId].avatar"
+              :alt="users[post.userId].avatar"
+              class="avatar-comment"
+            />
+            @{{ users[post.userId].login }} {{ post.date }}
+            {{ post.time }}</span
           >
           <span
             v-if="post.userId === loginid"
