@@ -7,7 +7,7 @@
       "login": "iv2",
       "gender": "men",
       "age": 31,
-      "avatar": "src/assets/images/iv2.jpg",
+      "avatar": "/images/iv2.jpg",
       "password": "12345",
       "friends": [
         0,
@@ -47,7 +47,7 @@
       "login": "max",
       "rang": "Moderator",
       "gender": "men",
-      "avatar": "src/assets/images/team1.jpg",
+      "avatar": "/images/team1.jpg",
       "age": 29,
       "password": "12345",
       "friends": [
@@ -95,7 +95,7 @@
         2
       ],
       "gender": "men",
-      "avatar": "src/assets/images/team2.jpg",
+      "avatar": "/images/team2.jpg",
       "name": "Alex Frolov",
       "spec": "Junior Backend Developer",
       "skills": [
@@ -137,7 +137,7 @@
         6
       ],
       "password": "12345",
-      "avatar": "src/assets/images/team4.jpg",
+      "avatar": "/images/team4.jpg",
       "name": "Vald Frolov",
       "spec": "Junior Data science Developer",
       "skills": [
@@ -179,7 +179,7 @@
       ],
       "rang": "User",
       "age": 30,
-      "avatar": "src/assets/images/1.jpg",
+      "avatar": "/images/1.jpg",
       "name": "Oleg Frolov",
       "spec": "Junior Data science Developer",
       "skills": [
@@ -222,7 +222,7 @@
       ],
       "password": "12345",
       "name": "Ann Lenina",
-      "avatar": "src/assets/images/team3.jpg",
+      "avatar": "/images/team3.jpg",
       "spec": "Junior Systems Developer",
       "skills": [
         "C",
@@ -261,7 +261,7 @@
       "gender": "women",
       "password": "12345",
       "name": "Angel Lenina",
-      "avatar": "src/assets/images/me.jpg",
+      "avatar": "/images/me.jpg",
       "spec": "Junior Systems Developer",
       "skills": [
         "C",
