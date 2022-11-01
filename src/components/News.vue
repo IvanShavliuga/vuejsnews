@@ -16,7 +16,7 @@
   </div>
 </template>
 <style>
- .content {
+.content {
   padding: 10px !important;
   background: #eee;
 }
