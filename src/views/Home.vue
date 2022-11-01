@@ -25,33 +25,6 @@
   </div>
 </template>
 
-<style lang="scss">
-body,
-div.container {
-  background: #808 !important;
-}
-body,
-html {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-}
-.userlogin {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  text-align: center;
-}
-.content {
-  padding: 15px;
-  background: #eee;
-}
-.signlink {
-  color: #fff;
-  cursor: pointer;
-}
-</style>
-
 <script>
 import Header from "@/components/Header.vue";
 import Signin from "@/components/Signin.vue";

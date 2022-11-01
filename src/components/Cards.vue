@@ -8,7 +8,7 @@
     ></app-card>
   </div>
 </template>
-<style lang="scss"></style>
+
 <script>
 import Card from "./Card.vue";
 

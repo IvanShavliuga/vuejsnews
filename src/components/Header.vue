@@ -46,7 +46,6 @@
     }
   }
   &__profile {
-    display: inline-block;
     float: right;
     margin-top: 30px;
     width: 300px;
