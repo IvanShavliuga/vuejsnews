@@ -164,6 +164,7 @@
     background-color: #fff;
   }
   td:first-child {
+    // max-width: 200px;
     width: 20%;
     font-weight: bold;
     text-align: left;
@@ -172,12 +173,25 @@
     cursor: pointer;
   }
   .skill {
+    display: inline-block;
     color: blue;
-    padding-right: 5px;
+    margin-right: 5px;
+    word-wrap: break-word;
+    /* &:hover {
+      background-color: rgba(250,0,0,0.1);
+      color: red;
+      border-radius: 7px;
+      &::after {
+        content: 'x';
+        display: inline;
+        color: red;
+        font-size: 18px;
+        margin: 0 5px;
+      }
+    } */
   }
   .del {
     color: red;
-    padding-right: 5px;
     cursor: pointer;
   }
   .unread {
@@ -187,7 +201,7 @@
     font-weight: normal;
   }
   .check {
-    margin-right: 15px;
+    margin-right: 7px;
   }
   .avatar {
     width: 80;

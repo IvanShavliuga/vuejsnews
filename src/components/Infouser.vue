@@ -2,7 +2,7 @@
   <section>
     <h3>Profile</h3>
     <div>
-      <table class="table">
+      <table class="table profileTable">
         <tr>
           <th colspan="2">Information of user</th>
         </tr>
@@ -23,7 +23,7 @@
           <td>Age</td>
           <td>
             <input type="number" placeholder="age" v-model="editage" />
-            <button class="btn btn-primary" @click="checkage()">
+            <button class="ml-2 btn btn-primary btn-adds" @click="checkage()">
               <i class="fa fa-check"></i>
             </button>
           </td>
@@ -47,7 +47,10 @@
               name="gender"
               value="women"
             />Women
-            <button class="btn btn-primary" @click="checkgender()">
+            <button
+              class="ml-2 btn btn-primary btn-adds"
+              @click="checkgender()"
+            >
               <i class="fa fa-check"></i>
             </button>
           </td>
@@ -60,7 +63,7 @@
           <td>Name</td>
           <td>
             <input type="text" placeholder="name" v-model="editname" />
-            <button class="btn btn-primary" @click="checkname()">
+            <button class="ml-2 btn btn-primary btn-adds" @click="checkname()">
               <i class="fa fa-check"></i>
             </button>
           </td>
@@ -77,7 +80,7 @@
               placeholder="specialization"
               v-model="editspec"
             />
-            <button class="btn btn-primary" @click="checkspec()">
+            <button class="ml-2 btn btn-primary btn-adds" @click="checkspec()">
               <i class="fa fa-check"></i>
             </button>
           </td>
@@ -85,14 +88,21 @@
         <tr>
           <td>Skills</td>
           <td>
-            <span v-for="(s, ks) in user.skills" :key="ks">
-              <span class="skill">{{ s }}</span
-              ><span class="del" @click="delskill(ks)">x</span>
-            </span>
-            <input type="text" placeholder="skill" v-model="skill" />
-            <button class="btn btn-primary btn-adds" @click="addskill()">
-              <i class="fa fa-plus"></i>
-            </button>
+            <div class="skillsLine">
+              <span v-for="(s, ks) in user.skills" :key="ks" class="skill">
+                <span @click="delskill(ks)">{{ s }}</span
+                ><span class="del">x</span>
+              </span>
+              <div class="d-flex">
+                <input type="text" placeholder="skill" v-model="skill" />
+                <button
+                  class="ml-2 btn btn-primary btn-adds"
+                  @click="addskill()"
+                >
+                  <i class="fa fa-plus"></i>
+                </button>
+              </div>
+            </div>
           </td>
         </tr>
         <tr v-if="!showeditcity" @click="showflagcity()">
@@ -103,7 +113,7 @@
           <td>City</td>
           <td>
             <input type="text" placeholder="city" v-model="editcity" />
-            <button class="btn btn-primary btn-adds" @click="checkcity()">
+            <button class="ml-2 btn btn-primary btn-adds" @click="checkcity()">
               <i class="fa fa-check"></i>
             </button>
           </td>
@@ -125,7 +135,7 @@
           <td><input type="text" placeholder="messenger" v-model="mess" /></td>
           <td>
             <input type="text" placeholder="contact" v-model="cont" />
-            <button class="btn btn-primary btn-adds" @click="addcont()">
+            <button class="ml-2 btn btn-primary btn-adds" @click="addcont()">
               <i class="fa fa-plus"></i>
             </button>
           </td>
@@ -134,6 +144,13 @@
     </div>
   </section>
 </template>
+<style lang="scss">
+.avatar {
+  width: 80 !important;
+  height: 80 !important;
+  border-radius: 50%;
+}
+</style>
 <script>
 export default {
   props: {
