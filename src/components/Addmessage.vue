@@ -1,7 +1,7 @@
 <template>
-  <section>
+  <div>
     <h3>Add new message</h3>
-    <div class="card mb-2 msgadd">
+    <div class="card bg-light mb-2 msgadd">
       <form>
         <div class="card-header">
           <input
@@ -50,12 +50,22 @@ text</textarea
         </div>
       </form>
     </div>
-  </section>
+  </div>
 </template>
 <style lang="scss">
 section div.msgadd {
-  min-width: 35rem !important;
-  height: 320px !important;
+  min-width: 100%;
+  max-width: 100vw;
+  max-height: 400px;
+}
+form {
+  height: 100%;
+}
+.msg-body {
+  height: calc(100% - 80px - 63px);
+}
+textarea.form-control {
+  min-height: calc(100% - 80px - 83px);
 }
 </style>
 <script>
