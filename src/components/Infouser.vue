@@ -8,7 +8,7 @@
         </tr>
         <tr>
           <td rowspan="2">
-            <img :src="user.avatar" class="avatar" width="80" height="80" />
+            <img :src="user.avatar" class="avatar" />
           </td>
           <td>{{ user.login }}</td>
         </tr>
@@ -21,7 +21,7 @@
         </tr>
         <tr v-else>
           <td>Age</td>
-          <td>
+          <td class="d-flex">
             <input type="number" placeholder="age" v-model="editage" />
             <button class="ml-2 btn btn-primary btn-adds" @click="checkage()">
               <i class="fa fa-check"></i>
@@ -61,7 +61,7 @@
         </tr>
         <tr v-else>
           <td>Name</td>
-          <td>
+          <td class="d-flex">
             <input type="text" placeholder="name" v-model="editname" />
             <button class="ml-2 btn btn-primary btn-adds" @click="checkname()">
               <i class="fa fa-check"></i>
@@ -74,7 +74,7 @@
         </tr>
         <tr v-else>
           <td>Specialization</td>
-          <td>
+          <td class="d-flex">
             <input
               type="text"
               placeholder="specialization"
@@ -111,7 +111,7 @@
         </tr>
         <tr v-else>
           <td>City</td>
-          <td>
+          <td class="d-flex">
             <input type="text" placeholder="city" v-model="editcity" />
             <button class="ml-2 btn btn-primary btn-adds" @click="checkcity()">
               <i class="fa fa-check"></i>
@@ -133,7 +133,7 @@
         </tr>
         <tr>
           <td><input type="text" placeholder="messenger" v-model="mess" /></td>
-          <td>
+          <td class="d-flex">
             <input type="text" placeholder="contact" v-model="cont" />
             <button class="ml-2 btn btn-primary btn-adds" @click="addcont()">
               <i class="fa fa-plus"></i>

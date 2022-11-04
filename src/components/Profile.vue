@@ -142,11 +142,17 @@
     }
   }
   .btn-adds {
+    position: relative;
     width: 28px;
     height: 28px;
-    padding-top: 2px !important;
-    padding-left: 8px !important;
     i {
+      position: absolute;
+      top: 40%;
+      left: 25%;
+      right: 25%;
+      bottom: 25%;
+      height: 12px;
+      width: 12px;
       font-size: 12px;
       line-height: 8px;
     }
@@ -165,13 +171,35 @@
   }
   td:first-child {
     // max-width: 200px;
-    width: 20%;
+    max-width: 115px;
     font-weight: bold;
     text-align: left;
+    @media screen and (max-width: 350px) {
+      max-width: 80px;
+    }
   }
   td {
     cursor: pointer;
+    @media screen and (max-width: 400px) {
+      font-size: 12px;
+    }
   }
+  td input[type="radio"] {
+    margin-right: 7px;
+  }
+  td input[type="text"] {
+    width: 100px;
+    height: 28px;
+    margin: auto 5px;
+
+    @media screen and (max-width: 400px) {
+      width: 80px;
+    }
+    @media screen and (max-width: 350px) {
+      max-width: 70px;
+    }
+  }
+
   .skill {
     display: inline-block;
     color: blue;
@@ -204,9 +232,13 @@
     margin-right: 7px;
   }
   .avatar {
-    width: 80;
-    height: 80;
+    width: 80px;
+    height: 80px;
     border-radius: 50%;
+    @media screen and (max-width: 400px) {
+      width: 50px;
+      height: 50px;
+    }
   }
 }
 </style>
