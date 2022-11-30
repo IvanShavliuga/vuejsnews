@@ -1,7 +1,9 @@
 <template>
   <section>
     <article class="card mb-2" v-if="!editpost">
-      <div class="card-header">{{ post.title }}</div>
+      <div class="card-header">
+        {{ post.title }}
+      </div>
       <div class="card-body">
         <h6 class="card-title">
           <span class="text-primary user-data" title="author">
@@ -25,7 +27,15 @@
             ><i class="fa fa-retweet"></i
           ></span>
         </h6>
-        <p class="card-text">{{ post.desc }}</p>
+        <div class="card-text">
+          <p class="my-1">
+            <i class="fa fa-tags text-success"></i>
+            <span v-for="(c, kc) in post.cat" :key="kc" class="text-primary">{{
+              c + " "
+            }}</span>
+          </p>
+          <p>{{ post.desc }}</p>
+        </div>
       </div>
       <div class="card-footer text-primary">
         <p>
@@ -42,7 +52,7 @@
           >
           <span title="comments"
             ><i class="fa fa-comments"></i>{{ post.comments.length }}</span
-          ><br />
+          >
           <span title="group"
             ><i class="fa fa-users"></i> {{ checkgroup() }}
           </span>
@@ -54,31 +64,17 @@
               :src="users[comments[c].userId].avatar"
             />
             <b>@{{ users[comments[c].userId].login }}:</b>
-            <br />
-            {{ comments[c].text }}
+            <span class="ml-3">{{ comments[c].text }}</span>
           </p>
         </template>
-
-        <textarea
+        <input
           class="form-control"
           v-model="comment"
           placeholder="Your comment"
-        ></textarea
-        ><br />
-        <button @click="addcomment" class="btn btn-primary">Comment</button>
-        <hr />
-        <i class="fa fa-tags"></i>
-        <span v-for="(c, kc) in post.cat" :key="kc">{{ c + " " }}</span
-        ><br />
-
-        <!--<hr>
-  <span @click="predisplay=!predisplay" class="debug">Debug</span>
-  <pre v-if="predisplay">
-  <span class="pre-header">DEBUG MODE:</span>
-  loginid: <b>{{loginid}}</b> 
-  likes (id): <b>{{post.like}}</b>
-  reposts (id): <b>{{post.repost}}</b>
-  </pre>-->
+        />
+        <div class="mt-3">
+          <button @click="addcomment" class="btn btn-primary">Comment</button>
+        </div>
       </div>
     </article>
     <app-editpost
@@ -126,10 +122,10 @@
       font-weight: bold;
     }
     .comments {
-      background: #ccc;
+      background: #ddd;
       line-height: 14px;
       font-size: 10px;
-      border: 1px solid #555;
+      border: 1px solid #ccc;
       padding: 5px;
       margin: 5px;
       cursor: default;
