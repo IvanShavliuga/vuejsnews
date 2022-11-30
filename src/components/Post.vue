@@ -70,10 +70,10 @@
           class="form-control"
           v-model="comment"
           placeholder="Your comment"
-        ></textarea
-        ><br />
-        <button @click="addcomment" class="btn btn-primary">Comment</button>
-
+        ></textarea>
+        <div class="mt-3">
+          <button @click="addcomment" class="btn btn-primary">Comment</button>
+        </div>
         <!--<hr>
   <span @click="predisplay=!predisplay" class="debug">Debug</span>
   <pre v-if="predisplay">
