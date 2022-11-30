@@ -62,15 +62,14 @@
               :src="users[comments[c].userId].avatar"
             />
             <b>@{{ users[comments[c].userId].login }}:</b>
-            <br />
-            {{ comments[c].text }}
+            <span class="ml-3">{{ comments[c].text }}</span>
           </p>
         </template>
-        <textarea
+        <input
           class="form-control"
           v-model="comment"
           placeholder="Your comment"
-        ></textarea>
+        />
         <div class="mt-3">
           <button @click="addcomment" class="btn btn-primary">Comment</button>
         </div>
