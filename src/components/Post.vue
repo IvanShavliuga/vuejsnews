@@ -1,7 +1,9 @@
 <template>
   <section>
     <article class="card mb-2" v-if="!editpost">
-      <div class="card-header">{{ post.title }}</div>
+      <div class="card-header">
+        {{ post.title }}
+      </div>
       <div class="card-body">
         <h6 class="card-title">
           <span class="text-primary user-data" title="author">
@@ -25,7 +27,13 @@
             ><i class="fa fa-retweet"></i
           ></span>
         </h6>
-        <p class="card-text">{{ post.desc }}</p>
+        <div class="card-text">
+          <p>
+            <i class="fa fa-tags"></i>
+            <span v-for="(c, kc) in post.cat" :key="kc">{{ c + " " }}</span>
+          </p>
+          <p>{{ post.desc }}</p>
+        </div>
       </div>
       <div class="card-footer text-primary">
         <p>
@@ -42,7 +50,7 @@
           >
           <span title="comments"
             ><i class="fa fa-comments"></i>{{ post.comments.length }}</span
-          ><br />
+          >
           <span title="group"
             ><i class="fa fa-users"></i> {{ checkgroup() }}
           </span>
@@ -58,7 +66,6 @@
             {{ comments[c].text }}
           </p>
         </template>
-
         <textarea
           class="form-control"
           v-model="comment"
@@ -66,10 +73,6 @@
         ></textarea
         ><br />
         <button @click="addcomment" class="btn btn-primary">Comment</button>
-        <hr />
-        <i class="fa fa-tags"></i>
-        <span v-for="(c, kc) in post.cat" :key="kc">{{ c + " " }}</span
-        ><br />
 
         <!--<hr>
   <span @click="predisplay=!predisplay" class="debug">Debug</span>
