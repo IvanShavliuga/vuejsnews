@@ -28,9 +28,11 @@
           ></span>
         </h6>
         <div class="card-text">
-          <p>
-            <i class="fa fa-tags"></i>
-            <span v-for="(c, kc) in post.cat" :key="kc">{{ c + " " }}</span>
+          <p class="my-1">
+            <i class="fa fa-tags text-success"></i>
+            <span v-for="(c, kc) in post.cat" :key="kc" class="text-primary">{{
+              c + " "
+            }}</span>
           </p>
           <p>{{ post.desc }}</p>
         </div>
@@ -73,14 +75,6 @@
         <div class="mt-3">
           <button @click="addcomment" class="btn btn-primary">Comment</button>
         </div>
-        <!--<hr>
-  <span @click="predisplay=!predisplay" class="debug">Debug</span>
-  <pre v-if="predisplay">
-  <span class="pre-header">DEBUG MODE:</span>
-  loginid: <b>{{loginid}}</b> 
-  likes (id): <b>{{post.like}}</b>
-  reposts (id): <b>{{post.repost}}</b>
-  </pre>-->
       </div>
     </article>
     <app-editpost
@@ -128,10 +122,10 @@
       font-weight: bold;
     }
     .comments {
-      background: #ccc;
+      background: #ddd;
       line-height: 14px;
       font-size: 10px;
-      border: 1px solid #555;
+      border: 1px solid #ccc;
       padding: 5px;
       margin: 5px;
       cursor: default;
