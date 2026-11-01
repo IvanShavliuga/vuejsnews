@@ -9,30 +9,25 @@
   </main>
 </template>
 <script>
-import Content from "./Content.vue";
-import Signin from "./Signin.vue";
+import { computed } from 'vue'
+import Content from './Content.vue'
+import Signin from './Signin.vue'
+import { useIndexStore } from '@/stores/index' // путь к вашему стору
 
 export default {
-  data() {
-    return {
-      user: {},
-      posts: [],
-      cards: [],
-      messages: [],
-      alert: {},
-      users: [],
-      userlogin: true,
-    };
-  },
   components: {
     appContent: Content,
-    appSignin: Signin,
+    appSignin: Signin
   },
-  created() {
-    this.posts = this.$store.getters.postsAll;
-    this.cards = this.$store.getters.cards;
-    this.users = this.$store.getters.users;
-    this.alert = this.$store.getters.alert;
-  },
-};
+  setup() {
+    const store = useIndexStore()
+
+    const posts = computed(() => store.postsAll)
+    const cards = computed(() => store.cards)
+    const users = computed(() => store.users)
+    const alert = computed(() => store.alert)
+
+    return { posts, cards, users, alert }
+  }
+}
 </script>

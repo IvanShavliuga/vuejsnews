@@ -50,42 +50,30 @@ html {
   cursor: pointer;
 }
 </style>
-<script>
-import Header from "./components/Header.vue";
-import Signin from "./components/Signin.vue";
-import Footer from "./components/Footer.vue";
-import Signup from "./components/Signup.vue";
+<script setup>
+import { ref } from 'vue'
+import { storeToRefs } from 'pinia'
+import Header from './components/Header.vue'
+import Signin from './components/Signin.vue'
+import Footer from './components/Footer.vue'
+import Signup from './components/Signup.vue'
+import   useIndexStore  from '@/stores/index'
 
-export default {
-  data() {
-    return {
-      title: "iv2news",
-      userlogin: false,
-      registration: false,
-      users: [],
-    };
-  },
-  components: {
-    appHeader: Header,
-    appSignin: Signin,
-    appSignup: Signup,
-    appFooter: Footer,
-  },
-  created() {
-    this.users = this.$store.getters.users;
-    this.userlogin = this.$store.getters.auth;
-  },
-  methods: {
-    signinfun(rd) {
-      this.userlogin = rd.auth;
-    },
-    signupfun(rd) {
-      if (!rd.error) {
-        console.log("rd.user " + rd.user);
-        this.$store.dispatch("signup", rd.user);
-        this.userlogin = true;
-      }
-    },
-  },
-};
+const store = useIndexStore()
+const { users, auth: userlogin } = storeToRefs(store)
+
+const title = ref('iv2news')
+const registration = ref(false)
+
+function signinfun(rd) {
+  // при желании можно отреагировать на провал входа
+  if (!rd.auth) registration.value = true
+}
+
+function signupfun(rd) {
+  if (!rd.error) {
+    console.log('rd.user ' + rd.user)
+    store.signup(rd.user)
+  }
+}
 </script>
