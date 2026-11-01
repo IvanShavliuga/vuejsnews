@@ -22,24 +22,23 @@
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "latest",
-    "@vue/cli-plugin-eslint": "latest",
+    "@vue/cli-plugin-eslint": "~5.0.8",
     "@vue/cli-plugin-router": "latest",
     "@vue/cli-plugin-unit-jest": "latest",
-    "@vue/cli-service": "latest",
+    "@vue/cli-service": "~5.0.8",
     "@vue/compiler-sfc": "^3.5.44",
     "@vue/eslint-config-prettier": "latest",
     "@vue/test-utils": "latest",
     "babel-eslint": "latest",
-    "eslint": "latest",
-    "eslint-plugin-prettier": "latest",
-    "eslint-plugin-vue": "latest",
+    "eslint": "^8.57.0",
+    "eslint-plugin-prettier": "^6.0.0",
+    "eslint-plugin-vue": "^7.20.0",
     "json-server": "latest",
     "lint-staged": "latest",
     "prettier": "latest",
     "sass": "latest",
     "sass-loader": "latest",
     "typescript": "latest",
-    "vue-jest": "latest",
     "vue-loader": "^17.4.2"
   },
   "eslintConfig": {
@@ -78,14 +77,5 @@
     "transform": {
       "^.+\\.vue$": "vue-jest"
     }
-  },
-  "gitHooks": {
-    "pre-commit": "lint-staged"
-  },
-  "lint-staged": {
-    "*.{js,jsx,vue}": [
-      "vue-cli-service lint",
-      "git add"
-    ]
   }
 }
