@@ -13,45 +13,41 @@
   </div>
 </template>
 <script>
-import News from "./News.vue";
-import Cards from "./Cards.vue";
-import Alert from "./Alert.vue";
+import { computed, ref } from 'vue'
+import News from './News.vue'
+import Cards from './Cards.vue'
+import Alert from './Alert.vue'
+import { useIndexStore } from '@/stores/index'
 
 export default {
-  data() {
-    return {
-      user: {},
-      posts: [],
-      cards: [],
-      alert: {},
-      alertflag: true,
-      users: [],
-      groups: [],
-      admingroups: [],
-      comments: [],
-      loginid: 0,
-      index: 0,
-    };
-  },
   components: {
     appNews: News,
     appCards: Cards,
-    appAlert: Alert,
+    appAlert: Alert
   },
-  methods: {
-    closealert() {
-      this.alertflag = false;
-    },
-  },
-  created() {
-    this.posts = this.$store.getters.postsAll;
-    this.cards = this.$store.getters.cards;
-    this.users = this.$store.getters.users;
-    this.alert = this.$store.getters.alert;
-    this.admingroups = this.$store.getters.groupsAdmin;
-    this.groups = this.$store.getters.groups;
-    this.comments = this.$store.getters.comments;
-    this.loginid = this.$store.getters.loginid;
-  },
-};
+  setup() {
+    const store = useIndexStore()
+
+    const posts = computed(() => store.postsAll)
+    const cards = computed(() => store.cards)
+    const users = computed(() => store.users)
+    const alert = computed(() => store.alert)
+    const admingroups = computed(() => store.groupsAdmin)
+    const groups = computed(() => store.groups)
+    const comments = computed(() => store.comments)
+    const loginid = computed(() => store.loginid)
+
+    const alertflag = ref(true)
+    const index = ref(0)
+
+    function closealert() {
+      alertflag.value = false
+    }
+
+    return {
+      posts, cards, users, alert, admingroups, groups, comments, loginid,
+      alertflag, index, closealert
+    }
+  }
+}
 </script>

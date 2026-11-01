@@ -1,6 +1,6 @@
 import { ref, computed } from 'vue'
 import { defineStore } from 'pinia'
-import api from './../server/api.js'
+import api from '../server/api.js'
 
 export default defineStore('index', () => {
   // ---------- state ----------

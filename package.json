@@ -31,42 +31,15 @@
     "@vue/test-utils": "latest",
     "babel-eslint": "latest",
     "eslint": "^8.57.0",
-    "eslint-plugin-prettier": "^6.0.0",
-    "eslint-plugin-vue": "^7.20.0",
+     "eslint-plugin-vue": "^7.20.0",
     "json-server": "latest",
     "lint-staged": "latest",
-    "prettier": "latest",
-    "sass": "latest",
+     "sass": "latest",
     "sass-loader": "latest",
     "typescript": "latest",
     "vue-loader": "^17.4.2"
   },
-  "eslintConfig": {
-    "root": true,
-    "env": {
-      "node": true
-    },
-    "extends": [
-      "plugin:vue/vue3-essential",
-      "eslint:recommended",
-      "@vue/prettier"
-    ],
-    "parserOptions": {
-      "parser": "babel-eslint"
-    },
-    "rules": {},
-    "overrides": [
-      {
-        "files": [
-          "**/__tests__/*.{j,t}s?(x)",
-          "**/tests/unit/**/*.spec.{j,t}s?(x)"
-        ],
-        "env": {
-          "jest": true
-        }
-      }
-    ]
-  },
+  
   "browserslist": [
     "> 1%",
     "last 2 versions",
